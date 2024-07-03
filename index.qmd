@@ -1,0 +1,38 @@
+---
+title: "Di Cook"
+comments: false
+image: dicook-2023.png
+about:
+  template: trestles
+  links:
+    - icon: envelope
+      text: Email
+      href: mailto:dicook@monash.edu
+    # - icon: file-pdf
+    #   text: Resume
+    #   href: https://beatrizmilz.github.io/resume/index.pdf  
+    - icon: github
+      text: GitHub
+      href: https://github.com/dicook
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/dianne-cook-a4877a104/  
+    - icon: mastodon
+      text: Mastodon
+      href: https://aus.social/@visnut  
+    - icon: bluesky
+      text: Bluesky
+      href: https://bsky.app/profile/visnut.bsky.social
+---
+
+::: {#hero-heading}
+
+Di Cook is a Professor of Statistics in [Econometrics and Business Statistics at Monash University](https://www.monash.edu/business/ebs/about-us) in Melbourne, Australia. She has a PhD in Statistics from Rutgers University. Her research focuses on statistical graphics, which involves interactive visualisation of high-dimensional data, and statistical inference for data visualisation. In her role at Monash University she regularly teaches courses on machine learning and data analysis, and she has conducted workshops on data visualisation. 
+
+Di is a Fellow of the American Statistical Association, past editor of the [Journal of Computational and Graphical Statistics](https://www.tandfonline.com/journals/ucgs20), and [The R Journal](https://journal.r-project.org), [Member of the R Foundation](https://www.r-project.org/foundation/), and elected member of the [International Statistical Institute](https://www.isi-web.org), and author of numerous R packages. She is active in [R Ladies Melbourne](https://github.com/R-LadiesMelbourne), the [Statistical Computing and Visualisation Section](https://statsoc.org.au/Statistical-Computing-and-Visualisation-Section) of the [Statistical Society of Australia](https://statsoc.org.au), and the [Graphics and Computing Sections of the American Statistical Association](https://community.amstat.org/jointscsg-section/home.
+
+In 2015, Di moved home to Australia after many years at Iowa State University. This allowed her to be close to family. As part of the move, she accepted emeritus status in order to continue supervising current students. She is far from retired, though, as you will see from publications, software, talks and student graduations.
+
+Di is passionate about open source software, ethics and transparency, and achieving gender parity in society. She is also passionate about sports and the environment. Before becoming an academic she played sports competitively, with a highlight being the opening batswoman on Bob Hawke's Prime Minister's XI women's cricket team against England in 1984, played an Manuka Oval in Canberra. The environment in Australia has changed dramatically in the years since colonisation with many species becoming endangered or even extinct. For this reason, many of the R packages originating from the [NUMBATs group at Monash](https://numbat.space), of which Di is a member, are based on Australian wild life, many cute and wonderful creatures.
+
+:::
