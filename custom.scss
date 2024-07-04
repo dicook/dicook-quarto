@@ -67,3 +67,17 @@ div.quarto-post .listing-categories .listing-category {
 p pre code:not(.sourceCode), li pre code:not(.sourceCode), pre code:not(.sourceCode) {
   background-color: #f0efff;
 }
+
+/* css styles */
+
+img.card-img {
+  vertical-align: middle;
+  border-radius: 50%;
+  width: auto;
+  aspect-ratio: 1 !important;
+}
+
+img.proj-img {
+  vertical-align: middle;
+  border-radius: 50%;
+}
