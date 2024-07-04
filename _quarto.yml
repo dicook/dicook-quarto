@@ -20,6 +20,10 @@ website:
         href: students.qmd
       - text: Links
         href: links.qmd
+      - text: NUMBATs
+        href: "https://numbat.space"
+      - text: EBS, Monash
+        href: "https://www.monash.edu/business/ebs/about-us"
 
 format:
   html:

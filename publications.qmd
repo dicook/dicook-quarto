@@ -21,7 +21,7 @@ pubs <- tibble(title = b$title.title.value,
                year = b$`publication-date.year.value`,
                journal = b$`journal-title.value`,
                doi = b$url.value) |>
-  arrange(year)
+  arrange(desc(year))
 save(pubs, file="pubs.rda")
 ```
 
