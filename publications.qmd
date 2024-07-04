@@ -1,11 +1,35 @@
 ---
-title: "home"
+title: "Publications"
 ---
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+*This page is automatically populated from orcid.org*
 
 ```{r}
-1 + 1
+#| echo: false
+#| message: false
+#| eval: false
+# this section is run manually to obtain
+# publication list 
+# orcid exported bibtex in wrong format
+#library(RefManageR)
+#b <- ReadBib("citations-gc.bib")
+#b
+library(rorcid)
+library(dplyr)
+b <- works("0000-0002-3813-7155")
+pubs <- tibble(title = b$title.title.value, 
+               year = b$`publication-date.year.value`,
+               journal = b$`journal-title.value`,
+               doi = b$url.value) |>
+  arrange(year)
+save(pubs, file="pubs.rda")
+```
+
+```{r}
+#| echo: false
+#| message: false
+library(knitr)
+library(kableExtra)
+load("pubs.rda")
+kable(pubs)
 ```
