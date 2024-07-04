@@ -1,16 +1,15 @@
 ---
 title: "Di Cook"
 comments: false
-image: dicook-2023.png
+image: dicook-2023.jpg
 about:
   template: trestles
+  image-width: 15em
+  image-shape: round
   links:
     - icon: envelope
       text: Email
       href: mailto:dicook@monash.edu
-    # - icon: file-pdf
-    #   text: Resume
-    #   href: https://beatrizmilz.github.io/resume/index.pdf  
     - icon: github
       text: GitHub
       href: https://github.com/dicook
