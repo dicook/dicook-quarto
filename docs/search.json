@@ -2,16 +2,9 @@
   {
     "objectID": "blog.html",
     "href": "blog.html",
-    "title": "home",
+    "title": "Posts",
     "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "blog.html#quarto",
-    "href": "blog.html#quarto",
-    "title": "home",
-    "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n\n1 + 1\n\n[1] 2"
+    "text": "How to use a tour to check if your model suffers from multicollinearity\n\n\n\n\n\n\ndata visualisation\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nSep 13, 2019\n\n\nDi Cook\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "publications.html",
@@ -26,6 +19,41 @@
     "title": "Di Cook",
     "section": "",
     "text": "Dianne Cook is a Professor of Statistics in Econometrics and Business Statistics at Monash University in Melbourne, Australia. She has a PhD in Statistics from Rutgers University. Her research focuses on statistical graphics, which involves interactive visualisation of high-dimensional data, and statistical inference for data visualisation. In her role at Monash University she regularly teaches courses on machine learning and data analysis, and she has conducted workshops on data visualisation.\nDi is a Fellow of the American Statistical Association, past editor of the Journal of Computational and Graphical Statistics, and The R Journal, Member of the R Foundation, and elected member of the International Statistical Institute, and author of numerous R packages. She is active in R Ladies Melbourne, the Statistical Computing and Visualisation Section of the Statistical Society of Australia, and the [Graphics and Computing Sections of the American Statistical Association](https://community.amstat.org/jointscsg-section/home.\nIn 2015, Di moved home to Australia after many years at Iowa State University. This allowed her to be close to family. As part of the move, she accepted emeritus status in order to continue supervising current students. She is far from retired, though, as you will see from publications, software, talks and student graduations.\nDi is passionate about open source software, ethics and transparency, and achieving gender parity in society. She is also passionate about sports and the environment. Before becoming an academic she played sports competitively, with a highlight being the opening batswoman on Bob Hawke’s Prime Minister’s XI women’s cricket team against England in 1985, played an Manuka Oval in Canberra. The environment in Australia has changed dramatically in the years since colonisation with many species becoming endangered or even extinct. For this reason, many of the R packages originating from the NUMBATs group at Monash, of which Di is a member, are based on Australian wild life, many cute and wonderful creatures. And also, data sets compiled for teaching include many from the environment, and women’s sports statistics, along with details on how it was obtained."
+  },
+  {
+    "objectID": "posts/2019-09-13-touring-multicollinearity/index.html",
+    "href": "posts/2019-09-13-touring-multicollinearity/index.html",
+    "title": "How to use a tour to check if your model suffers from multicollinearity",
+    "section": "",
+    "text": "This was one of the comments from a recent review of a paper:\n\nAs you note in the paper, it seems likely that there are still issues with multi-collinearity\n\nMulticollinearity means that the observations are co-linear in some combination of the variables. This has been relaxed in practice to mean substantial association between explanatory variables. When your explanatory variables have substantial association between them, it means that you don’t have a stable base on which to build a model. I like to say its like building a table with only two legs, or three legs but they are all in a row. The table top is going to be very wobbly. You need to have the legs placed broadly to provide a good base for the table top. Its similar for model fitting. You can think of the model like the table top, and the explanatory variables form the base. If the observations are not well spread out in the space, then the model fit will be unstable.\nWhen there are only two predictors (explanatory variables) its easy to check, by plotting the two variables. With more variables its harder to detect. Common approaches are to use principal component analysis, and examine the screeplot, or proportion of variation explained by a subset of principal components. If all (or most) of the variation is explained with a subset of all the variables, it means you have a multicollinearity problem. You will need to drop some variables or do some other dimension reduction to fix it before choosing your final model.\nAnother approach is to compute the variance inflation factor for all the variables in your model. This measures how much the coefficients for the variable change when other variables are included with it in the model. This is the stability mentioned earlier - if there is multicollinearity the model coefficient for a variable can change substantially depending on whether another variable (or more) is included in the model or not. High variance inflation factors means that this variable’s coefficient changes a lot depending on the other variables, indicating multicollinearity among the collection of explanatory variables."
+  },
+  {
+    "objectID": "posts/2019-09-13-touring-multicollinearity/index.html#multicollinearity",
+    "href": "posts/2019-09-13-touring-multicollinearity/index.html#multicollinearity",
+    "title": "How to use a tour to check if your model suffers from multicollinearity",
+    "section": "",
+    "text": "This was one of the comments from a recent review of a paper:\n\nAs you note in the paper, it seems likely that there are still issues with multi-collinearity\n\nMulticollinearity means that the observations are co-linear in some combination of the variables. This has been relaxed in practice to mean substantial association between explanatory variables. When your explanatory variables have substantial association between them, it means that you don’t have a stable base on which to build a model. I like to say its like building a table with only two legs, or three legs but they are all in a row. The table top is going to be very wobbly. You need to have the legs placed broadly to provide a good base for the table top. Its similar for model fitting. You can think of the model like the table top, and the explanatory variables form the base. If the observations are not well spread out in the space, then the model fit will be unstable.\nWhen there are only two predictors (explanatory variables) its easy to check, by plotting the two variables. With more variables its harder to detect. Common approaches are to use principal component analysis, and examine the screeplot, or proportion of variation explained by a subset of principal components. If all (or most) of the variation is explained with a subset of all the variables, it means you have a multicollinearity problem. You will need to drop some variables or do some other dimension reduction to fix it before choosing your final model.\nAnother approach is to compute the variance inflation factor for all the variables in your model. This measures how much the coefficients for the variable change when other variables are included with it in the model. This is the stability mentioned earlier - if there is multicollinearity the model coefficient for a variable can change substantially depending on whether another variable (or more) is included in the model or not. High variance inflation factors means that this variable’s coefficient changes a lot depending on the other variables, indicating multicollinearity among the collection of explanatory variables."
+  },
+  {
+    "objectID": "posts/2019-09-13-touring-multicollinearity/index.html#tour",
+    "href": "posts/2019-09-13-touring-multicollinearity/index.html#tour",
+    "title": "How to use a tour to check if your model suffers from multicollinearity",
+    "section": "Tour",
+    "text": "Tour\nThis is my favorite method for checking for multicollinearity. I usually do the routine approaches first (PCA and VIFs), and then run a tour. Here is the example from the paper, Jeremy Forbes, Rob Hyndman and myself are currently working on. There were actually multiple models fit, and I’ll show just two, because they do show the range.\n\nlibrary(tourr)\nquartz()\nload(\"data/d1.rda\")\nload(\"data/d2.rda\")\nanimate_xy(d1, axes=\"bottomleft\", half_range=1.2)\nrender_gif(d1, grand_tour(), display_xy(, \n           axes=\"bottomleft\", half_range=1.2), \n           frames = 100, \n           gif_file=\"d1.gif\")\nrender_gif(d2, grand_tour(), display_xy(, \n           axes=\"bottomleft\", half_range=1.2), \n           frames = 100, \n           gif_file=\"d2.gif\")\n\nThis is the first set of explanatory variables. There are 150 observations and 32 variables. That’s about 5 observations for each dimension – its sparse.\n(If you are new to tours, a good resource is to look at the Wickham et al (2011) as cited in the tourr package.)\n\nModel 1\n\nThere is some collinearity, but there is also a little more. There is a concentration of points in the first couple of variables, which likely corresponds to a lot of very small values on these variables. It can be hard to fix this, usually a log or power transformation would be used. There are also a few outliers, just a few, and they are not very extreme. These are the points that float out from the others occasionally. The last frame below shows a point where the collinearity is visible. The points flatten into a tall pancake, which says that there is moderate association between them.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nModel 2\n\nThe second example is similar to the first. There is also some nonlinear association visible, but the outliers are less extreme."
+  },
+  {
+    "objectID": "posts/2019-09-13-touring-multicollinearity/index.html#summary",
+    "href": "posts/2019-09-13-touring-multicollinearity/index.html#summary",
+    "title": "How to use a tour to check if your model suffers from multicollinearity",
+    "section": "Summary",
+    "text": "Summary\nWhile there is evidence of multicollinearity for both of these sets of explanatory variables, its not very severe. Its more like a table built with one thick central plank for support. These sort of tables exist and are reasonably stable. We can not be absolutely certain, but the conclusion would be that the models are robust.\nAn aside about multicollinearity and model fitting purpose: we typically consider this to be a problem only if the purpose is explanatory rather than predictive. If the goal is to predict from the model and the new predictor values are in the range of the existing data, then the predictions are ok. Think about it like the table on two legs, the line at which the table top sits on the legs is the same, even if the table top pivots around this line. For explanation, because the coefficients can change dramatically depending on the other variables in the model, the interpretation of the coefficient is unreliable with multicollinearity.\nNow, I dare someone to add a sentence to their next model application paper like “Multicollinearity was checked using a tour on all the explanatory variables, run for 3.46 minutes.” (Ha, ha)"
+  },
+  {
+    "objectID": "posts/2019-09-13-touring-multicollinearity/index.html#sources",
+    "href": "posts/2019-09-13-touring-multicollinearity/index.html#sources",
+    "title": "How to use a tour to check if your model suffers from multicollinearity",
+    "section": "Sources",
+    "text": "Sources\nThe code for this post is here."
   },
   {
     "objectID": "talks.html",
