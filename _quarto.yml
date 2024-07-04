@@ -27,7 +27,8 @@ website:
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme: 
+      - pulse
+      - custom.scss
     toc: true
 
