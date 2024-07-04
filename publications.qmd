@@ -28,8 +28,23 @@ save(pubs, file="pubs.rda")
 ```{r}
 #| echo: false
 #| message: false
-library(knitr)
-library(kableExtra)
+#library(knitr)
+#library(kableExtra)
+library(dplyr)
+library(glue)
+library(gt)
 load("pubs.rda")
-kable(pubs)
+pubs <- pubs |>
+  mutate(titlelink = glue("[{title}]({doi})"))
+#kable(pubs)
+pubs |> 
+  select(titlelink, year, journal) |>
+  gt() |>
+  gt::fmt_markdown(columns = titlelink) |>
+  cols_label(titlelink = "title") |> 
+  gt::cols_width(titlelink ~ px(500),
+                 year ~ px(50),
+                 journal ~ px(200)) |>
+  cols_align("left")
+  
 ```

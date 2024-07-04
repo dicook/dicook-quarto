@@ -4,6 +4,8 @@ project:
 
 website:
   title: "Di Cook"
+  favicon: logo.png
+  site-url: https://dicook.org
   navbar:
     background: primary
     search: true
@@ -14,16 +16,22 @@ website:
         href: publications.qmd
       - text: Talks
         href: talks.qmd
+      - text: Software
+        href: software.qmd
       - text: Blog
         href: blog.qmd
       - text: Students
         href: students.qmd
       - text: Links
         href: links.qmd
-      - text: NUMBATs
-        href: "https://numbat.space"
-      - text: EBS, Monash
-        href: "https://www.monash.edu/business/ebs/about-us"
+    right:
+      - icon: github
+        href: https://github.com/dicook/dicook-quarto      
+
+body-header: | 
+  Copyright:  Dianne Cook, 2024
+
+date-format: "D MMMM YYYY"
 
 format:
   html:

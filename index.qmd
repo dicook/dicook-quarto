@@ -13,6 +13,8 @@ about:
     - icon: github
       text: GitHub
       href: https://github.com/dicook
+    - text: Scholar
+      href: https://scholar.google.com/citations?user=_b0uchgAAAAJ&hl=en    
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/dianne-cook-a4877a104/  
@@ -22,6 +24,10 @@ about:
     - icon: bluesky
       text: Bluesky
       href: https://bsky.app/profile/visnut.bsky.social
+    - text: NUMBATs
+      href: https://numbat.space
+    - text: Monash
+      href: https://www.monash.edu/business/ebs/about-us
 ---
 
 ::: {#hero-heading}
