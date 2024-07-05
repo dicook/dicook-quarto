@@ -8,6 +8,7 @@ title: "Invited talks, seminars and workshops"
 library(readr)
 library(dplyr)
 library(gt)
+library(glue)
 talks <- read_csv("talks.csv")
 talks <- talks |>
   mutate(titlelink = glue("[{title}]({link})"))

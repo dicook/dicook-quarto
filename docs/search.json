@@ -37,16 +37,9 @@
   {
     "objectID": "talks.html",
     "href": "talks.html",
-    "title": "home",
+    "title": "Invited talks, seminars and workshops",
     "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "talks.html#quarto",
-    "href": "talks.html#quarto",
-    "title": "home",
-    "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n\n1 + 1\n\n[1] 2"
+    "text": "date\ntitle\nlocation\ndetails\n\n\n\n\n2024-07-8\nTutorial: Visualising High-dimensional Data with R\nuseR! 2024, Salzburg\n3 hours\n\n\n2024-03-26\nTutorial: Visualising High-dimensional Data with R\nSSA SCV\n3 hours\n\n\n2023-12-12\nVisually exploring local explanations to understand complex machine learning models\nASC and OZCOTS 2023\ncontributed\n\n\n2023-12-07\nNew tools for visualising high-dimensional data using linear projections\nIASC ARS 2023\nkeynote"
   },
   {
     "objectID": "posts/2019-09-13-touring-multicollinearity/index.html",
