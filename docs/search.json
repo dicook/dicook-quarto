@@ -39,7 +39,28 @@
     "href": "talks.html",
     "title": "Invited talks, seminars and workshops",
     "section": "",
-    "text": "date\ntitle\nlocation\ndetails\n\n\n\n\n2024-07-8\nTutorial: Visualising High-dimensional Data with R\nuseR! 2024, Salzburg\n3 hours\n\n\n2024-03-26\nTutorial: Visualising High-dimensional Data with R\nSSA SCV\n3 hours\n\n\n2023-12-12\nVisually exploring local explanations to understand complex machine learning models\nASC and OZCOTS 2023\ncontributed\n\n\n2023-12-07\nNew tools for visualising high-dimensional data using linear projections\nIASC ARS 2023\nkeynote"
+    "text": "date\ntitle\nlocation\ndetails\n\n\n\n\n2023-12-12\nVisually exploring local explanations to understand complex machine learning models\nASC and OZCOTS 2023\ncontributed\n\n\n2023-12-07\nNew tools for visualising high-dimensional data using linear projections\nIASC ARS 2023\nkeynote"
+  },
+  {
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching resources",
+    "section": "",
+    "text": "number\ntitle\nlocation\n\n\n\n\nETC3250/5250\nIntroduction to Machine Learning\nMonash University\n\n\nETC5521\nDiving Deeper into Data\nMonash University"
+  },
+  {
+    "objectID": "teaching.html#university-courses",
+    "href": "teaching.html#university-courses",
+    "title": "Teaching resources",
+    "section": "",
+    "text": "number\ntitle\nlocation\n\n\n\n\nETC3250/5250\nIntroduction to Machine Learning\nMonash University\n\n\nETC5521\nDiving Deeper into Data\nMonash University"
+  },
+  {
+    "objectID": "teaching.html#workshops",
+    "href": "teaching.html#workshops",
+    "title": "Teaching resources",
+    "section": "Workshops",
+    "text": "Workshops\n\n\n\n\n\n\n\n\ndate\ntitle\nlocation\ndetails\n\n\n\n\n2024-07-08\nTutorial: Visualising High-dimensional Data with R\nuseR! 2024, Salzburg\n3 hours\n\n\n2024-03-26\nTutorial: Visualising High-dimensional Data with R\nSSA SCV\n3 hours\n\n\n2024-03-26\nTutorial: Visualising High-dimensional Data with R\nSSA SCV\n3 hours"
   },
   {
     "objectID": "posts/2019-09-13-touring-multicollinearity/index.html",
@@ -81,7 +102,7 @@
     "href": "index.html",
     "title": "Di Cook",
     "section": "",
-    "text": "Dianne Cook is a Professor of Statistics in Econometrics and Business Statistics at Monash University in Melbourne, Australia. She has a PhD in Statistics from Rutgers University. Her research focuses on statistical graphics, which involves interactive visualisation of high-dimensional data, and statistical inference for data visualisation. In her role at Monash University she regularly teaches courses on machine learning and data analysis, and she has conducted workshops on data visualisation.\nDi is a Fellow of the American Statistical Association, past editor of the Journal of Computational and Graphical Statistics, and The R Journal, Member of the R Foundation, and elected member of the International Statistical Institute, and author of numerous R packages. She is active in R Ladies Melbourne, the Statistical Computing and Visualisation Section of the Statistical Society of Australia, and the [Graphics and Computing Sections of the American Statistical Association](https://community.amstat.org/jointscsg-section/home.\nIn 2015, Di moved home to Australia after many years at Iowa State University. This allowed her to be close to family. As part of the move, she accepted emeritus status in order to continue supervising current students. She is far from retired, though, as you will see from publications, software, talks and student graduations.\nDi is passionate about open source software, ethics and transparency, and achieving gender parity in society. She is also passionate about sports and the environment. Before becoming an academic she played sports competitively, with a highlight being the opening batswoman on Bob Hawke’s Prime Minister’s XI women’s cricket team against England in 1985, played an Manuka Oval in Canberra. The environment in Australia has changed dramatically in the years since colonisation with many species becoming endangered or even extinct. For this reason, many of the R packages originating from the NUMBATs group at Monash, of which Di is a member, are based on Australian wild life, many cute and wonderful creatures. And also, data sets compiled for teaching include many from the environment, and women’s sports statistics, along with details on how it was obtained."
+    "text": "Dianne Cook is a Professor of Statistics in Econometrics and Business Statistics at Monash University in Melbourne, Australia. She has a PhD in Statistics from Rutgers University. Her research focuses on statistical graphics, which involves interactive visualisation of high-dimensional data, and statistical inference for data visualisation. In her role at Monash University she regularly teaches courses on machine learning and data analysis, and she has conducted workshops on data visualisation.\nDi is a Fellow of the American Statistical Association, past editor of the Journal of Computational and Graphical Statistics, and The R Journal, Member of the R Foundation, and elected member of the International Statistical Institute, and author of numerous R packages. She is active in R Ladies Melbourne, the Statistical Computing and Visualisation Section of the Statistical Society of Australia, and the Graphics and Computing Sections of the American Statistical Association.\nIn 2015, Di moved home to Australia after many years at Iowa State University. This allowed her to be close to family. As part of the move, she accepted emeritus status in order to continue supervising current students. She is far from retired, though, as you will see from publications, software, talks and student graduations.\nDi is passionate about open source software, ethics and transparency, and achieving gender parity in society. She is also passionate about sports and the environment. Before becoming an academic she played sports competitively, with a highlight being the opening batswoman on Bob Hawke’s Prime Minister’s XI women’s cricket team against England in 1985, played an Manuka Oval in Canberra. The environment in Australia has changed dramatically in the years since colonisation with many species becoming endangered or even extinct. For this reason, many of the R packages originating from the NUMBATs group at Monash, of which Di is a member, are based on Australian wild life, many cute and wonderful creatures. And also, data sets compiled for teaching include many from the environment, and women’s sports statistics, along with details on how it was obtained."
   },
   {
     "objectID": "publications.html",

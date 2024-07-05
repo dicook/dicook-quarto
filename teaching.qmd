@@ -1,0 +1,54 @@
+---
+title: "Teaching resources"
+---
+
+## University courses
+
+```{r}
+#| echo: false
+#| message: false
+library(readr)
+library(dplyr)
+library(gt)
+library(glue)
+teaching <- read_csv("teaching.csv")
+teaching <- teaching |>
+  mutate(titlelink = glue("[{title}]({link})"))
+teaching |>
+  select(number, titlelink, location) |>
+  gt() |>
+    gt::fmt_markdown(columns = titlelink) |>
+    cols_label(titlelink = "title") |> 
+    gt::cols_width(
+      number ~ px(100),
+      titlelink ~ px(300),
+      location ~ px(150)) |>
+  cols_align("left")
+```
+
+## Workshops
+
+```{r}
+#| echo: false
+#| message: false
+library(readr)
+library(dplyr)
+library(gt)
+library(glue)
+ws <- read_csv("workshops.csv")
+ws <- ws |>
+  mutate(titlelink = glue("[{title}]({link})"))
+ws |>
+  arrange(desc(date)) |>
+  select(date, titlelink, location, details) |>
+  gt() |>
+    gt::fmt_markdown(columns = titlelink) |>
+    cols_label(titlelink = "title") |> 
+    gt::cols_width(
+      date ~ px(100),
+      titlelink ~ px(400),
+      location ~ px(250),
+      details ~ px(100)) |>
+  cols_align("left")
+```
+
