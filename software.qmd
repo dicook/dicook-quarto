@@ -61,7 +61,8 @@ save(pkg_data, file = "software.rda")
 library(dplyr)
 library(glue)
 library(stringr)
-library(gt)
+#library(gt)
+library(flextable)
 load("software.rda")
 pkg_data <- pkg_data |>
   mutate(pkglink = glue("[{package}]({url})")) |>
@@ -76,18 +77,29 @@ pkg_data <- pkg_data |>
   mutate(authors = str_replace(authors, "\\([^)]*\\)//g", "")) |>
   mutate(authors = str_replace(authors, "(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)", "")) |>
 arrange(desc(last_update))
-pkg_data |> 
-  select(pkglink, released, last_update, version, title, #authors, 
-         downloads) |>
-  gt() |>
-  gt::fmt_markdown(columns = pkglink) |>
-  cols_label(pkglink = "package") |> 
-  gt::cols_width(pkglink ~ px(100),
-                 released ~ px(150),
-                 last_update ~ px(150),
-                 version ~ px(100),
-                 title ~ px(200),
-                 #authors ~ px(200),
-                 downloads ~ px(100)) |>
-  cols_align("left", columns=c(pkglink:title))
+pkg_tbl <- pkg_data |> 
+  #select(pkglink, released, last_update, version, title, #authors, 
+  #       downloads) |>
+  select(package, last_update, released, version, title, downloads, url) |>
+  flextable() |>   
+    colformat_num(big.mark = ",", decimal.mark = ".") |>
+    colformat_date(fmt_date = "%d/%m/%Y")
+pkg_tbl <- compose(
+  x = pkg_tbl,
+  j = "package",
+  value = as_paragraph(hyperlink_text(x=package, url=url))
+) |>
+  delete_columns(j = "url")
+pkg_tbl 
+#  gt() |>
+#  gt::fmt_markdown(columns = pkglink) |>
+#  cols_label(pkglink = "package") |> 
+#  gt::cols_width(pkglink ~ px(100),
+#                 released ~ px(150),
+#                 last_update ~ px(150),
+#                 version ~ px(100),
+#                 title ~ px(200),
+#                 #authors ~ px(200),
+#                 downloads ~ px(100)) |>
+#  cols_align("left", columns=c(pkglink:title))
 ```
