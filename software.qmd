@@ -1,0 +1,93 @@
+---
+title: "Publications"
+---
+
+*This page is automatically populated using `pkgsearch` with R with all time downloads.*
+
+```{r}
+#| echo: false
+#| message: false
+#| eval: false
+library(tidyverse)
+library(tsibble)
+library(lubridate)
+library(pkgsearch)
+# remotes::install_github("robjhyndman/pkgmeta")
+library(pkgmeta)
+
+# Functions for getting downloads
+find_cran_packages <- function(name) {
+  pkgsearch::ps(name, size = 100) %>%
+    filter(purrr::map_lgl(
+      package_data, ~ grepl(name, .x$Author, fixed = TRUE)
+    )) %>%
+    select(package) %>%
+    pull(package)
+}
+
+# Monthly download counts from packages in <x>
+cran_downloads <- function(x) {
+  # Compute monthly download counts
+  down <- cranlogs::cran_downloads(x, from = "2000-01-01") %>%
+    as_tibble() %>%
+    mutate(month = tsibble::yearmonth(date)) %>%
+    group_by(month) %>%
+    summarise(count = sum(count), package = x)
+  # Strip out initial zeros
+  first_nonzero <- down %>%
+    filter(count > 0) %>%
+    head(1)
+  if (NROW(first_nonzero) > 0) {
+    filter(down, month >= first_nonzero$month)
+  } else {
+    first_nonzero
+  }
+}
+
+packages <- c(    
+  find_cran_packages("Di Cook"),
+  find_cran_packages("Dianne Cook")
+)
+
+pkg_data <- pkgmeta:::get_meta_cran(packages, 
+    include_downloads=TRUE) |>
+    rename(released = first_download, last_update = date)
+save(pkg_data, file = "software.rda")
+```
+
+```{r}
+#| echo: false
+#| message: false
+library(dplyr)
+library(glue)
+library(stringr)
+library(gt)
+load("software.rda")
+pkg_data <- pkg_data |>
+  mutate(pkglink = glue("[{package}]({url})")) |>
+  mutate(authors = str_replace(authors, "\\[aut, cre\\]", "")) |>
+  mutate(authors = str_replace(authors, "\\[aut, ctb\\]", "")) |>
+  mutate(authors = str_replace(authors, "\\[aut, ths\\]", "")) |>
+  mutate(authors = str_replace(authors, "\\[aut\\]//g", "")) |>
+  mutate(authors = str_replace(authors, "\\[ths\\]//g", "")) |>
+  mutate(authors = str_replace(authors, "\\[ctb\\]//g", "")) |>
+  mutate(authors = str_replace(authors, "\\[cph\\]", "")) |>
+  mutate(authors = str_replace(authors, "\n/g", "")) |>
+  mutate(authors = str_replace(authors, "\\([^)]*\\)//g", "")) |>
+  mutate(authors = str_replace(authors, "(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)", "")) |>
+arrange(desc(last_update))
+pkg_data |> 
+  select(pkglink, released, last_update, version, title, #authors, 
+         downloads) |>
+  gt() |>
+  gt::fmt_markdown(columns = pkglink) |>
+  cols_label(pkglink = "package") |> 
+  gt::cols_width(pkglink ~ px(100),
+                 released ~ px(150),
+                 last_update ~ px(150),
+                 version ~ px(100),
+                 title ~ px(200),
+                 #authors ~ px(200),
+                 downloads ~ px(100)) |>
+  cols_align("left", columns=c(pkglink:title))
+```

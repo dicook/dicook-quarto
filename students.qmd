@@ -1,0 +1,18 @@
+---
+title: "Graduated and current students"
+---
+
+## Doctoral
+
+```{r}
+#| echo: false
+#| message: false
+library(readr)
+library(dplyr)
+library(knitr)
+library(kableExtra)
+st <- read_csv("students.csv")
+st_tbl <- st |>
+  mutate(name = paste0("[", student, "](", currently, ")"))
+kable(st_tbl[, c(4,2)]) 
+```

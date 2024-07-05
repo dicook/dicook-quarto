@@ -28,7 +28,7 @@ website:
       - icon: github
         href: https://github.com/dicook/dicook-quarto      
 
-body-header: | 
+body-footer: | 
   Copyright:  Dianne Cook, 2024
 
 date-format: "D MMMM YYYY"
