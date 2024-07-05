@@ -8,23 +8,18 @@ about:
   image-shape: round
   links:
     - icon: envelope
-      text: email
       href: mailto:dicook@monash.edu
     - icon: github
-      text: gitHub
       href: https://github.com/dicook
     - text: scholar
       href: https://scholar.google.com/citations?user=_b0uchgAAAAJ&hl=en    
     - text: orcid
       href: https://orcid.org/my-orcid?orcid=0000-0002-3813-7155
     - icon: linkedin
-      text: linkedIn
       href: https://www.linkedin.com/in/dianne-cook-a4877a104/  
     - icon: mastodon
-      text: Mastodon
       href: https://aus.social/@visnut  
-    - icon: bluesky
-      text: Bluesky
+    - text: bluesky
       href: https://bsky.app/profile/visnut.bsky.social
     - text: NUMBATs
       href: https://numbat.space
