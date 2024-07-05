@@ -8,15 +8,17 @@ about:
   image-shape: round
   links:
     - icon: envelope
-      text: Email
+      text: email
       href: mailto:dicook@monash.edu
     - icon: github
-      text: GitHub
+      text: gitHub
       href: https://github.com/dicook
-    - text: Scholar
+    - text: scholar
       href: https://scholar.google.com/citations?user=_b0uchgAAAAJ&hl=en    
+    - text: orcid
+      href: https://orcid.org/my-orcid?orcid=0000-0002-3813-7155
     - icon: linkedin
-      text: LinkedIn
+      text: linkedIn
       href: https://www.linkedin.com/in/dianne-cook-a4877a104/  
     - icon: mastodon
       text: Mastodon
