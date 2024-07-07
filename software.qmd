@@ -2,7 +2,7 @@
 title: "Publications"
 ---
 
-*This page is automatically populated using `pkgsearch` with R with all time downloads.*
+## R packages
 
 ```{r}
 #| echo: false
@@ -117,3 +117,18 @@ pkg_tbl <- colformat_image(x = pkg_tbl,
                            na_str = "") 
 pkg_tbl 
 ```
+
+::: {style="font-size: 60%"}
+
+*This page is automatically populated using `pkgsearch` with R with all time downloads.*
+
+:::
+
+
+## Other software
+
+- Swayne, D., Temple Lang, D., Cook, D., and Buja, A. (2001-), with Wickham, H., Lawrence, M. and Hofmann, H. (2005-), [GGobi: software for exploratory graphical analysis of high-dimensional data](http://www.ggobi.org). There is an associated R package rggobi which provides a tight coupling of R and ggobi, with command line control of ggobi.
+- Cook, D., Sutherland, P., Honavar, V., Miller, L., Suarez, M. and Jing Zhang (1999- ). Limn: Visualizing extremely large data sets.
+- Sutherland, P., Rossini, A., Lumley, T., Dickerson, J., Cox, Z., and Cook, D. (1998-). ORCA: Multivariate Data Viewers using JAVA.
+- Swayne, D., Cook, D., and Buja, A. (1990-). [XGobi: software for exploratory graphical analysis of high-dimensional data using scatterplot manipulation.](https://github.com/ggobi/xgobi).
+- Majure, J. J., Symanzik, J., and Cook, D. (1996). ArcView 2.1 - XGobi link: software connecting a GIS with dynamic statistical graphics program for multivariate data.

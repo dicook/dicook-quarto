@@ -60,4 +60,13 @@ pubs |>
 
 ## Refereed conference proceedings
 
-## Media
+## Media & videos
+
+- Majure, J. J., Cook, D., Symanzik, J., and Megretskaia, I. (1996). [An Interactive Environment for the Graphical Analysis of Spatial Data](https://youtu.be/e_b8WAshYgA). [ASA Statistical Graphics Video Lending Library](https://community.amstat.org/jointscsg-section/media/videos).
+- Symanzik, S. Cook, D., Kohlmeyer, B. D., Lechner, U. and  Cruz-Neira, C. (1996) [Dynamic Statistical Graphics in a Highly Immersive Environment](https://youtu.be/JX56EB7HKKo) [ASA Statistical Graphics Video Lending Library](https://community.amstat.org/jointscsg-section/media/videos).
+- Morton, S., Cook, D., Stuetzle, W., and Buja, A. (1995). [Computer Graphics in Statistics: The Last 30 Years in Brief](https://youtu.be/osuuHDS9t6k). [ASA Statistical Graphics Video Lending Library](https://community.amstat.org/jointscsg-section/media/videos).
+- Majure, J., Cook, D., Cressie, N., Kaiser, M., Lahiri, S., and Symanzik, J. (1995). [Spatial CDF Estimation and Visualization with Applications to Forest Health Monitoring](https://youtu.be/PvuN6xol8-c). [ASA Statistical Graphics Video Lending Library](https://community.amstat.org/jointscsg-section/media/videos).
+- Symanzik, J., Majure, J. J., and Cook, D. (1995). [Dynamic Graphics in a GIS: Analyzing and Exploring Multivariate Spatial Data](https://youtu.be/RxWXcCx_bg0).  [ASA Statistical Graphics Video Lending Library](https://community.amstat.org/jointscsg-section/media/videos).
+- McDougall, A. and Cook, D. (1994). [Exploring Time Series Using Interactive Graphics](https://youtu.be/ug7v7N3d148).  [ASA Statistical Graphics Video Lending Library](https://community.amstat.org/jointscsg-section/media/videos)
+- Cook, D., Buja, A., Cabrera, J., and Swayne, D. (1993). [Grand Tour and Projection Pursuit](https://youtu.be/K4hq9ZMPpO8). [ASA Statistical Graphics Video Lending Library](https://community.amstat.org/jointscsg-section/media/videos).
+- Swayne, D. F., Cook, D. and Buja, A. (1991) [XGobi: Dynamic Graphics for Data Analysis](https://youtu.be/n5i9RLCe1rQ), [ASA Statistical Graphics Video Lending Library](https://community.amstat.org/jointscsg-section/media/videos).
