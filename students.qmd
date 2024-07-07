@@ -1,8 +1,6 @@
 ---
-title: "Graduated and current students"
+title: "Graduated and current PhD students"
 ---
-
-## Doctoral
 
 ```{r}
 #| echo: false
@@ -11,9 +9,6 @@ library(readr)
 library(dplyr)
 library(flextable)
 st <- read_csv("students.csv")
-#st_tbl <- st |>
-#  mutate(name = paste0("[", student, "](", currently, ")"))
-#kable(st_tbl[, c(4,2)]) 
 st_tbl <- st |>
   select(name, year, url, from, topic, `co-advisors`) |>
   mutate(year = as.character(year)) |>
@@ -28,4 +23,34 @@ st_tbl <- width(x = st_tbl,
                 j = "topic", 
                 width = 5)
 st_tbl
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 10
+#| fig-height: 6
+#| out-width: 100%
+library(ggplot2)
+library(maps)
+library(ggthemes)
+library(ggrepel)
+
+# Import the data with coordinates
+world <- map_data("world") |>
+  filter(region != "Antarctica")
+
+# Plot the map. group = group connects the points in the correct order
+ggplot() + 
+  geom_polygon(data = world, aes(x = long, 
+                                 y = lat, 
+                                 group = group),
+               fill="grey80", color="white") +
+  geom_point(data=st, aes(x=lon, y=lat), 
+             colour = "#1e5868") +
+  geom_text_repel(data=st, aes(x=lon, y=lat, label=name), 
+                  colour = "#1e5868", max.overlaps = 20) +
+  theme_map() 
+
 ```

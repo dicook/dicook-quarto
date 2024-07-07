@@ -1,26 +1,26 @@
-name, year,url, from, topic, co-advisors
-Xuan Nhat Minh Nguyen,2027,,Vietnam, TBD, Tim Dwyer
-Tina Rashid Jafari,2027,," Tabriz, Iran", TBD, Farshid Vahid-Araghi
-Janith Wanniarachchi,2026, https://janithwanni.netlify.app," Colombo, Sri Lanka", Visualisation for XAI," Kate Saunders,  Patricia Menendez,  Thiyanga Talagala"
-Harriet Mason,2025, https://github.com/harriet-mason," Brisbane, Australia", Uncertainty visualisation," Sarah Goodwin,  Susan Vanderplas"
-Jayani Lakshika Piyadi Gamage,2025, https://jayanilakshika.netlify.app, Sri Lanka, Looking at Non-Linear Dimension Reductions as Models in the Data Space," Paul Harrison,  Michael Lydeamore,  Thiyanga Talagala"
-Weihao (Patrick) Li,2024, https://github.com/TengMCing," Shanghai, China", Advances in Artificial Intelligence for Data Visualization: Developing Computer Vision Models to Automate Reading of Data Plots," Klaus Ackermann,  Emi Tanaka,  Susan Vanderplas"
-H. Sherry Zhang,2023, https://huizezhangsh.netlify.app," Shanghai, China", New tools for visualising and explaining multivariate spatio-temporal data," Ursula Laa,  Nicholas Langrene,  Patricia Menendez"
-Nicholas Spyrison,2022, https://nspyrison.netlify.app," Dubuque,  Iowa", Interactive and dynamic visualization of high-dimensional data, Kim Marriot
-Sayani Gupta,2022,https://www.linkedin.com/in/sayanigupta/?originalSubdomain=au," Delhi, India", Visualization and analysis of probability distributions of large temporal data," Rob Hyndman,  Peter Toscas"
-Stuart Lee,2021, https://scholar.google.com/citations?user=793ayD4AAAAJ&hl=en," Adelaide,  Australia", Exploratory data analysis for high-dimensional biological datasets," Paul Harrison, Matt Ritchie"
-Earo Wang,2020, https://earo.me," Chengdu, China", Tidy tools for supporting fluent workflow in temporal data analysis, Rob Hyndman
-Natalia Da Silva,2017, https://github.com/natydasilva," Montevideo, Uruguay", Bagged projection methods for supervised classification in big data,Heike Hofmann
-Lindsay Rutter,2016,https://www.gla.ac.uk/schools/chemistry/staff/lindsayrutter/,USA," Visualization Methods for Genealogical and RNA-sequencing Studies: Pertinence, software, and applications", Amy Toth
-Xiaoyue Cheng,2015, https://www.unomaha.edu/college-of-arts-and-sciences/mathematics/about-us/directory/xiaoyue-cheng.php," Qingdao, China"," Interactive visualization for missing values,  temperoal and areal data", Heike Hofmann
-Niladri Roy-Chowdhury,2014, https://scholar.google.com/citations?user=DhTcxPgAAAAJ&hl=en,, Explorations of the lineup protocol for visual inference: Application to high dimension low sample size problems and metrics to assess the quality, Heike Hofmann
-Yihui Xie,2013, https://yihui.org," Yichang, China", Dynamic graphics and reporting for statistics, Heike Hofmann
-Mahbubul Majumder,2013," https://www.unomaha.edu/college-of-arts-and-sciences/mathematics/about-us/directory/mahbubul-majumder.php< ""Bangladesh""","U. Nebraska, Omaha"," ""Investigations into Visual Statistical Inference""", Heike Hofmann
-Tengfei Yin,2013, https://www.linkedin.com/in/tengfei/," Wuhan, China"," Visualization of biological data: Infrastructure, design and application", Eve Wurtele
-Xiaoyong Sun,2010, https://scholar.google.com/citations?user=OY47KCYAAAAJ&hl=en,"Shandong, China", Diagnostics for nonlinear models with application to population pharmacokinetic modeling, Basil Nikolai
-Michael Lawrence,2008, https://github.com/lawremi," St Louis, USA"," Interactive graphics, graphical user interfaces and software interfaces for the analysis of biological experimental data and networks", Eve Wurtele
-Hadley Wickham,2008, https://hadley.nz," Hamilton,  New Zealand", Practical tools for exploring data and models, Heike Hofmann
-Eun-Kyung Lee,2003, https://github.com/EK-Lee," Seoul,  South Korea", Projection pursuit methods for exploratory supervised classification,  
-Ozlem Ilk,2004, https://users.metu.edu.tr/oilk/," Ankara,  Turkey", Exploratory multivariate longitudinal data analysis and models for multivariate longitudinal binary data,  
-Marcia Macedo,2000, https://www.linkedin.com/in/marcia-almeida-de-macedo-98a26b2b1/," Sao Paulo, Brazil", Modern applied statistics and animal populations in geographically complex landscapes: Data visualization and modeling, Brent Danielson
-Sunhee Kwon,1999, https://www.linkedin.com/in/sunheekwonro/," Seoul, South Korea"," Clustering in multivariate data: Visualization,  case and variable reduction",  
+name, year,url, from, topic, co-advisors,lat,lon
+Xuan Nhat Minh Nguyen,2027,,Vietnam, TBD, Tim Dwyer,10.8231,106.6297
+Tina Rashid Jafari,2027,," Tabriz, Iran", TBD, Farshid Vahid-Araghi,38.0792,46.2887
+Janith Wanniarachchi,2026, https://janithwanni.netlify.app," Colombo, Sri Lanka", Visualisation for XAI," Kate Saunders,  Patricia Menendez,  Thiyanga Talagala",6.9271,79.8612
+Harriet Mason,2025, https://github.com/harriet-mason," Brisbane, Australia", Uncertainty visualisation," Sarah Goodwin,  Susan Vanderplas",-24.4705,153.026
+Jayani Lakshika Piyadi Gamage,2025, https://jayanilakshika.netlify.app, Sri Lanka, Looking at Non-Linear Dimension Reductions as Models in the Data Space," Paul Harrison,  Michael Lydeamore,  Thiyanga Talagala",6.9271,79.8612
+Weihao (Patrick) Li,2024, https://github.com/TengMCing," Shanghai, China", Advances in Artificial Intelligence for Data Visualization: Developing Computer Vision Models to Automate Reading of Data Plots," Klaus Ackermann,  Emi Tanaka,  Susan Vanderplas",31.2304,121.4737
+H. Sherry Zhang,2023, https://huizezhangsh.netlify.app," Shanghai, China", New tools for visualising and explaining multivariate spatio-temporal data," Ursula Laa,  Nicholas Langrene,  Patricia Menendez",31.2304,121.4737
+Nicholas Spyrison,2022, https://nspyrison.netlify.app," Dubuque,  Iowa", Interactive and dynamic visualization of high-dimensional data, Kim Marriot,42.5064,-90.6677
+Sayani Gupta,2022,https://www.linkedin.com/in/sayanigupta/?originalSubdomain=au," Delhi, India", Visualization and analysis of probability distributions of large temporal data," Rob Hyndman,  Peter Toscas",28.7041,77.1025
+Stuart Lee,2021, https://scholar.google.com/citations?user=793ayD4AAAAJ&hl=en," Adelaide,  Australia", Exploratory data analysis for high-dimensional biological datasets," Paul Harrison, Matt Ritchie",-34.9285,138.6007
+Earo Wang,2020, https://earo.me," Chengdu, China", Tidy tools for supporting fluent workflow in temporal data analysis, Rob Hyndman,30.5723,104.0665
+Natalia Da Silva,2017, https://github.com/natydasilva," Montevideo, Uruguay", Bagged projection methods for supervised classification in big data,Heike Hofmann,-34.9055,-56.1851
+Lindsay Rutter,2016,https://www.gla.ac.uk/schools/chemistry/staff/lindsayrutter/,USA," Visualization Methods for Genealogical and RNA-sequencing Studies: Pertinence, software, and applications", Amy Toth,38.627,-90.1994
+Xiaoyue Cheng,2015, https://www.unomaha.edu/college-of-arts-and-sciences/mathematics/about-us/directory/xiaoyue-cheng.php," Qingdao, China"," Interactive visualization for missing values,  temperoal and areal data", Heike Hofmann,36.0662,120.383
+Niladri Roy-Chowdhury,2014, https://scholar.google.com/citations?user=DhTcxPgAAAAJ&hl=en,"Mumbai, India", Explorations of the lineup protocol for visual inference: Application to high dimension low sample size problems and metrics to assess the quality, Heike Hofmann,19.076,72.8777
+Yihui Xie,2013, https://yihui.org," Yichang, China", Dynamic graphics and reporting for statistics, Heike Hofmann,30.6918,111.2863
+Mahbubul Majumder,2013," https://www.unomaha.edu/college-of-arts-and-sciences/mathematics/about-us/directory/mahbubul-majumder.php< ""Bangladesh""","Dhaka, Bangladesh", Investigations into Visual Statistical Inference, Heike Hofmann,23.8041,90.4152
+Tengfei Yin,2013, https://www.linkedin.com/in/tengfei/," Wuhan, China"," Visualization of biological data: Infrastructure, design and application", Eve Wurtele,30.5928,114.3052
+Xiaoyong Sun,2010, https://scholar.google.com/citations?user=OY47KCYAAAAJ&hl=en,"Shandong, China", Diagnostics for nonlinear models with application to population pharmacokinetic modeling, Basil Nikolai,36.6683,117.0208
+Michael Lawrence,2008, https://github.com/lawremi," St Louis, USA"," Interactive graphics, graphical user interfaces and software interfaces for the analysis of biological experimental data and networks", Eve Wurtele,38.627,-90.1994
+Hadley Wickham,2008, https://hadley.nz," Hamilton,  New Zealand", Practical tools for exploring data and models, Heike Hofmann,-37.7826,175.2528
+Eun-Kyung Lee,2003, https://github.com/EK-Lee," Seoul,  South Korea", Projection pursuit methods for exploratory supervised classification,  ,36.5519,126.9918
+Ozlem Ilk,2004, https://users.metu.edu.tr/oilk/," Ankara,  Turkey", Exploratory multivariate longitudinal data analysis and models for multivariate longitudinal binary data,  ,39.9334,32.8597
+Marcia Macedo,2000, https://www.linkedin.com/in/marcia-almeida-de-macedo-98a26b2b1/," Sao Paulo, Brazil", Modern applied statistics and animal populations in geographically complex landscapes: Data visualization and modeling, Brent Danielson,-23.5558,-46.6396
+Sunhee Kwon,1999, https://www.linkedin.com/in/sunheekwonro/," Seoul, South Korea"," Clustering in multivariate data: Visualization,  case and variable reduction",  ,36.5519,126.9918
