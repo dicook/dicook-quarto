@@ -17,7 +17,7 @@ st_tbl <- compose(
   x = st_tbl,
   j = "name",
   value = as_paragraph(hyperlink_text(x=name, url=url, 
-     props = officer::fp_text(color = "#1e5868")))) |>
+     props = officer::fp_text(color = "#a96469")))) |>
   delete_columns(j = "url")  
 st_tbl <- width(x = st_tbl, 
                 j = "topic", 

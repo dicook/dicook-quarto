@@ -108,7 +108,7 @@ pkg_tbl <- compose(
   x = pkg_tbl,
   j = "package",
   value = as_paragraph(hyperlink_text(x=package, url=url, 
-     props = officer::fp_text(color = "#1e5868")))) |>
+     props = officer::fp_text(color = "#a96469")))) |>
   delete_columns(j = "url") 
 
 pkg_tbl <- colformat_image(x = pkg_tbl,
