@@ -1,0 +1,75 @@
+---
+title: "Education"
+---
+
+## Degrees
+
+| year  | degree | institution |
+|:------|:------|:------|
+| 1982  | B.Sc./Dip. Ed. (Math/Stat/Biochem) | University of New England, Armidale, Australia |
+| 1991  | M.Sc (Statistics) | Rutgers University, New Jersey, USA |
+|1993   | Ph.D (Statistics) | Rutgers University, New Jersey, USA |
+
+## Positions
+
+| year  | position | institution |
+|:------|:------|:------|
+| Jul 2021 | Distinguished Professor | Econometrics and Business Statistics, Monash University |
+| Jul 2015 | Professor | Econometrics and Business Statistics, Monash University |
+| May 2005 | Professor | Statistics, Iowa State University |
+| May 1998 | Associate Professor | Statistics, Iowa State University |
+| Aug 1993 | Assistant  Professor | Statistics, Iowa State University |
+
+
+## Awards
+
+- Keynote speaker, IASC-ARS 2023, Sydney, Dec 6-8, 2023
+- Keynote speaker, IFCS 2022, Porto, Portugal, Jul 19-23, 2022
+- Gosset lecture, Irish Statistical Association, Feb 3, 2021
+- Keynote speaker, IBC 2020, Seoul, South Korea, Jul 5-10, 2020
+- Keynote speaker, 7th International Statistical Ecology Conference, Sydney Jun 22-26, 2020 
+- Elected member, International Statistical Institute 2019
+- Keynote speaker, DSSV 2019, Kyoto, Japan, Aug 13-15 2019
+- ACEMS and Monash Master class, Melbourne, Feb 13, 2019
+- 2018 ACEMS Impact and Engagement Award, as part of the Non-uniform Monash Business Analytics Team
+- Belz lecture, University of Melbourne, Oct 16, 2018
+- Keynote speaker, RStudio Conference, San Diego, CA Feb 2-3, 2018
+- Keynote speaker, Biometrics by the Border, IBS-AR 2017 Nov 26-30, Kingscliffe, Australia
+- Keynote speaker, Young Statisticians Conference, Sep 26-27 2017, Gold Coast, Australia 
+- Ordinary Member (elected), The R Foundation, 2016
+- Dean’s Research Award, 2016
+- Keynote Speaker, New Zealand Statistical Association Conference, Nov 27-29 2016, Auckland, NZ
+- Keynote Speaker, International Statistics Forum, May 27 2016, Renmin University, China 
+- Statistical Applications and Data Mining, Best paper award 2015
+- Keynote Speaker, Bayes on the Beach, Dec 8 2015, Surfers Paradise, Australia
+- Plenary Speaker, RSFAS Dec 2 2015 Summer Camp, Murramurang, Australia
+- Keynote Speaker, BDVA ’15, September 2015, Hobart. 
+- Australia Keynote Speaker, useR! Jul 2015, Aalborg, Denmark
+- Keynote Speaker, useR! Jun 2012, Nashville, TN
+- LAS Career Research Award, 2012
+- InfoVis 2010 Best paper award
+- Fellow, American Statistical Association, 2005
+- Recognized by two outstanding undergraduates, one from Statistics 101 and the other from Statistics 407 as a teacher who was important to them, 2009
+- Center for Excellence in Learning and Teaching Memorable Teacher 2007
+- Delta Delta Delta Favorite Teacher Recognition 2005
+- University Foundation Award for Early Excellence in Research, 1999
+
+## Visits
+
+| dates | institution |
+|:------|:------|
+| Jun 17-21, 2024 | Turing Institute, London, UK |
+| Mar-Jul, 2023 | EWHA Womens University, Seoul, South Korea |
+| Jan-May 2008 | Isaac Newton Institute for Mathematical Sciences, Cambridge University, UK |
+| Feb-May 2004 | Statistics, Macquarie University,  Australia |
+| Jul 2002 | University of Augsburg, Germany |
+| Dec 2001 |  AT&T Labs, Florham Park, NJ|
+| Oct 2000 | 3D Visual Data Mining Group, University of Aalborg, Denmark |
+| Apr-Jun 2000 | Lucent Technologies, Indian Hill, IL |
+| Jan-Apr 2000 | BiometricsSA, Adelaide, Australia |
+| Oct 1999 | Pfizer Inc, Groton, CT |
+| Jun-Jul 1999, Oct- Nov 1998 | National Research Center for Statistics and the Environment, University of Washington, Seattle, WA |
+| Jun-Aug 1997, Jul- Sep 1999 | Stanford University, CA |
+| Mar 1996, Mar 1995, Nov 1994 | AT&T Bell Labs, Murray Hill, NJ |
+| Aug 1994 | Humboldt University, Berlin, Germany |
+| Jul 1994, Jul 1993, Jul 1991 | Centre for Mathematics and its Applications, Australian National University |
