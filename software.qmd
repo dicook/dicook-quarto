@@ -74,7 +74,6 @@ library(readr)
 library(dplyr)
 library(glue)
 library(stringr)
-#library(gt)
 library(flextable)
 library(magick)
 hex <- read_csv("hex.csv") |>
@@ -108,8 +107,8 @@ pkg_tbl <- pkg_data |>
 pkg_tbl <- compose(
   x = pkg_tbl,
   j = "package",
-  value = as_paragraph(hyperlink_text(x=package, url=url))
-) |>
+  value = as_paragraph(hyperlink_text(x=package, url=url, 
+     props = officer::fp_text(color = "#1e5868")))) |>
   delete_columns(j = "url") 
 
 pkg_tbl <- colformat_image(x = pkg_tbl,

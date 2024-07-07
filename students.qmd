@@ -9,10 +9,23 @@ title: "Graduated and current students"
 #| message: false
 library(readr)
 library(dplyr)
-library(knitr)
-library(kableExtra)
+library(flextable)
 st <- read_csv("students.csv")
+#st_tbl <- st |>
+#  mutate(name = paste0("[", student, "](", currently, ")"))
+#kable(st_tbl[, c(4,2)]) 
 st_tbl <- st |>
-  mutate(name = paste0("[", student, "](", currently, ")"))
-kable(st_tbl[, c(4,2)]) 
+  select(name, year, url, from, topic, `co-advisors`) |>
+  mutate(year = as.character(year)) |>
+  flextable()
+st_tbl <- compose(
+  x = st_tbl,
+  j = "name",
+  value = as_paragraph(hyperlink_text(x=name, url=url, 
+     props = officer::fp_text(color = "#1e5868")))) |>
+  delete_columns(j = "url")  
+st_tbl <- width(x = st_tbl, 
+                j = "topic", 
+                width = 5)
+st_tbl
 ```
