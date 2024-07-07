@@ -15,14 +15,15 @@ teaching <- read_csv("teaching.csv")
 teaching <- teaching |>
   mutate(titlelink = glue("[{title}]({link})"))
 teaching |>
-  select(number, titlelink, location) |>
+  select(number, titlelink, location, description) |>
   gt() |>
     gt::fmt_markdown(columns = titlelink) |>
     cols_label(titlelink = "title") |> 
     gt::cols_width(
       number ~ px(150),
       titlelink ~ px(400),
-      location ~ px(150)) |>
+      location ~ px(150),
+      description ~ px(300)) |>
   cols_align("left")
 ```
 

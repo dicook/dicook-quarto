@@ -2,7 +2,7 @@
 title: "Publications"
 ---
 
-*This page is automatically populated from orcid.org*
+## Journal articles
 
 ```{r}
 #| echo: false
@@ -48,3 +48,16 @@ pubs |>
   cols_align("left")
   
 ```
+
+::: {style="font-size: 60%"}
+*This list is automatically populated from orcid.org*
+:::
+
+## Books 
+
+- Cook, D. and Laa, U. (2024) [Interactively exploring high-dimensional data and models in R](https://dicook.github.io/mulgar_book/), CRC Press.
+- Cook, D., and Swayne, D. (with contributions from Buja, A., Temple Lang, D., Hofmann, H., Wickham, H. and Lawrence, M.) (2007). Interactive and Dynamic Graphics for Data Analysis with examples using R and GGobi, Springer, New York. With additional data, R code and demo movies at [http://www.ggobi.org](http://www.ggobi.org).
+
+## Refereed conference proceedings
+
+## Media

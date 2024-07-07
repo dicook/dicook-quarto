@@ -16,16 +16,16 @@ website:
         href: education.qmd
       - text: Publications
         href: publications.qmd
-      - text: Teaching
-        href: teaching.qmd
       - text: Talks
         href: talks.qmd
       - text: Software
         href: software.qmd
-      - text: Blog
-        href: blog.qmd
+      - text: Teaching
+        href: teaching.qmd
       - text: Students
         href: students.qmd
+      - text: Blog
+        href: blog.qmd
     right:
       - icon: github
         href: https://github.com/dicook/dicook-quarto      
