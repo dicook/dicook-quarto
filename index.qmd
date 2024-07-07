@@ -1,7 +1,7 @@
 ---
 title: "Di Cook"
 comments: false
-image: dicook-2023.jpg
+image: dicook-2023.png
 about:
   template: trestles
   image-width: 15em

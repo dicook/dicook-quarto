@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Di Cook"
+  title: "Dianne H. Cook"
   favicon: logo.png
   site-url: https://dicook.org
   navbar:

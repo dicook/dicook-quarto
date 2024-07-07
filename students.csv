@@ -1,25 +1,26 @@
-student, year, currently
-Tina Rashid Jafari, 2027, 
-Janith Wanniarachchi, 2026, https://janithwanni.netlify.app 
-Harriet Mason, 2025, https://github.com/harriet-mason
-Jayani Lakshika Piyadi Gamage, 2025, https://jayanilakshika.netlify.app
-Weihao (Patrick) Li, 2024, https://github.com/TengMCing
-H. Sherry Zhang, 2023, https://huizezhangsh.netlify.app
-Nicholas Spyrison, 2022, https://nspyrison.netlify.app
-Sayani Gupta, 2022, https://sayani.netlify.app
-Stuart Lee, 2021, https://scholar.google.com/citations?user=793ayD4AAAAJ&hl=en
-Earo Wang, 2020, https://earo.me
-Natalia Da Silva, 2017, https://github.com/natydasilva
-Lindsay Rutter, 2016, https://github.com/lindsayrutter?tab=repositories
-Xiaoyue Cheng, 2015, https://www.unomaha.edu/college-of-arts-and-sciences/mathematics/about-us/directory/xiaoyue-cheng.php
-Niladri Roy-Chowdhury, 2014, https://scholar.google.com/citations?user=DhTcxPgAAAAJ&hl=en
-Yihui Xie, 2013, https://yihui.org
-Mahbubul Majumder, 2013, https://www.unomaha.edu/college-of-arts-and-sciences/mathematics/about-us/directory/mahbubul-majumder.php
-Tengfei Yin, 2013, https://www.linkedin.com/in/tengfei/
-Xiaoyong Sun, 2010, https://scholar.google.com/citations?user=OY47KCYAAAAJ&hl=en
-Michael Lawrence, 2008, https://github.com/lawremi
-Hadley Wickham, 2008, https://hadley.nz
-Eun-Kyung Lee, 2003, https://github.com/EK-Lee
-Ozlem Ilk, 2004, https://users.metu.edu.tr/oilk/
-Marcia Macedo, 2000, https://www.linkedin.com/in/marcia-almeida-de-macedo-98a26b2b1/
-Sunhee Kwon, 1999, https://www.linkedin.com/in/sunheekwonro/
+student, year, currently, originally, topic, co-advisors
+Xuan Nhat Minh Nguyen, 2027, Melbourne,Vietnam, TBA, Tim Dwyer
+Tina Rashid Jafari, 2027, Melbourne, "Tabriz, Iran", TBA, Farshid Vahid-Araghi
+Janith Wanniarachchi, 2026, https://janithwanni.netlify.app, "Sri Lanka", Visualisation for XAI, "Kate Saunders, Patricia Menendez, Thiyanga Talagala"
+Harriet Mason, 2025, https://github.com/harriet-mason, "Brisbane, Australia", "Uncertainty visualisation", "Sarah Goodwin, Susan Vanderplas"
+Jayani Lakshika Piyadi Gamage, 2025, https://jayanilakshika.netlify.app, "Sri Lanka", "Looking at Non-Linear Dimension Reductions as Models in the Data Space", "Paul Harrison, Michael Lydeamore, Thiyanga Talagala"
+Weihao (Patrick) Li, 2024, https://github.com/TengMCing, "Shanghai, China", "Advances in Artificial Intelligence for Data Visualization: Developing Computer Vision Models to Automate Reading of Data Plots, with Application to Regression Diagnostics", "Klaus Ackermann, Emi Tanaka, Susan Vanderplas"
+H. Sherry Zhang, 2023, https://huizezhangsh.netlify.app, "Shanghai, China", "New tools for visualising and explaining multivariate spatio-temporal data", "Ursula Laa, Nicholas Langrene, Patricia Menendez"
+Nicholas Spyrison, 2022, https://nspyrison.netlify.app, "IFF, Madison, WI", "Dubuque, Iowa" , "Interactive and dynamic visualization of high-dimensional data", "Kim Marriot"
+Sayani Gupta, 2022, https://sayani.netlify.app, "Delhi, India", "AEMO, Melbourne", "Visualization and analysis of probability distributions of large temporal data", "Rob Hyndman, Peter Toscas"
+Stuart Lee, 2021, https://scholar.google.com/citations?user=793ayD4AAAAJ&hl=en, "Adelaide, Australia", "U. Melbourne", "Exploratory data analysis for high-dimensional biological datasets", "Paul Harrison, Matt Ritchie"
+Earo Wang, 2020, https://earo.me, "Chengdu, China", "CANVA, Sydney", "Tidy tools for supporting fluent workflow in temporal data analysis", Rob Hyndman
+Natalia Da Silva, 2017, https://github.com/natydasilva, "Montevideo, Uruguay", "Universidad de la Republica, Montevideo, Uruguay", "Bagged projection methods for supervised classification in big data", Eun-Kyung Lee
+Lindsay Rutter, 2016, https://github.com/lindsayrutter, "USA", University of Glasgow, "Visualization Methods for Genealogical and RNA-sequencing Studies: Pertinence, Software, and Applications", Amy Toth
+Xiaoyue Cheng, 2015, https://www.unomaha.edu/college-of-arts-and-sciences/mathematics/about-us/directory/xiaoyue-cheng.php, "Qingdao, China", "U. Nebraska, Omaha", "Interactive visualization for missing values, time series, and areal data", Heike Hofmann
+Niladri Roy-Chowdhury, 2014, https://scholar.google.com/citations?user=DhTcxPgAAAAJ&hl=en, "Pfizer, Chicago", "Explorations of the lineup protocol for visual inference: Application to high dimension, low sample size problems and metrics to assess the quality", Heike Hofmann
+Yihui Xie, 2013, https://yihui.org, "Yichang, China", "Omaha, Nebraska", "Dynamic graphics and reporting for statistics", "Heike Hofmann"
+Mahbubul Majumder, 2013, https://www.unomaha.edu/college-of-arts-and-sciences/mathematics/about-us/directory/mahbubul-majumder.php< "Bangladesh","U. Nebraska, Omaha", "Investigations into Visual Statistical Inference", Heike Hofmann
+Tengfei Yin, 2013, https://www.linkedin.com/in/tengfei/, "Wuhan, China", "Paritybit Technologies", "Visualization of biological data: Infrastructure, design and application", Eve Wurtele
+Xiaoyong Sun, 2010, https://scholar.google.com/citations?user=OY47KCYAAAAJ&hl=en, "Shandong Agricultural University", "Diagnostics for nonlinear models with application to population pharmacokinetic modeling", Basil Nikolai
+Michael Lawrence, 2008, https://github.com/lawremi, "St Louis, USA", "Genentech", "Interactive graphics, graphical user interfaces and software interfaces for the analysis of biological experimental data and networks", Eve Wurtele
+Hadley Wickham, 2008, https://hadley.nz, Hamilton, New Zealand", Posit PBC, "Practical tools for exploring data and models", Heike Hofmann
+Eun-Kyung Lee, 2003, https://github.com/EK-Lee, "Seoul, South Korea", "EWHA Womens University", "Projection pursuit methods for exploratory supervised classification", " "
+Ozlem Ilk, 2004, https://users.metu.edu.tr/oilk/, "Ankara, Turkey", "Middle East Technical University", "Exploratory multivariate longitudinal data analysis and models for multivariate longitudinal binary data", " "
+Marcia Macedo, 2000, https://www.linkedin.com/in/marcia-almeida-de-macedo-98a26b2b1/, "Brazil", "Syngenta, Iowa", "Modern applied statistics and animal populations in geographically complex landscapes: Data visualization and modeling", Brent Danielson
+Sunhee Kwon, 1999, https://www.linkedin.com/in/sunheekwonro/, "South Korea", Prelude Therapeutics, "Clustering in multivariate data: Visualization, case and variable reduction", " "
