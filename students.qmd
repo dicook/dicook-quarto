@@ -30,7 +30,7 @@ st_tbl
 #| message: false
 #| warning: false
 #| fig-width: 10
-#| fig-height: 6
+#| fig-height: 5
 #| out-width: 100%
 library(ggplot2)
 library(maps)
