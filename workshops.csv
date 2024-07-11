@@ -1,5 +1,8 @@
 date, title, location, link, details
-2024-07-08, "Tutorial: Visualising High-dimensional Data with R","useR! 2024, Salzburg", https://dicook.github.io/mulgar_tutorial/, 3 hours
-2024-03-26, "Tutorial: Visualising High-dimensional Data with R", "SSA SCV", https://statsocaus.github.io/tutorial_highd_vis/, 3 hours
-2024-03-26, "Tutorial: Visualising High-dimensional Data with R", "SSA SCV", https://statsocaus.github.io/tutorial_highd_vis/, 3 hours
-2023-12-02, "Tutorial: Creating data plots for effective decision-making using statistical inference with R", "SSA SCV", https://statsocaus.github.io/tutorial_effective_data_plots/
+8/7/2024,Visualising High-dimensional Data with R,"useR! 2024, Salzburg", https://dicook.github.io/mulgar_tutorial/, 3 hours
+26/3/2024,Visualising High-dimensional Data with R," SSA SCV, online", https://statsocaus.github.io/tutorial_highd_vis/, 3 hours
+26/3/2024,Visualising High-dimensional Data with R," SSA SCV, online", https://statsocaus.github.io/tutorial_highd_vis/, 3 hours
+2/12/2023, Creating data plots for effective decision-making using statistical inference with R," SSA SCV, online", https://statsocaus.github.io/tutorial_effective_data_plots/,3 hours
+19/10/2023,Creating data plots for effective decision-making using statistical inference with R,"Montevideo, Uruguay",https://dicook.github.io/LatinR,3 hours
+28/11/2022,Visual methods for multivariate data - a journey beyond 3D,"SASA 2022, George, South Africa",https://github.com/dicook/MDAG_2022,3 hours
+23/6/2020,"Going beyond 2D and 3D to visualise higher dimensions, for ordination, clustering and other models",vISEC 2020,https://dicook.org/files/vISEC20/slides_tourr.html,??

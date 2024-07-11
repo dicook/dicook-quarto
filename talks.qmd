@@ -1,5 +1,5 @@
 ---
-title: "Invited talks, seminars and workshops"
+title: "Invited talks and seminars"
 ---
 
 ```{r}
@@ -25,3 +25,5 @@ talks |>
       details ~ px(100)) |>
   cols_align("left")
 ```
+
+And another 30 or so delivered before 2000.

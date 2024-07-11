@@ -1,3 +1,122 @@
 date, title, location, link, details
-2023-12-12, Visually exploring local explanations to understand complex machine learning models, ASC and OZCOTS 2023, https://github.com/dicook/ASC_2023, contributed
-2023-12-07, New tools for visualising high-dimensional data using linear projections, IASC ARS 2023, https://dicook.github.io/IASC-ARS-2023/slides.html, keynote
+12/12/2023, Visually exploring local explanations to understand complex machine learning models, ASC and OZCOTS 2023, https://github.com/dicook/ASC_2023, contributed
+7/12/2023, New tools for visualising high-dimensional data using linear projections, IASC ARS 2023, https://dicook.github.io/IASC-ARS-2023/slides.html, keynote
+20/10/2023,How do we know what we don't know?,"Montevideo, Uruguay",https://dicook.github.io/LatinR/keynote/slides.html,
+24/11/2022,Visually exploring local explanations to understand complex machine learning models,"Stellenbosch U., South Africa",https://github.com/dicook/Stellenbosch_2022,invited talk
+29/8/2022,Myth busting and apophenia in data visualisation: Is what you see really there?,"Macquarie U., Australia",https://github.com/dicook/Macquarie_2022,invited talk
+20/7/2022,A showcase of new methods for high dimensional data viewing with linear projections and sections,"IFCS '22, Porto, Portugal",https://bit.ly/IFCS22-Cook,keynote
+21/6/2021,Uncertainty in data visualisation through the lens of statistical inference,Rostock Retreat on Data Visualization at the Max Planck Institute for Demographic Research,[https://dicook.org/files/Rostock2021/slides.html,keynote
+3/2/2021,"In Visualising Data, Who Wins?","Gosset lecture, Irish Statistical Association",,named lecture
+20/7/2020,The paradox of the positive: exploratory tools for visualising the individuals in (multivariate) longitudinal data,IBC 2020,https://dicook.org/files/IBC2020/slides.html,keynote
+24/6/2020,"Making inference using data plots, with application to ecological statistics",vISEC 2020,https://dicook.org/files/vISEC2020/slides.html,keynote
+18/9/2019,Statistics on Street Corners,"CSIRO Data61, Canberra, Australia",,invited talk
+20/8/2019,Building plots to explore data," 62nd ISI World Statistics Congress,
+  Kuala Lumpur, Malaysia",,contributed
+14/8/2019,"Human vs computer: In Visualising Data, Who Wins?","DSSV '19, Kyoto, Japan ",,keynote
+30/7/2019,Give Your Statistician Colleague Iris Bulbs for Their House Warming!,"JSM 2019, Denver, Colorado",,invited talk
+15/10/2018,"Human vs computer: when visualising data, who wins?","Belz Lecture, Statistical Society of Victoria",,named lecture
+12/9/2018,Visualisation of high-dimensional spaces with application to econometric data and models,"U. Melbourne, Melbourne, Australia",,invited talk
+30/7/2018,EDA: A Historical Perspective and a Path Forward,"JSM 2018, Vancouver, Canada",,invited talk
+28/8/2018,Visualisation of high-dimensional particle physics,"IASCB-ASC 2018, Melbourne, Australia",,contributed
+7/3/2018,Myth busting and apophenia in data visualisation: is what you see really there?,"Ihaka Lecture, University of Auckland, NZ",,named lecture
+12/2/2018,Visualising high-dimensional spaces with application to particle physics models,"NUS/IMS Workshop and Tutorial on Social Networks, Singapore",,invited lecture
+2/2/2018,To the Tidyverse and Beyond: Challenges for the Future in Data Science,"RStudio conference, San Diego, CA",,keynote
+27/11/2017,Statistics on Street Corners,"Biometrics by the Border, Kingscliff, NSW",,keynote
+26/9/2017,Statistics on Street Corners,"Young Statisticians Conference 2017, Coolangatta, QLD",,keynote
+29/7/2017,A girl geek's guide to new research on interactive data visualization for statistics with lots of data.,"JSM '17, Baltimore, MD",,invited talk
+18/5/2017,"The Glue that Binds Statistical Inference, 
+Tidy Data, Grammar of Graphics, Visual Inference","Finance, Actuarial Studies \& Statistics, Australian National University, Canberra.",,invited talk
+19/5/2017,"The Glue that Binds Statistical Inference, 
+Tidy Data, Grammar of Graphics, Visual Inference","School of Maths and Stats, U. Sydney, ",,invited talk
+3/5/2017,"Accessing data and developing analysis software, to study game strategies, with examples from tennis and soccer","ACEMS Workshop: Maths and Stats for Sports Research, Brisbane, Australia.",,
+28/11/2016,Statistics on Street Corners,"2016 Joint New Zealand Statistical Association/Operations Research Society of New Zealand Conference, Auckland, New Zealand",,keynote
+25/11/2016,"The Role of Open Data, Open Source Software and Data Visualisation in Developing Quantitative Citizenship","Auckland Teachers Day, New Zealand",,invited talk
+27/10/2016,Harnessing Crowd-Sourcing to Select Genes based on Effect Size Using Visual Inference Methods,"Vic Biostat, Melbourne, Australia",,invited talk
+20/10/2016,Taskforce on Women in R,"Women in Statistics, Charlotte, NC",,invited talk
+18/10/2016,The Role of R and Data Visualisation in Understanding Our World,"R Ladies, Melbourne, Australia",,invited talk
+28/5/2016,Statistics on Street Corners,"International Statistics Forum, Beijing, China",,keynote
+27/5/2016,Really? Using the nullabor package to learn if what we see is really there?,"China-R, Capital of Statistics, Beijing, China",,invited talk
+15/3/2016,Is what you see really there? Combining statistical inference with exploratory data analysis,"University of Melbourne, Australi",,invited talk
+19/2/2016,Really? Using the nullabor package to learn if what we see is really there?,"WOMBAT 2016, Melbourne, Australia",,invited talk
+8/12/2015,Is what you see really there? Combining statistical inference with exploratory data analysis,"Bayes on the Beach, Surfers Paradise, Australia",,keynote
+2/12/2015,"Visualisation in Big Data Analysis: Constructing useful plots, using interactivity, incorporating inference","Research School of Finance, Actuarial Studies and Applied Statistics Summer Camp, Murramurang, Australia",,plenary
+4/11/2015,Statistical Inference by Crowd-Sourcing,"Cornell University, Ithaca, NY",,invited talk
+24/9/2015,Is what you see really there?,"Big Data Visual Analytics '15, Hobart, Australia",,keynote
+2/7/2015,A survey of two decades of efforts to build interactive graphics capacity in R,"useR! '15. Aalborg, Denmark",,keynote
+29/6/2015,Eye-balling is OK again: Using an eye-tracker to see how people read data plots ,"Data meets Vis: Interactions and Interactivity, Augsburg, Germany",,invited talk
+17/6/2015,Data Visualization and Statistical Graphics in Big Data Analysis,"Statistical Inference, Learning and Models for Big Data, Boot Camp, Fields Institute, Toronto, Canada",,invited talk
+3/8/2014,Harnessing Crowd-Sourcing to Select Genes based on Effect Size Using Visual Inference Methods,"JSM '14, Boston, MA.",,invited talk
+11/7/2014,Statistical Inference by Crowd-Sourcing,"ASC, Sydney, Australia",,invited talk
+21/4/2014,Statistical Inference by Crowd-Sourcing,"Montana State University, Bozeman, MT",,invited talk
+18/2/2014,Statistical Inference by Crowd-Sourcing,"Michigan State University, East Lansing, MI",,invited talk
+4/8/2013,"Big Data and R, Discussant","JSM '13, Montreal, Canada",,invited talk
+10/6/2013,Recent Advances in Visualization Techniques,"NCSES Digital SEQ, Washington, DC",,invited talk
+18/10/2012,Statistical Inference for Data Visualization,"Carl Morris Honorary Symposium, Washington D. C.",http://www.youtube.com/watch?v=3CqQcxYMtmQ&feature=youtu.be,keynote
+19/6/2012,Every Plot Must Tell a Story,"useR!  2012, Nashville, TN",,keynote
+16/5/2012,ggbio: Extending the Grammar of Graphics to Genomic Data,"Interface Between Statistics and Computing Science, Houston, T",,invited talk
+20/2/2012,An Overview of Statistical Inference,"Dagstuhl Information Visualization, Visual Data Mining and Machine Learning,Dagstuhl, Germany",,invited talk
+13/2/2012,Overview of Biological Visualization,"ISU BCB Seminar Series, Ames, IA",,
+20/10/2011,Show Me the Data,"Christian Petersen Art Museum, Morrill Hall",,
+1/8/2011,Visualizing Climate Change Data,"JSM 2011, Miami, FL",,
+2/8/2011,Introductory Overview Lecture: Statistical Graphics,"JSM 2011, Miami, FL",,invited talk
+3/6/2011,Exploring Dose Response Data and Repeated Measures Data Using Interactive Graphics,"SCVMMI, Dubuque, IA",,invited talk
+22/8/2011,Statistical Inference for Visual Methods,"International Indian Statistical Association, Raleigh, NC",,invited talk
+16/2/2011,Visual communication,"CEAH Colloquium, Ames, IA",,
+8/2/2010,Statistical Inference for Visual Methods,Iowa State University,,
+15/10/2009,Statistical Inference for Visual Methods,"University of Washington, St Louis",,invited talk
+18/8/2009,Using R and GGobi to Enhance the Learning of Multivariate Analysis and Data Mining,"ISI 2009, Durban, South Africa",,invited talk
+15/7/2009,Exploring Variation in Data with Statistical Graphics,"Seminar on Innovative Approaches to Turn Statistics into Knowledge, US Census Bureau, Washington DC",,invited talk
+27/3/2009,Exploring Longitudinal Data: A Peek at Workforce  Experiences,"Second Midwest Statistics Research Colloquium, University of Chicago",,invited talk
+23/2/2009,From Restaurants to Climate Change: Using Statistics to  Understand Our World,"Mathematics on the Road Experience, Prairie Lakes AEA",,invited talk
+10/2/2009,Statistical Inference for Visual Methods,Houston Chapter of the American Statistical Society,,invited talk
+27/6/2008,Brain Candy: Using Data Graphics to Learn about Variability and Uncertainty in Our World,"PCST-10 (Public Communication in Science and Technology, Malmo, Sweden",,invited talk
+25/6/2008,Categorical Variable  Linking for Exploring Longitudinal Data,"Data Vis VI, Bremen, Germany",,invited talk
+30/5/2008,Using R and Ggobi for Exploratory Data Analysis,"Seminar in Statistik, ETH, Zurich",,invited talk
+29/5/2008,Exploring  Longitudinal Data: A Look at Workforce Experiences,"Z\""{u}rcher Kolloquium, ETH, Zurich",,invited talk
+25/4/2008,An  Exploratory Approach to Longitudinal Data Analysis,"Department of Statistics, University of Bristol, UK",,invited talk
+28/3/2008,An  Exploratory Approach to Longitudinal Data Analysis,"Department of Statistics, University of Glasgow, UK",,invited talk
+6/3/2008,An  Exploratory Approach to Longitudinal Data Analysis,"Department of Statistics, Oxford University, UK",,invited talk
+10/1/2008,Looking at Models in High-Dimensional Data  Space,"Contemporary Frontiers in High-Dimensional Statistical Data Analysis, Cambridge, UK",,invited talk
+Aug-07,Improving Statistical Posters,"Introductory Overview Lecture, JSM '07",,invited talk
+Aug-07,Exploring models for clustering data,JSM '07,,
+Dec-06,An EDA of my CDs,"University of Auckland, New Zealand",,invited talk
+May-06,An EDA of my CDs,"University of California, Los Angele",,invited talk
+Oct-05,Graphics for Multivariate Data,"Gold Standard(s) for Education conference, Vancouver Island, BC, Canada",,invited talk
+Mar-05,Exploring Microarray Data with Plots,University of Iowa,,invited talk
+15/7/2004,"Visualizing Class and Cluster Structure
+beyond 3D","International Federation of Classification Societies annual
+meeting, Chicago, IL",,invited talk
+22/4/2004,"Visual Methods for Data from Two Factor
+Single-Replicate Gene Expression Studies","University of New South Wales,
+Sydney, Australia",,invited talk
+19/4/2004,"Visual Methods for Data from Two Factor
+Single-Replicate Gene Expression Studies","Department of Statistics, University of Newcastle, Newcastle, Australia",,invited talk
+21/3/2004,"CSIRO, Sydney, Australia","CSIRO, Sydney, Australia",,invited talk
+16/3/2004,"Data through the
+windshield in p-dimensions","Department of Statistics, Macquarie University, Sydney,
+Australia",,invited talk
+27/2/2004,EDA using Direct Manipulation Graphics,"Sydney Summer Statistics Workshop, Sydney University,
+Australia",,invited talk
+10/9/2003,Using Graphics in Exploratory Data Analysis and Data Mining: An Application of Supervised Classification in Olive Oil Qualit,"Data Mining and Machine Learning workshop, Statistical and Applied Mathematical Science Institute, Research Triangle Park, NC",,invited talk
+10/4/2003,"Some Dynamic Graphical
+Tools to Assist Analysis of Microarray Data","Workshop on Microarrays, Victorian Microarray Technology
+Consortium, Melbourne, Victoria, Australia",,keynote
+13/12/2002,Classification Tours Applied to Microarray Data,"Department of Statistics, Harvard University",,invited talk
+8/10/2002,"Using Multimedia Animation with Real-time Graphic Overlays for Visualizing a
+Million Cases of Multivariate Data","How to Visualize a Million, Augsburg, Germany",,invited talk
+12/9/2002,Visualization of Microarrays Using Tours and Projection Pursuit,"Cambridge HealthTech Institute Conference, Washington, DC",,invited talk
+11/7/2002,Limn: Using Movie Technology to Drive Graphics for Massive Amounts of Data,"University of Augsburg, Germany",,invited talk
+17/7/2002,"JUnderstanding Support Vector Machine
+Classifiers using Graphics","Current Advances and Trends in Nonparametric Statistics, Crete, Greece",,invited talk
+9/4/2002,"Dynamic Graphics for
+Multivariate Space-Time Data","Geology Department, ISU",,invited talk
+12/12/2001,"Visual Data Mining of Large, Multivariate Space-Time Data",American Geophysical Union San Francisco,,invited talk
+Oct-01,Visual Data Mining: Interactive Dynamic Graphics for Data Analysis,"Department of Statistics, Macquarie university, Australia",,invited talk
+Jul-01,Interactive and Dynamic Graphics for Data Analysis},"Workshop on Statistical Challenges in Modern Astronomy, Penn State University, State College, PN",,invited talk
+May-01,"Visual Data Mining of Large, Multivariate Space-Time Data","Dept of Statistics, University of Western Australia",,invited talk
+Jan-01,"Limn, to present an image or lifelike
+imitation of; Limit-n, to explore any data set to its limits","Workshop on Non-parametric Statistics, Southern Methodist
+University, Dallas, TX",,invited talk
+Nov-00,Immersed in Statistics: your worst nightmare or your wildest dream!,"Da Vinci Colloquium, Dallas, TX",,colloquium
+Nov-00,Visual Methods for Classification Problem,"Southern Methodist University, Dallas, TX",,invited talk
+Jul-00,Issues and Approaches for Visualization of Large Multi-Dimensional Data,"NRCSE/GSP Workshop, Boulder, CO",,invited talk

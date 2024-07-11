@@ -1,0 +1,22 @@
+---
+title: "Humans all the way down: statistical reflection and self-critique for interactive data analysis"
+author: "Di Cook, Rachel Franklin, Cagatay Turkay, Mari-Cruz Villa-Uriol, Levi Wolf"
+date: '2024-06-25'
+slug: humans-all-the-way-down
+categories:
+  - interactive data analysis
+  - statistics
+  - data science
+  - machine learning
+tags:
+  - census
+  - statistical graphics
+  - statistical modeling
+  - philosophy
+  - exploratory data analysis
+  - statistical inference
+---
+
+```{=html}
+<iframe width="800" height="600" src="https://theory4ida.github.io/tmcf/posts/03-cultures/" title="Humans all the way down"></iframe>
+```

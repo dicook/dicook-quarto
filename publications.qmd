@@ -4,6 +4,8 @@ title: "Publications"
 
 ## Journal articles
 
+**NOTE: You'll find most of these papers as pre-prints on [arxiv](https://arxiv.org/search/?query=cook%2C+dianne&searchtype=all&source=header).**
+
 ```{r}
 #| echo: false
 #| message: false
