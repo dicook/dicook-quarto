@@ -257,11 +257,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"UNDEC"</span><span class="ot">=</span><span class="st">"#808080"</span>)) <span class="sc">+</span></span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_map</span>()</span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>map</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#ggplotly(map)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(map)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!--![](index_files/figure-html/electoral-map-1.png)-->
-<p><embed src="map.html" class="img-fluid"></p>
-<!--An interactive version can be found  [here](https://numbat.space/post/2022-05-22-election_hexmaps/map.html).-->
+<p><embed src="map.html" width="800" height="600"></p>
 <p>The map is blue – it looks like the coalition won the election in a landslide, doesn’t it! (Please note the strange shape of the Cape of York is from the AEC spatial polygons provided! It is not due the the polygon thinning.)</p>
 <p>To convert this into a hexmap, automatically with sugarbag, we need to</p>
 <ol type="1">
@@ -321,11 +320,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"UNDEC"</span><span class="ot">=</span><span class="st">"#808080"</span>)) <span class="sc">+</span></span>
 <span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_map</span>()</span>
 <span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>hexmap</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="co">#ggplotly(hexmap)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(hexmap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- ![](index_files/figure-html/hexmap-1.png)-->
-<p><embed src="hexmap.html" class="img-fluid"></p>
-<!--An interactive version can be found  [here](https://numbat.space/post/2022-05-22-election_hexmaps/hexmap.html)-->
+<p><embed src="hexmap.html" width="800" height="600"></p>
 <p>And that’s it! The sugarbag hexmap will expand the densely populated small areas outwards, while maintaining proximity to neighbouring electorates and to the city centre. It is a type of <a href="https://en.wikipedia.org/wiki/Cartogram">cartogram algorithm</a> with two important differences: (1) uses equal area for each hexagon instead of sized proportional to population, and (2) allows some hexagons to be separated so that the geographic positions are reasonably preserved.</p>
 <p>The hexmap makes it easier to see the results distributed across the country, and clearly with the predominance of red, that Labor won.</p>
 <p>Data for this post can be found <a href="https://numbat.space/post/2022-05-22-election_hexmaps/electoral_2022.csv">here</a>.</p>
