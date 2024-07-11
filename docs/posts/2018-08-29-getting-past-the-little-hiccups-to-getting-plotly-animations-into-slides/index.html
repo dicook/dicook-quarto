@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Di Cook">
+<meta name="dcterms.date" content="2018-08-29">
 
-<title>Dianne H. Cook - Posts</title>
+<title>Dianne H. Cook - Getting past the little hiccups to getting plotly animations into slides</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +25,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./logo.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,76 +69,18 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Dianne H. Cook</span>
     </a>
   </div>
@@ -149,35 +91,35 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./education.html"> 
+    <a class="nav-link" href="../../education.html"> 
 <span class="menu-text">Education</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./publications.html"> 
+    <a class="nav-link" href="../../publications.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./talks.html"> 
+    <a class="nav-link" href="../../talks.html"> 
 <span class="menu-text">Talks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./software.html"> 
+    <a class="nav-link" href="../../software.html"> 
 <span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./teaching.html"> 
+    <a class="nav-link" href="../../teaching.html"> 
 <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./students.html"> 
+    <a class="nav-link" href="../../students.html"> 
 <span class="menu-text">Students</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+    <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -195,233 +137,130 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Posts</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="data science">data science <span class="quarto-category-count">(1)</span></div><div class="category" data-category="data visualisation">data visualisation <span class="quarto-category-count">(3)</span></div><div class="category" data-category="interactive data analysis">interactive data analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="machine learning">machine learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="slides">slides <span class="quarto-category-count">(1)</span></div><div class="category" data-category="spatial data">spatial data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="statistics">statistics <span class="quarto-category-count">(3)</span></div><div class="category" data-category="teaching">teaching <span class="quarto-category-count">(1)</span></div></div></div>
-<!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
-
-
-
-
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#goal" id="toc-goal" class="nav-link active" data-scroll-target="#goal">Goal</a></li>
+  <li><a href="#tour" id="toc-tour" class="nav-link" data-scroll-target="#tour">Tour</a></li>
+  <li><a href="#creating-recorded-tour-with-plotly" id="toc-creating-recorded-tour-with-plotly" class="nav-link" data-scroll-target="#creating-recorded-tour-with-plotly">Creating recorded tour with plotly</a></li>
+  <li><a href="#embedding-into-slides" id="toc-embedding-into-slides" class="nav-link" data-scroll-target="#embedding-into-slides">Embedding into slides</a>
+  <ul class="collapse">
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="interactive data analysis,statistics,data science,machine learning" data-listing-date-sort="1719237600000" data-listing-file-modified-sort="1720698080440" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="9">
-<div class="thumbnail">
-<p><a href="./posts/2024-06-25-humans-all-the-way-down.qmd/index.html" class="no-external"></a></p><a href="./posts/2024-06-25-humans-all-the-way-down.qmd/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/2024-06-25-humans-all-the-way-down.qmd/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024-06-25-humans-all-the-way-down.qmd/index.html" class="no-external">Humans all the way down: statistical reflection and self-critique for interactive data analysis</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024-06-25-humans-all-the-way-down.qmd/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('interactive data analysis'); return false;">
-interactive data analysis
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('statistics'); return false;">
-statistics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('data science'); return false;">
-data science
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('machine learning'); return false;">
-machine learning
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/2024-06-25-humans-all-the-way-down.qmd/index.html" class="no-external"></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024-06-25-humans-all-the-way-down.qmd/index.html" class="no-external">
-<div class="listing-date">
-25 June 2024
-</div>
-<div class="listing-author">
-Di Cook, Rachel Franklin, Cagatay Turkay, Mari-Cruz Villa-Uriol, Levi Wolf
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="data visualisation,statistics,teaching,spatial data" data-listing-date-sort="1653091200000" data-listing-file-modified-sort="1720702290614" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1316">
-<div class="thumbnail">
-<p><a href="./posts/2022-05-22-election_hexmaps/index.html" class="no-external"></a></p><a href="./posts/2022-05-22-election_hexmaps/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/2022-05-22-election_hexmaps/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2022-05-22-election_hexmaps/index.html" class="no-external">Hexmaps with sugarbag make it easier to see the electoral map</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2022-05-22-election_hexmaps/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data visualisation'); return false;">
-data visualisation
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('statistics'); return false;">
-statistics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('teaching'); return false;">
-teaching
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('spatial data'); return false;">
-spatial data
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/2022-05-22-election_hexmaps/index.html" class="no-external">Australia is a land of wide open spaces where the population concentrates in small areas. It can make for misleading map visualisations on statistics related to people. The…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2022-05-22-election_hexmaps/index.html" class="no-external">
-<div class="listing-date">
-21 May 2022
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="data visualisation,statistics" data-listing-date-sort="1568296800000" data-listing-file-modified-sort="1720099361062" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="902">
-<div class="thumbnail">
-<p><a href="./posts/2019-09-13-touring-multicollinearity/index.html" class="no-external"></a></p><a href="./posts/2019-09-13-touring-multicollinearity/index.html" class="no-external">
-<p class="card-img-top"><img src="posts/2019-09-13-touring-multicollinearity/d1.gif"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/2019-09-13-touring-multicollinearity/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2019-09-13-touring-multicollinearity/index.html" class="no-external">How to use a tour to check if your model suffers from multicollinearity</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2019-09-13-touring-multicollinearity/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data visualisation'); return false;">
-data visualisation
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('statistics'); return false;">
-statistics
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/2019-09-13-touring-multicollinearity/index.html" class="no-external">This was one of the comments from a recent review of a paper:</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2019-09-13-touring-multicollinearity/index.html" class="no-external">
-<div class="listing-date">
-13 September 2019
-</div>
-<div class="listing-author">
-Di Cook
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1539090000000" data-listing-file-modified-sort="1720708222831" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="27" data-listing-word-count-sort="5210">
-<div class="thumbnail">
-<p><a href="./posts/2018-10-10-useR2018/index.html" class="no-external"></a></p><a href="./posts/2018-10-10-useR2018/index.html" class="no-external">
-<p class="card-img-top"><img src="posts/2018-10-10-useR2018/upset.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/2018-10-10-useR2018/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2018-10-10-useR2018/index.html" class="no-external">The background to useR! 2018</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2018-10-10-useR2018/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/2018-10-10-useR2018/index.html" class="no-external">useR! 2018 was held for the first time in the southern hemisphere, and the feedback from participants has been very positive. I have been asked to write about the…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2018-10-10-useR2018/index.html" class="no-external">
-<div class="listing-date">
-10 October 2018
-</div>
-<div class="listing-author">
-Di Cook
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="data visualisation,slides" data-listing-date-sort="1535464800000" data-listing-file-modified-sort="1720708256362" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="652">
-<div class="thumbnail">
-<p><a href="./posts/2018-08-29-getting-past-the-little-hiccups-to-getting-plotly-animations-into-slides/index.html" class="no-external"></a></p><a href="./posts/2018-08-29-getting-past-the-little-hiccups-to-getting-plotly-animations-into-slides/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/2018-08-29-getting-past-the-little-hiccups-to-getting-plotly-animations-into-slides/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2018-08-29-getting-past-the-little-hiccups-to-getting-plotly-animations-into-slides/index.html" class="no-external">Getting past the little hiccups to getting plotly animations into slides</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2018-08-29-getting-past-the-little-hiccups-to-getting-plotly-animations-into-slides/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data visualisation'); return false;">
-data visualisation
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('slides'); return false;">
-slides
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/2018-08-29-getting-past-the-little-hiccups-to-getting-plotly-animations-into-slides/index.html" class="no-external">I just gave a short talk at ISCB-ASC 2018 about visualising high-dimensional data, which involves showing dynamic graphics. In the past, I have run the tour, captured the…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2018-08-29-getting-past-the-little-hiccups-to-getting-plotly-animations-into-slides/index.html" class="no-external">
-<div class="listing-date">
-29 August 2018
-</div>
-<div class="listing-author">
-Di Cook
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Getting past the little hiccups to getting plotly animations into slides</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">data visualisation</div>
+    <div class="quarto-category">slides</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Di Cook </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">29 August 2018</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="goal" class="level2">
+<h2 class="anchored" data-anchor-id="goal">Goal</h2>
+<p>I just gave a short talk at <a href="http://www.dicook.org/files/iscbasc2018/#1">ISCB-ASC 2018</a> about visualising high-dimensional data, which involves showing dynamic graphics. In the past, I have run the tour, captured the window and saved to a movie, and embedded this into the Rmarkdown xaringan slides. It seems a bit discombobulated to make the slides this way, and a better way to work would be to make a tour animation using plotly. This turned out to take me two days to get it working, through little mistakes that were not easy to debug by googling the problem. This blog post documents the process, and hopefully shows the little frustrations and how to get past them.</p>
+</section>
+<section id="tour" class="level2">
+<h2 class="anchored" data-anchor-id="tour">Tour</h2>
+<p>The tourr package, elegantly crafted by Hadley Wickham, provides a broad range of tour types, and is easy to run locally on your laptop. It doesn’t play very nicely with the RStudio graphics device, so requires opening a separate device which is easy:</p>
+<pre><code>quartz() # OSX, use X11() on Windows or linux
+library(tourr)
+animate_dist(flea[, 1:6])
+animate_scatmat(flea[, 1:6], grand_tour(6))
+animate_pcp(flea[, 1:6], grand_tour(3))
+animate_faces(flea[sort(sample(1:74, 4)), 1:6], grand_tour(4))
+animate_stars(flea[sort(sample(1:74, 16)), 1:6], grand_tour(5))</code></pre>
+</section>
+<section id="creating-recorded-tour-with-plotly" class="level2">
+<h2 class="anchored" data-anchor-id="creating-recorded-tour-with-plotly">Creating recorded tour with plotly</h2>
+<p>The <code>save_history</code> function generates a sequence of projection bases that can be used to construct a tour, with any other tools.</p>
+<pre><code>library(tidyverse)
+library(tourr)
+bases &lt;- save_history(flea[,1:6], grand_tour(2), max = 3)
+tour_path &lt;- interpolate(bases, 0.1)</code></pre>
+<p>Creating a plotly animation requires one data structure containing all the data, with a variable indicating the animation frame. This is the ugly part of the code! Maybe its just my way of making this, there are sure to be nicer ways to do this. The code loops over the number of projection planes, does a matrix multiplication with the data, adds the frame index column. <em>The index starts from 10, because when I started from 1 plotly messed up the order.</em></p>
+<pre><code>flea_std &lt;- apply(flea[,1:6], 2, function(x) (x-mean(x))/sd(x))
+d &lt;- dim(tour_path)
+flea_anim &lt;- NULL
+for (i in 1:d[3]) {
+  f &lt;- flea_std %*% matrix(tour_path[,,i], ncol=2)
+  colnames(f) &lt;- c("x", "y")
+  flea_anim &lt;- rbind(flea_anim, cbind(f, rep(i+10, nrow(f))))
+}
+colnames(flea_anim)[3] &lt;- "indx"
+flea_anim &lt;- as.tibble(flea_anim)
+flea_anim$species &lt;- rep(flea$species, d[3])</code></pre>
+<p>This can now be played using <code>ggplotly</code>, after first plotting using <code>ggplot2</code>. <em>Note the <code>aes(frame = indx)</code> which throws a warning from <code>ggplot</code>, is essential for making the animation.</em></p>
+<pre><code>p &lt;- ggplot(data = flea_anim, aes(x = x, y = y, colour=species) ) +
+       geom_point(aes(frame = indx), size=1) +
+       theme_void() +
+       coord_fixed()
+library(plotly)
+pg &lt;- ggplotly(p, width=600, height=400) %&gt;%
+                 animation_opts(200, redraw = FALSE, 
+                 easing = "linear")
+pg</code></pre>
+<p><em>One change I’d like to have in plotly, but I couldn’t see how to do this, is easing completely off. The tour controls the interpolation and doesn’t need any additional interpolation.</em> (CORRECTION: use transition=0 to achieve this!)</p>
+</section>
+<section id="embedding-into-slides" class="level1">
+<h1>Embedding into slides</h1>
+<p>The plotly animation, although it runs nicely in the RStudio viewer, does not automatically run in the html slides. You need to save it to html, using the <code>htmltools</code> function:</p>
+<pre><code>htmltools::save_html(pg, file="flea_anim.html")    </code></pre>
+<p>and embed this in the slides using <code>iframe</code>:</p>
+<p><code>&lt;iframe src="flea_anim.html" width="800" height="500" scrolling="yes" seamless="seamless" frameBorder="0"&gt; &lt;/iframe&gt;</code></p>
+<p>Now this almost worked, but the slider didn’t show up! The problem was sizing. The parts of the code <code>ggplotly(p, width=600, height=400)</code> and <code>width="800" height="500"</code> are critical to place the plot with enough space to show the slider.</p>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>The old approach can be seen in the <a href="https://github.com/dicook/IMS-Singapore-talk">code for slides for IMS Singapore</a>. It is prettier code, despite the cognitive break of showing a movie.</p>
+<p>It took me several instant messaging with Carson Sievert to get it working. Carson’s <a href="https://github.com/cpsievert/plotcon17/tree/master/docs/workshop/day2">advanced plotly slides and code</a> explain the process in detail, but the two things that tripped me up, saving to html and the sizing are not documented there. Carson also recommends <a href="https://bhaskarvk.github.io/widgetframe/">Bhaskar Karambelkar’s widgetframe</a>. Code for my presentation is <a href="https://github.com/dicook/ISCBASC2018">here</a>.</p>
+</section>
+<section id="sources" class="level2">
+<h2 class="anchored" data-anchor-id="sources">Sources</h2>
+<p><a href="https://github.com/dicook/dicook.github.io/blob/blogdown/content/post/2018-08-28-tourr-with-plotly-in-xaringan.Rmd">The code for this post is here.</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
