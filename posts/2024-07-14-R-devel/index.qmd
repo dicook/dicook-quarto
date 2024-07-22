@@ -18,7 +18,7 @@ tags:
 
 ## Context
 
-[R Developers Day](https://contributor.r-project.org/r-dev-day-plus-2024/), organised by [Heather Turner](https://warwick.ac.uk/fac/sci/statistics/staff/academic-research/turner/) and [Sharon Pileggi](https://www.pipinghotdata.com) followed a very successful [useR! 2024](https://user2024.r-project.org/) in Salzburg, Austria. This was the opportunity to work alongside experienced programmers on contributions to base R.
+[R Developers Day](https://contributor.r-project.org/r-dev-day-plus-2024/), organised by [Heather Turner](https://warwick.ac.uk/fac/sci/statistics/staff/academic-research/turner/) and [Shannon Pileggi](https://www.pipinghotdata.com) followed a very successful [useR! 2024](https://user2024.r-project.org/) in Salzburg, Austria. This was the opportunity to work alongside experienced programmers on contributions to base R.
 
 ![](scenery.png)
 
