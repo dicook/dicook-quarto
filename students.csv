@@ -1,6 +1,7 @@
 name, year,url, from, topic, co-advisors,lat,lon
-Xuan Nhat Minh Nguyen,2027,,Vietnam, TBD, Tim Dwyer,10.8231,106.6297
-Tina Rashid Jafari,2027,," Tabriz, Iran", TBD, Farshid Vahid-Araghi,38.0792,46.2887
+Vis Leong,2027,https://github.com/zkleong,Malaysia,Heterogeneity effects of mechanical ventilation on respiratory infection caused by multidrug-resistant Acinetobacter Baumannii in the intensive care unit,"Ewilly Liew, Michael Lydeamore, Manjeevan Singh Seera, Poh Yeh Han",3.8168,103.3317
+Xuan Nhat Minh Nguyen,2027,https://github.com/yvesypher,Vietnam, TBD, Tim Dwyer,10.8231,106.6297
+Tina Rashid Jafari,2027,https://github.com/Tinarj," Tabriz, Iran", TBD, Farshid Vahid-Araghi,38.0792,46.2887
 Janith Wanniarachchi,2026, https://janithwanni.netlify.app," Colombo, Sri Lanka", Visualisation for XAI," Kate Saunders,  Patricia Menendez,  Thiyanga Talagala",6.9271,79.8612
 Harriet Mason,2025, https://github.com/harriet-mason," Brisbane, Australia", Uncertainty visualisation," Sarah Goodwin,  Susan Vanderplas",-24.4705,153.026
 Jayani Lakshika Piyadi Gamage,2025, https://jayanilakshika.netlify.app,"Weligama, Sri Lanka", Looking at Non-Linear Dimension Reductions as Models in the Data Space," Paul Harrison,  Michael Lydeamore,  Thiyanga Talagala",5.9774,80.4288
