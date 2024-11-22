@@ -52,6 +52,10 @@ packages <- c(
 pkg_data <- pkgmeta:::get_meta_cran(packages, 
     include_downloads=TRUE) |>
     rename(released = first_download, last_update = date)
+
+# Remove incorrect entries
+pkg_data <- pkg_data |>
+  filter(package != "MatTransMix")
 save(pkg_data, file = "software.rda")
 ```
 
@@ -60,11 +64,12 @@ save(pkg_data, file = "software.rda")
 #| eval: false
 #| echo: false
 # Download package hex stickers
-library(readr)
-library(glue)
-hex <- read_csv("hex.csv")
-download.file(hex$hexlink, 
-  destfile = glue("hex_images/{hex$package}.png"))
+# But avoid this because not all are in correct aspect ratio
+#library(readr)
+#library(glue)
+#hex <- read_csv("hex.csv")
+#download.file(hex$hexlink, 
+#  destfile = glue("hex_images/{hex$package}.png"))
 ```
 
 ```{r}
