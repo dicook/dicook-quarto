@@ -36,9 +36,11 @@ library(readr)
 library(dplyr)
 library(gt)
 library(glue)
+library(lubridate)
 ws <- read_csv("workshops.csv")
 ws <- ws |>
-  mutate(titlelink = glue("[{title}]({link})"))
+  mutate(titlelink = glue("[{title}]({link})")) |>
+  mutate(date = dmy(date))
 ws |>
   arrange(desc(date)) |>
   select(date, titlelink, location) |>
@@ -52,3 +54,4 @@ ws |>
   cols_align("left")
 ```
 
+And more than 30 workshops across the globe over many years.
