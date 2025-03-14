@@ -35,8 +35,10 @@ save(pubs, file="pubs.rda")
 library(dplyr)
 library(glue)
 library(gt)
+library(stringr)
 load("pubs.rda")
 pubs <- pubs |>
+  #mutate(title = str_to_title(title)) |> # doesn't quite work nicely
   mutate(titlelink = glue("[{title}]({doi})"))
 #kable(pubs)
 pubs |> 

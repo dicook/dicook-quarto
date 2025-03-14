@@ -25,7 +25,7 @@ tags:
 
 ## Motivation
 
-[Susan Wei](https://www.suswei.com) kicked off [NUMBATs](https://numbat.space/events.html) for 2025 last Thursday, with a talk about a recently completed project documented in this [arxiv paper](https://arxiv.org/pdf/2310.06301). The work is motivated by [Toy Models of Superposition](https://transformer-circuits.pub/2022/toy_model/index.html) paper which provides an explanation of hidden layer behaviour of neural networks in the presence of differences induced by sample size, dimension and correlation. Susan's work relates this to optimisation curiosities and particularly stochastic gradient descent (SGD) optimisation or Bayesian learning. The example used to illustrate the optimisation quirk is also an interesting from the  perspective of high-dimensional visualisation using tours.
+[Susan Wei](https://www.suswei.com) kicked off [NUMBATs](https://numbat.space/events.html) for 2025 last Thursday, with a talk about a recently completed project documented in this [arxiv paper](https://arxiv.org/pdf/2310.06301). The work is motivated by [Toy Models of Superposition](https://transformer-circuits.pub/2022/toy_model/index.html) paper which provides an explanation of hidden layer behaviour of neural networks in the presence of differences induced by sample size, dimension and correlation. Susan’s work relates this to optimisation curiosities and particularly the connection between learning via SGD and Bayesian learning. The example used to illustrate the optimisation quirk is also an interesting from the  perspective of high-dimensional visualisation using tours.
 
 ## About the data example
 
