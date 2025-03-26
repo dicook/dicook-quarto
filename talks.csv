@@ -11,29 +11,29 @@ date, title, location, link, details
 20/7/2022,A showcase of new methods for high dimensional data viewing with linear projections and sections,"IFCS '22, Porto, Portugal",https://bit.ly/IFCS22-Cook,keynote
 21/6/2021,Uncertainty in data visualisation through the lens of statistical inference,Rostock Retreat on Data Visualization at the Max Planck Institute for Demographic Research,https://dicook.org/files/Rostock2021/slides.html,keynote
 3/2/2021,"In Visualising Data, Who Wins?","Gosset lecture, Irish Statistical Association",https://github.com/dicook/talk-gosset,named lecture
-20/7/2020,The paradox of the positive: exploratory tools for visualising the individuals in (multivariate) longitudinal data,IBC 2020,https://dicook.org/files/IBC2020/slides.html,keynote
+20/7/2020,The paradox of the positive: exploratory tools for visualising the individuals in (multivariate) longitudinal data,IBC 2020,https://github.com/dicook/IBC2020/,keynote
 24/6/2020,"Making inference using data plots, with application to ecological statistics",vISEC 2020,https://dicook.org/files/vISEC2020/slides.html,keynote
 18/9/2019,Statistics on Street Corners,"CSIRO Data61, Canberra, Australia",,invited talk
 20/8/2019,Building plots to explore data," 62nd ISI World Statistics Congress,
   Kuala Lumpur, Malaysia",,contributed
-14/8/2019,"Human vs computer: In Visualising Data, Who Wins?","DSSV '19, Kyoto, Japan ",,keynote
-30/7/2019,Give Your Statistician Colleague Iris Bulbs for Their House Warming!,"JSM 2019, Denver, Colorado",,invited talk
-15/10/2018,"Human vs computer: when visualising data, who wins?","Belz Lecture, Statistical Society of Victoria",,named lecture
+14/8/2019,"Human vs computer: In Visualising Data, Who Wins?","DSSV '19, Kyoto, Japan ",https://github.com/dicook/DSSV19,keynote
+30/7/2019,Give Your Statistician Colleague Iris Bulbs for Their House Warming!,"JSM 2019, Denver, Colorado",https://github.com/dicook/JSM19,invited talk
+15/10/2018,"Human vs computer: when visualising data, who wins?","Belz Lecture, Statistical Society of Victoria",https://github.com/dicook/Belz-Cook,named lecture
 12/9/2018,Visualisation of high-dimensional spaces with application to econometric data and models,"U. Melbourne, Melbourne, Australia",,invited talk
 30/7/2018,EDA: A Historical Perspective and a Path Forward,"JSM 2018, Vancouver, Canada",,invited talk
-28/8/2018,Visualisation of high-dimensional particle physics,"IASCB-ASC 2018, Melbourne, Australia",,contributed
-7/3/2018,Myth busting and apophenia in data visualisation: is what you see really there?,"Ihaka Lecture, University of Auckland, NZ",,named lecture
-12/2/2018,Visualising high-dimensional spaces with application to particle physics models,"NUS/IMS Workshop and Tutorial on Social Networks, Singapore",,invited lecture
-2/2/2018,To the Tidyverse and Beyond: Challenges for the Future in Data Science,"RStudio conference, San Diego, CA",,keynote
-27/11/2017,Statistics on Street Corners,"Biometrics by the Border, Kingscliff, NSW",,keynote
-26/9/2017,Statistics on Street Corners,"Young Statisticians Conference 2017, Coolangatta, QLD",,keynote
-29/7/2017,A girl geek's guide to new research on interactive data visualization for statistics with lots of data.,"JSM '17, Baltimore, MD",,invited talk
+28/8/2018,Visualisation of high-dimensional particle physics,"IASCB-ASC 2018, Melbourne, Australia",https://github.com/dicook/IASC-ARS-2023,contributed
+7/3/2018,Myth busting and apophenia in data visualisation: is what you see really there?,"Ihaka Lecture, University of Auckland, NZ",https://github.com/dicook/Ihaka-talk,named lecture
+12/2/2018,Visualising high-dimensional spaces with application to particle physics models,"NUS/IMS Workshop and Tutorial on Social Networks, Singapore",https://github.com/dicook/IMS-Singapore-talk,invited lecture
+2/2/2018,To the Tidyverse and Beyond: Challenges for the Future in Data Science,"RStudio conference, San Diego, CA",https://github.com/dicook/RStudio-keynote,keynote
+27/11/2017,Statistics on Street Corners,"Biometrics by the Border, Kingscliff, NSW",https://github.com/dicook/Biometric2017,keynote
+26/9/2017,Statistics on Street Corners,"Young Statisticians Conference 2017, Coolangatta, QLD",https://github.com/dicook/YSC2017,keynote
+29/7/2017,A girl geek's guide to new research on interactive data visualization for statistics with lots of data.,"JSM '17, Baltimore, MD",https://github.com/dicook/JSM17,invited talk
 18/5/2017,"The Glue that Binds Statistical Inference, 
-Tidy Data, Grammar of Graphics, Visual Inference","Finance, Actuarial Studies \& Statistics, Australian National University, Canberra.",,invited talk
+Tidy Data, Grammar of Graphics, Visual Inference","Finance, Actuarial Studies & Statistics, Australian National University, Canberra.",,invited talk
 19/5/2017,"The Glue that Binds Statistical Inference, 
 Tidy Data, Grammar of Graphics, Visual Inference","School of Maths and Stats, U. Sydney, ",,invited talk
 3/5/2017,"Accessing data and developing analysis software, to study game strategies, with examples from tennis and soccer","ACEMS Workshop: Maths and Stats for Sports Research, Brisbane, Australia.",,
-28/11/2016,Statistics on Street Corners,"2016 Joint New Zealand Statistical Association/Operations Research Society of New Zealand Conference, Auckland, New Zealand",,keynote
+28/11/2016,Statistics on Street Corners,"2016 Joint New Zealand Statistical Association/Operations Research Society of New Zealand Conference, Auckland, New Zealand",https://github.com/dicook/NZSAORSNZ16,keynote
 25/11/2016,"The Role of Open Data, Open Source Software and Data Visualisation in Developing Quantitative Citizenship","Auckland Teachers Day, New Zealand",,invited talk
 27/10/2016,Harnessing Crowd-Sourcing to Select Genes based on Effect Size Using Visual Inference Methods,"Vic Biostat, Melbourne, Australia",,invited talk
 20/10/2016,Taskforce on Women in R,"Women in Statistics, Charlotte, NC",,invited talk
@@ -76,7 +76,7 @@ Tidy Data, Grammar of Graphics, Visual Inference","School of Maths and Stats, U.
 27/6/2008,Brain Candy: Using Data Graphics to Learn about Variability and Uncertainty in Our World,"PCST-10 (Public Communication in Science and Technology, Malmo, Sweden",,invited talk
 25/6/2008,Categorical Variable  Linking for Exploring Longitudinal Data,"Data Vis VI, Bremen, Germany",,invited talk
 30/5/2008,Using R and Ggobi for Exploratory Data Analysis,"Seminar in Statistik, ETH, Zurich",,invited talk
-29/5/2008,Exploring  Longitudinal Data: A Look at Workforce Experiences,"Z\""{u}rcher Kolloquium, ETH, Zurich",,invited talk
+29/5/2008,Exploring  Longitudinal Data: A Look at Workforce Experiences,"Zurcher Kolloquium, ETH, Zurich",,invited talk
 25/4/2008,An  Exploratory Approach to Longitudinal Data Analysis,"Department of Statistics, University of Bristol, UK",,invited talk
 28/3/2008,An  Exploratory Approach to Longitudinal Data Analysis,"Department of Statistics, University of Glasgow, UK",,invited talk
 6/3/2008,An  Exploratory Approach to Longitudinal Data Analysis,"Department of Statistics, Oxford University, UK",,invited talk
