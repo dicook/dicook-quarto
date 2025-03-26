@@ -32,21 +32,21 @@ date, title, location, link, details
 Tidy Data, Grammar of Graphics, Visual Inference","Finance, Actuarial Studies & Statistics, Australian National University, Canberra.",,invited talk
 19/5/2017,"The Glue that Binds Statistical Inference, 
 Tidy Data, Grammar of Graphics, Visual Inference","School of Maths and Stats, U. Sydney, ",,invited talk
-3/5/2017,"Accessing data and developing analysis software, to study game strategies, with examples from tennis and soccer","ACEMS Workshop: Maths and Stats for Sports Research, Brisbane, Australia.",,
+3/5/2017,"Accessing data and developing analysis software, to study game strategies, with examples from tennis and soccer","ACEMS Workshop: Maths and Stats for Sports Research, Brisbane, Australia.",https://github.com/dicook/ACEMS_Sports_2017,
 28/11/2016,Statistics on Street Corners,"2016 Joint New Zealand Statistical Association/Operations Research Society of New Zealand Conference, Auckland, New Zealand",https://github.com/dicook/NZSAORSNZ16,keynote
 25/11/2016,"The Role of Open Data, Open Source Software and Data Visualisation in Developing Quantitative Citizenship","Auckland Teachers Day, New Zealand",,invited talk
 27/10/2016,Harnessing Crowd-Sourcing to Select Genes based on Effect Size Using Visual Inference Methods,"Vic Biostat, Melbourne, Australia",,invited talk
 20/10/2016,Taskforce on Women in R,"Women in Statistics, Charlotte, NC",,invited talk
-18/10/2016,The Role of R and Data Visualisation in Understanding Our World,"R Ladies, Melbourne, Australia",,invited talk
+18/10/2016,The Role of R and Data Visualisation in Understanding Our World,"R Ladies, Melbourne, Australia",https://github.com/dicook/RLadies_Melb,invited talk
 28/5/2016,Statistics on Street Corners,"International Statistics Forum, Beijing, China",,keynote
-27/5/2016,Really? Using the nullabor package to learn if what we see is really there?,"China-R, Capital of Statistics, Beijing, China",,invited talk
+27/5/2016,Really? Using the nullabor package to learn if what we see is really there?,"China-R, Capital of Statistics, Beijing, China",https://github.com/dicook/China-R,invited talk
 15/3/2016,Is what you see really there? Combining statistical inference with exploratory data analysis,"University of Melbourne, Australi",,invited talk
 19/2/2016,Really? Using the nullabor package to learn if what we see is really there?,"WOMBAT 2016, Melbourne, Australia",,invited talk
 8/12/2015,Is what you see really there? Combining statistical inference with exploratory data analysis,"Bayes on the Beach, Surfers Paradise, Australia",,keynote
 2/12/2015,"Visualisation in Big Data Analysis: Constructing useful plots, using interactivity, incorporating inference","Research School of Finance, Actuarial Studies and Applied Statistics Summer Camp, Murramurang, Australia",,plenary
 4/11/2015,Statistical Inference by Crowd-Sourcing,"Cornell University, Ithaca, NY",,invited talk
 24/9/2015,Is what you see really there?,"Big Data Visual Analytics '15, Hobart, Australia",,keynote
-2/7/2015,A survey of two decades of efforts to build interactive graphics capacity in R,"useR! '15. Aalborg, Denmark",,keynote
+2/7/2015,A survey of two decades of efforts to build interactive graphics capacity in R,"useR! '15. Aalborg, Denmark",https://github.com/dicook/useR.2015,keynote
 29/6/2015,Eye-balling is OK again: Using an eye-tracker to see how people read data plots ,"Data meets Vis: Interactions and Interactivity, Augsburg, Germany",,invited talk
 17/6/2015,Data Visualization and Statistical Graphics in Big Data Analysis,"Statistical Inference, Learning and Models for Big Data, Boot Camp, Fields Institute, Toronto, Canada",,invited talk
 3/8/2014,Harnessing Crowd-Sourcing to Select Genes based on Effect Size Using Visual Inference Methods,"JSM '14, Boston, MA.",,invited talk

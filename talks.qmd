@@ -13,7 +13,7 @@ library(lubridate)
 talks <- read_csv("talks.csv")
 talks <- talks |>
   mutate(date = dmy(date)) |>
-  mutate(titlelink = glue("[{title}]({link})")) 
+  mutate(titlelink = ifelse(is.na(link), title, glue("[{title}]({link})"))) 
 talks |>
   arrange(desc(date)) |>
   select(date, titlelink, location, details) |>
