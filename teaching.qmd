@@ -43,14 +43,15 @@ ws <- ws |>
   mutate(date = dmy(date))
 ws |>
   arrange(desc(date)) |>
-  select(date, titlelink, location) |>
+  select(date, titlelink, location, details) |>
   gt() |>
     gt::fmt_markdown(columns = titlelink) |>
     cols_label(titlelink = "title") |> 
     gt::cols_width(
       date ~ px(150),
       titlelink ~ px(450),
-      location ~ px(250)) |>
+      location ~ px(250),
+      details ~ px(150)) |>
   cols_align("left")
 ```
 
