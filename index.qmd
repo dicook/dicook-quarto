@@ -14,7 +14,7 @@ about:
     - text: scholar
       href: https://scholar.google.com/citations?user=_b0uchgAAAAJ&hl=en    
     - text: orcid
-      href: https://orcid.org/my-orcid?orcid=0000-0002-3813-7155
+      href: https://orcid.org/0000-0002-3813-7155
     - icon: linkedin
       href: https://www.linkedin.com/in/dianne-cook-a4877a104/  
     - icon: mastodon
