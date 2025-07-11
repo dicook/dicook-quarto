@@ -20,7 +20,7 @@ title: "Education"
 | May 1998 | Associate Professor | Statistics, Iowa State University |
 | Aug 1993 | Assistant  Professor | Statistics, Iowa State University |
 
-
+<!--
 ## Awards
 
 - Keynote speaker, IASC-ARS 2023, Sydney, Dec 6-8, 2023
@@ -53,6 +53,7 @@ title: "Education"
 - Center for Excellence in Learning and Teaching Memorable Teacher 2007
 - Delta Delta Delta Favorite Teacher Recognition 2005
 - University Foundation Award for Early Excellence in Research, 1999
+-->
 
 ## Visits
 
