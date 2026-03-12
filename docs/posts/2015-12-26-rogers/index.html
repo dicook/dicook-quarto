@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.30">
+<meta name="generator" content="quarto-1.9.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,6 +11,9 @@
 
 <title>Better cricket plots – Dianne H. Cook</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -74,10 +77,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5303f4ccd15f4401dc6597344e32a3bb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-d441ec7d82a4c48058758889448e13eb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -107,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -120,7 +123,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -281,13 +284,13 @@ window.Quarto = {
 <section id="re-draw-this-data" class="level2">
 <h2 class="anchored" data-anchor-id="re-draw-this-data">Re-draw this data</h2>
 <p>We pulled a copy of Rogers’ batting records from the web. Using R, we read the data, wrangle it a little to get it into tidier form, and plot the runs by date.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>rogers2 <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"rogers2.dat"</span>, <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>rogers2 <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"rogers2.dat"</span>, <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rogers2<span class="sc">$</span>Date[<span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">50</span>,<span class="dv">2</span>)] <span class="ot">&lt;-</span> rogers2<span class="sc">$</span>Date[<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">49</span>,<span class="dv">2</span>)]</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>rogers2<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(rogers2<span class="sc">$</span>Date, <span class="at">format=</span><span class="st">"%d/%m/%Y"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>rogers2<span class="sc">$</span>Vs[<span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">50</span>,<span class="dv">2</span>)] <span class="ot">&lt;-</span> rogers2<span class="sc">$</span>Vs[<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">49</span>,<span class="dv">2</span>)]</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>rogers2<span class="sc">$</span>Ground[<span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">50</span>,<span class="dv">2</span>)] <span class="ot">&lt;-</span> rogers2<span class="sc">$</span>Ground[<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">49</span>,<span class="dv">2</span>)]</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>rogers2<span class="sc">$</span>Test[<span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">50</span>,<span class="dv">2</span>)] <span class="ot">&lt;-</span> rogers2<span class="sc">$</span>Test[<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">49</span>,<span class="dv">2</span>)]</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(Date, Runs, <span class="at">data=</span>rogers2, <span class="at">size=</span><span class="fu">I</span>(<span class="dv">3</span>), <span class="at">alpha=</span><span class="fu">I</span>(<span class="fl">0.5</span>)) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(Date, Runs, <span class="at">data=</span>rogers2, <span class="at">size=</span><span class="fu">I</span>(<span class="dv">3</span>), <span class="at">alpha=</span><span class="fu">I</span>(<span class="fl">0.5</span>)) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="figure-html/unnamed-chunk-2-1.png" class="img-fluid"></p>
 <section id="message-1" class="level3">
 <h3 class="anchored" data-anchor-id="message-1">Message 1</h3>
@@ -300,32 +303,32 @@ window.Quarto = {
 </section>
 <section id="message-3" class="level3">
 <h3 class="anchored" data-anchor-id="message-3">Message 3</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(Date, Runs, <span class="at">data=</span>rogers2, <span class="at">geom=</span><span class="st">"bar"</span>, <span class="at">stat=</span><span class="st">"identity"</span>) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(Date, Runs, <span class="at">data=</span>rogers2, <span class="at">geom=</span><span class="st">"bar"</span>, <span class="at">stat=</span><span class="st">"identity"</span>) <span class="sc">+</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">100</span>, <span class="at">colour=</span><span class="st">"grey70"</span>) <span class="sc">+</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">50</span>, <span class="at">colour=</span><span class="st">"grey70"</span>) <span class="sc">+</span> </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="figure-html/unnamed-chunk-3-1.png" class="img-fluid"></p>
 <p>We can now see the big gap in Rogers test career. Ok, we know this now, so lets trim the data, and remove these two innings and focus on his performance on his return to the national team.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rogers2 <span class="ot">&lt;-</span> rogers2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Date <span class="sc">&gt;</span> <span class="fu">as.Date</span>(<span class="st">"01/01/2010"</span>, <span class="at">format=</span><span class="st">"%d/%m/%Y"</span>)) </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rogers2 <span class="ot">&lt;-</span> rogers2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Date <span class="sc">&gt;</span> <span class="fu">as.Date</span>(<span class="st">"01/01/2010"</span>, <span class="at">format=</span><span class="st">"%d/%m/%Y"</span>)) </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(Date, Runs, <span class="at">data=</span>rogers2, <span class="at">geom=</span><span class="st">"bar"</span>, <span class="at">stat=</span><span class="st">"identity"</span>) <span class="sc">+</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">100</span>, <span class="at">colour=</span><span class="st">"grey70"</span>) <span class="sc">+</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">50</span>, <span class="at">colour=</span><span class="st">"grey70"</span>) <span class="sc">+</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="figure-html/unnamed-chunk-4-1.png" class="img-fluid"></p>
 <p>Something looks wrong: Rogers only scored 5 test centuries, but there are more peaks than this. Maybe some innings were completed on the same date, and the runs for these innings were aggregated. We can check this using dodged bars.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(Date, Runs, <span class="at">data=</span>rogers2, <span class="at">geom=</span><span class="st">"bar"</span>, <span class="at">stat=</span><span class="st">"identity"</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(Date, Runs, <span class="at">data=</span>rogers2, <span class="at">geom=</span><span class="st">"bar"</span>, <span class="at">stat=</span><span class="st">"identity"</span>,</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">position=</span><span class="st">"dodge"</span>) <span class="sc">+</span> </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">100</span>, <span class="at">colour=</span><span class="st">"grey70"</span>) <span class="sc">+</span> </span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">50</span>, <span class="at">colour=</span><span class="st">"grey70"</span>) <span class="sc">+</span> </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="figure-html/unnamed-chunk-5-1.png" class="img-fluid"></p>
 <p>The 50 and 100 mark guide lines are drawn over the bars. To fix this we need to use <code>ggplot</code> instead of <code>qplot</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>rogers2) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>rogers2) <span class="sc">+</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">100</span>, <span class="at">colour=</span><span class="st">"grey70"</span>) <span class="sc">+</span> </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">50</span>, <span class="at">colour=</span><span class="st">"grey70"</span>) <span class="sc">+</span> </span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x=</span>Date, <span class="at">y=</span>Runs), <span class="at">stat=</span><span class="st">"identity"</span>,</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">position=</span><span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="figure-html/unnamed-chunk-6-1.png" class="img-fluid"></p>
 <p>Using date we can also see the seasonality of the game, Rogers scores runs only around new year and mid-winter. The gaps are a distraction, because no data was generated in these periods, so we would really like to ignore these for the plot. This is one reason why the cricket statisticians resort to an index for the x axis. The other main reason, I suspect is because they are using excel, and this software makes it easy to use an index on an axis.</p>
 <p>The tool that people use often dictates the type of plots they make. Whatever is easy to do in the tool is likely the product that is created. A better approach is to start with what we want to learn, design the appropriate plot(s) for uncovering this information, and shape the tool to make the appropriate plot(s).</p>
@@ -345,7 +348,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="aggregating">Aggregating</h3>
 <p>There is not a lot of data in a single match since a batsman only bats at most two innings, and two points is not enough data to calculate statistics. Aggregating in different ways on time can help pull enough data together to better assess performance. The natural ways to aggregate temporal data are day, week, month, quarter, year, none of which work for the scale of cricket.</p>
 <p>Sometimes we hear a commentator say a player is having a good season. Maybe we can think about test cricket as seasons, summer Australian time, England time, and the occasional shoulder season in the spring or autumn. We can create a variable to reflect these and show runs by season.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cricket_season <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">with_year =</span> <span class="cn">TRUE</span>){</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cricket_season <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">with_year =</span> <span class="cn">TRUE</span>){</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">month</span>(x)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  seasons <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"a.summer"</span>, <span class="st">`</span><span class="at">2</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"a.summer"</span>, <span class="st">`</span><span class="at">3</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"b.autumn"</span>,</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>               <span class="st">`</span><span class="at">4</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"b.autumn"</span>, <span class="st">`</span><span class="at">5</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"b.autumn"</span>, <span class="st">`</span><span class="at">6</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"c.winter"</span>,</span>
@@ -366,41 +369,41 @@ window.Quarto = {
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">width =</span> .<span class="dv">1</span>)) <span class="sc">+</span> </span>
 <span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">100</span>, <span class="at">colour=</span><span class="st">"grey70"</span>) <span class="sc">+</span> </span>
 <span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">50</span>, <span class="at">colour=</span><span class="st">"grey70"</span>) <span class="sc">+</span> </span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">5</span>, <span class="at">colour=</span><span class="st">"grey70"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">5</span>, <span class="at">colour=</span><span class="st">"grey70"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="figure-html/unnamed-chunk-7-1.png" class="img-fluid"></p>
 <p>Looking at the performance by season, Rogers best season was summer 2014 when he scored three centuries. We can also see that in this season in five innings he also scored less than 5 runs. His scoring is a mixed bag in every season, some very disappointing innings balanced with some very impressive run scoring.</p>
 </section>
 <section id="by-opponent" class="level3">
 <h3 class="anchored" data-anchor-id="by-opponent">By opponent</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(Vs, Runs, <span class="at">data=</span>rogers2, <span class="at">geom=</span><span class="fu">c</span>(<span class="st">"boxplot"</span>,<span class="st">"point"</span>)) <span class="sc">+</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_bw</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(Vs, Runs, <span class="at">data=</span>rogers2, <span class="at">geom=</span><span class="fu">c</span>(<span class="st">"boxplot"</span>,<span class="st">"point"</span>)) <span class="sc">+</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_bw</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="figure-html/unnamed-chunk-8-1.png" class="img-fluid"></p>
 <p>Most of Rogers’ innings were played against England. Against India he scored more consistently. Against other opponents he was as likely to go out for a low score as a high one.</p>
 </section>
 <section id="is-first-or-second-innings-better" class="level3">
 <h3 class="anchored" data-anchor-id="is-first-or-second-innings-better">Is first or second innings better?</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>rogers2<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">24</span>, <span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">24</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>rogers2<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">24</span>, <span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">24</span>))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(Inns, Runs, <span class="at">data=</span>rogers2, <span class="at">group=</span>id, <span class="at">geom=</span><span class="st">"line"</span>) <span class="sc">+</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_wrap</span>(<span class="sc">~</span>Vs) <span class="sc">+</span> <span class="fu">theme_bw</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_wrap</span>(<span class="sc">~</span>Vs) <span class="sc">+</span> <span class="fu">theme_bw</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="figure-html/unnamed-chunk-9-1.png" class="img-fluid"></p>
 <p>Here we plotted score against innings number. Lines connect the two innings for a match. The main pattern that we see for Rogers is a lot of crossed lines. This means that if he scored well in one innings he tended to score not so well in the other innings. When a line goes up, the score in the first innings was lower than that in the second, and a downward sloping line indicates better first innings score than second. If he consistently scored the lines would be relatively flat. Against India, Pakistan and South Africa we could say this was true, that his innings scores were consistent. Against England, it was one up, one down.</p>
 </section>
 <section id="run-rate" class="level3">
 <h3 class="anchored" data-anchor-id="run-rate">Run rate</h3>
 <p>Test cricket is not a time-restricted game and batsmen typically have the luxury of building up their runs as the conditions allow. But it can be interesting to examine runs scored by the number of balls faced, which is the strike rate. The higher the strike rate the faster the runs are coming. Below Roger’s strike rate (<span class="math inline">\(x100\)</span>) is plotted by season. A value of 50 means that one run is score for every 2 balls faced. A value of 100 means one run per bowl.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>rogers2<span class="sc">$</span><span class="st">`</span><span class="at">B/F</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(rogers2<span class="sc">$</span><span class="st">`</span><span class="at">B/F</span><span class="st">`</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>rogers2<span class="sc">$</span><span class="st">`</span><span class="at">B/F</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(rogers2<span class="sc">$</span><span class="st">`</span><span class="at">B/F</span><span class="st">`</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>rogers2<span class="sc">$</span><span class="st">`</span><span class="at">S/R</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(rogers2<span class="sc">$</span><span class="st">`</span><span class="at">S/R</span><span class="st">`</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(Season, <span class="st">`</span><span class="at">S/R</span><span class="st">`</span>, <span class="at">data=</span>rogers2) <span class="sc">+</span> </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">50</span>, <span class="at">colour=</span><span class="st">"grey70"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">50</span>, <span class="at">colour=</span><span class="st">"grey70"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="figure-html/unnamed-chunk-10-1.png" class="img-fluid"></p>
 <p>Rogers run rate hovers around 50. The summer where he scored the three centuries his run rate was mostly lower than 50. His run rate was highest in the summer of 2015.</p>
 <p>Looking at run rate by the innings total could be interesting also. This is shown below.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(Runs, <span class="st">`</span><span class="at">S/R</span><span class="st">`</span>, <span class="at">data=</span>rogers2) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(Runs, <span class="st">`</span><span class="at">S/R</span><span class="st">`</span>, <span class="at">data=</span>rogers2) <span class="sc">+</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se=</span>F) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(Runs, <span class="st">`</span><span class="at">S/R</span><span class="st">`</span>, <span class="at">data=</span>rogers2) <span class="sc">+</span> </span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se=</span>F) <span class="sc">+</span> </span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Vs) <span class="sc">+</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="figure-html/unnamed-chunk-11-1.png" class="img-fluid"> <img src="figure-html/unnamed-chunk-11-2.png" class="img-fluid"></p>
 <p>Rogers’ strike rate increases with larger innings scores. It looks like at some point during these innings his confidence builds and he goes for more shots to yield overall faster scoring. His rate shows a similar pattern for all opponents. He has one unusually high strike rate of about 125. This is an anomaly compared to his other performances and may have been a time when he was told to go in have a quick bash to rack up some runs, before a declaration.</p>
 </section>
@@ -408,7 +411,7 @@ window.Quarto = {
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p>I recommend showing dotplots of the runs by season, instead of bar charts by index. Ideally overlaying summary statistics such as averages and standard deviations to simplify comparison across seasons, or in the plot below the interquartile range, which shows the middle 50% of scores.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>seasonstats <span class="ot">&lt;-</span> rogers2 <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Season) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">m=</span><span class="fu">median</span>(Runs, <span class="at">na.rm=</span>T), <span class="at">q1=</span><span class="fu">quantile</span>(Runs, <span class="fl">0.25</span>, <span class="at">na.rm=</span>T), <span class="at">q3=</span><span class="fu">quantile</span>(Runs, <span class="fl">0.75</span>, <span class="at">na.rm=</span>T))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>seasonstats <span class="ot">&lt;-</span> rogers2 <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Season) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">m=</span><span class="fu">median</span>(Runs, <span class="at">na.rm=</span>T), <span class="at">q1=</span><span class="fu">quantile</span>(Runs, <span class="fl">0.25</span>, <span class="at">na.rm=</span>T), <span class="at">q3=</span><span class="fu">quantile</span>(Runs, <span class="fl">0.75</span>, <span class="at">na.rm=</span>T))</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">100</span>, <span class="at">colour=</span><span class="st">"grey90"</span>) <span class="sc">+</span> </span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">50</span>, <span class="at">colour=</span><span class="st">"grey90"</span>) <span class="sc">+</span> </span>
@@ -418,10 +421,10 @@ window.Quarto = {
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>rogers2, <span class="fu">aes</span>(<span class="at">x=</span>Season, <span class="at">y=</span>Runs), <span class="at">size=</span><span class="dv">5</span>, <span class="at">alpha=</span><span class="fl">0.6</span>,</span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">colour=</span><span class="st">"red"</span>,</span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">width =</span> .<span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="figure-html/unnamed-chunk-12-1.png" class="img-fluid"></p>
 <p>If you really insist on using index on the horizontal axis, these would would be my suggested enhancements: use points instead of bars, a graduated or sequential color scale to highlight the high scores, and add a mean and/or a median career score as a reference line.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>rogers2<span class="sc">$</span>Test[<span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">50</span>,<span class="dv">2</span>)] <span class="ot">&lt;-</span> rogers2<span class="sc">$</span>Test[<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">49</span>,<span class="dv">2</span>)]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>rogers2<span class="sc">$</span>Test[<span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">50</span>,<span class="dv">2</span>)] <span class="ot">&lt;-</span> rogers2<span class="sc">$</span>Test[<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">49</span>,<span class="dv">2</span>)]</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>rogers2<span class="sc">$</span>Test <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(rogers2<span class="sc">$</span>Test)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>rogers2<span class="sc">$</span>milestone <span class="ot">&lt;-</span> <span class="st">"&lt;50"</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>rogers2<span class="sc">$</span>milestone[rogers2<span class="sc">$</span>Runs<span class="sc">&gt;</span><span class="dv">49</span>] <span class="ot">&lt;-</span> <span class="st">"50s"</span></span>
@@ -434,7 +437,7 @@ window.Quarto = {
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span>md, <span class="at">color=</span><span class="st">"grey80"</span>, </span>
 <span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="dv">22</span>, <span class="at">y=</span>md<span class="dv">-5</span>, <span class="at">label=</span><span class="fu">paste</span>(<span class="st">"Median runs="</span>,md), <span class="at">color=</span><span class="st">"grey80"</span>) <span class="sc">+</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="figure-html/unnamed-chunk-15-1.png" class="img-fluid"></p>
 <p>In terms of available data, if the data table on the web contained the team total for innings it would be easy to see how much the batsman contributed to the team’s effort. If the country of the cricket ground was included in the data table we could examine a location effect on performance. These could be pulled from other sources, but I’ll wait until another blog post to discuss this.</p>
 <p>Also in future blog posts this Australian summer, look for some other plot recommendations for types of matches, one day internationals, T20, big bashes, and for bowlers, comparing batsmen and teams. I’d like to also explore the women’s cricket data but this is currently very sparse.</p>
@@ -498,13 +501,14 @@ window.Quarto = {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
