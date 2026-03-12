@@ -99,7 +99,7 @@ pkg_data <- pkg_data |>
   #mutate(authors = str_replace(authors, "\n/g", "")) |>
   #mutate(authors = str_replace(authors, "\\([^)]*\\)//g", "")) |>
   #mutate(authors = str_replace(authors, "(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)", "")) |>
-  arrange(desc(last_update))
+  arrange(desc(downloads))
 pkg_data <- pkg_data |>
   mutate(hex = ifelse(is.na(hex), "hex_images/hex-none.png", hex))
 pkg_tbl <- pkg_data |> 
