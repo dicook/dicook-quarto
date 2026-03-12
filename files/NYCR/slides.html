@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>nullabor</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Di Cook, Monash University" />
+    <link href="libs/remark-css/shinobi.css" rel="stylesheet" />
+    <link href="libs/remark-css/ninjutsu.css" rel="stylesheet" />
+    <link rel="stylesheet" href="mystyle.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# <a href="http://dicook.github.io/nullabor/">nullabor</a>
+## tools for testing whether what you see in plots is really there
+### Di Cook, Monash University
+### NYC R meetup - June 6, 2019 <br> Slides: <a href="https://dicook.org/files/NYCR/slides.html">https://dicook.org/files/NYCR/slides.html</a>
+
+---
+
+
+
+
+
+
+
+class: center, middle
+
+# Why?
+
+---
+background-image: url("http://dicook.org/files/NYCR/images/polls1.png")
+background-position: 50% 50%
+background-size: 75%
+
+---
+background-image: url("http://dicook.org/files/NYCR/images/polls2.png")
+background-position: 50% 50%
+background-size: 75%
+
+---
+background-image: url("http://dicook.org/files/NYCR/images/wasps.png")
+background-position: 50% 50%
+background-size: 75%
+
+---
+background-image: url("http://dicook.org/files/NYCR/images/biomass.png")
+background-position: 50% 50%
+background-size: 75%
+
+---
+class: center, middle
+
+# A lot of decisions that we make are based on plots, but there is no rigorous was to say that what we see is really there
+
+---
+# Outline
+
+- why
+- lineup, rorschach functions
+- null generating mechanisms
+- p-values
+- power and plot design
+- where to get more information
+- acknowledgements
+
+---
+# Why inference?
+
+- Plots of data allow us to uncover the unexpected, but it needs to be calibrated against what might be seen by chance, if there really is no underlying pattern
+- Classical statistical inference allows computing probabilities, of this being a likely value for the statistic, if there really is no structure
+---
+
+# Post-hoc inference
+
+- Inference is usually set up before collecting data
+- Once you see it, its too late
+- You cannot legitimately test for significance of structure
+
+... but you can't always plan the future
+
+---
+# nullabor
+
+- Lineup protocol: Plots your data among a field of "null" plots
+    - Puts it in the context of what it might look like if there is really no structure
+    - Encrypts the location of the data plot
+- Rorschach protocol: Plots only nulls, and gives a sense of what random structure might be seen
+
+---
+background-image: url("http://dicook.org/files/NYCR/images/wasps1.png")
+background-position: 50% 50%
+background-size: 75%
+
+---
+background-image: url("http://dicook.org/files/NYCR/images/wasps2.png")
+background-position: 50% 50%
+background-size: 75%
+
+---
+background-image: url("http://dicook.org/files/NYCR/images/biomass1.png")
+background-position: 50% 50%
+background-size: 75%
+
+---
+background-image: url("http://dicook.org/files/NYCR/images/biomass2.png")
+background-position: 50% 50%
+background-size: 75%
+
+---
+background-image: url("http://dicook.org/files/NYCR/images/polls3.png")
+background-position: 50% 50%
+background-size: 75%
+
+---
+background-image: url("http://dicook.org/files/NYCR/images/polls4.png")
+background-position: 50% 50%
+background-size: 75%
+
+---
+# lineup functions
+
+- `lineup`: Generates a lineup using one of the given null generating mechanisms
+    - `null_permute`
+    - `null_dist`
+    - `null_lm`
+    - `null_ts`
+- `pvisual`: Compute `\(p\)`-values, after showing to impartial jurers
+- `visual_power`: Compute the *power*, after showing to impartial jurers
+- `distmet`: empirical distribution of distance between data plot and null plots
+
+---
+class: center, middle
+
+# Let's do it!
+
+Motivated by this article [How Data Made Me A Believer In New York City's Restaurant Grades](https://fivethirtyeight.com/features/how-data-made-me-a-believer-in-new-york-citys-restaurant-grades/), using data on NYC restaurant inspections tidied by [tidytuesday](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-11)
+
+How do restaurants rate?
+
+---
+class: center, middle
+
+
+# Pick the plot that is most different from the others
+
+---
+class: center, middle
+
+
+
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-3-1.png" width="100%" /&gt;
+---
+
+```
+ggplot(lineup(null_permute("grade"), nyc_cuisine), 
+       aes(x=cuisine_description, fill=grade)) + 
+  geom_bar(position="fill") + xlab("") + ylab("") +
+  scale_fill_ochre(palette="parliament") +
+  facet_wrap(~.sample) +
+  ggtitle("A grade % and cuisine") + coord_flip() +
+  theme_bw() + 
+  theme(legend.position="none", axis.text.y = element_blank())
+```
+
+`\(H_o:\)` There is no difference in proportion A, B, C grade among cuisines
+
+`\(H_a:\)` There is
+
+Null generating mechanism: Permuting the values of grade
+
+True data plot is in position 6.
+
+---
+class: center, middle
+
+
+# Pick the plot that is most different from the others
+
+---
+class: center, middle
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="100%" /&gt;
+
+
+
+
+---
+
+```
+nyc_yrmth_l &lt;- lineup(null_ts("pct", auto.arima), filter(nyc_yrmth, grade=="A"))
+ggplot(nyc_yrmth_l, aes(x=yrmth, y=pct)) + 
+  geom_line() + xlab("") + ylab("") +
+  facet_wrap(~.sample) +
+  ggtitle("Monthly A grade %")
+```
+
+`\(H_o:\)` There is NO temporal pattern in percentage of restaurants awarded an A grade
+
+`\(H_a:\)` There is
+
+Null generating mechanism: Simulating from an ARIMA model with same parameters
+
+True data plot is in position 7.
+---
+class: center, middle
+
+
+# Pick the plot that is most different from the others
+
+---
+
+
+
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.png" width="100%" /&gt;
+
+---
+
+```
+nyc_boro_grade_l &lt;- lineup(null_dist("grade_A", "unif",
+  params=list(min=0, max=1)), nyc_boro_grade, n=6)
+nyc_boro_grade_l_p &lt;- nyc_boro_grade_l %&gt;% 
+  group_by(.sample, boro) %&gt;%
+  summarise(prop_A = length(grade_A[grade_A&gt;0.174])/length(grade_A))
+```
+
+`\(H_o:\)` The percentage of restaurants awarded an A grade in each boro is the same (82.5%)
+
+`\(H_a:\)` Its not
+
+Null generating mechanism: Simulating from an binomial model with same parameters
+
+True data plot is in position 3
+
+---
+# Computing p-value
+
+Probability of `\(x\)` or more independent observers picking the data plot, assuming that there is no difference between the data plot and the null plots.
+
+
+```r
+pvisual(5, 50)
+```
+
+```
+##      x simulated     binom
+## [1,] 5    0.1711 0.1036168
+```
+
+---
+# Computing power
+
+
+```r
+data(turk_results)
+visual_power(turk_results)
+```
+
+```
+## # A tibble: 6 x 3
+##   pic_id power     n
+##    &lt;int&gt; &lt;dbl&gt; &lt;int&gt;
+## 1     36 0        18
+## 2    105 0.746    17
+## 3    116 0.125    16
+## 4    131 0.842    14
+## 5    159 0.656    15
+## 6    225 0.130    15
+```
+
+Useful for objectively determining best plot design, see [Hofmann et al (2012)](https://ieeexplore.ieee.org/document/6327249)
+
+
+---
+# What did we learn about NYC restaurant quality?
+
+?
+
+- There is a difference in percentage A, B, C between cuisines
+- There is no temporal trend
+- Some boroughs are more A class than others
+
+---
+
+# Summary
+
+- Really useful package. 
+    - Various null plot generators
+    - Embeds the data plot, and encrypts
+    - Computes significance and power
+- Helps to adjust our expectations, dampen surprise, support surprise
+- Calibrate your eyes on what randomness looks like
+
+Original version of the package written by Hadley Wickham, `\(p\)`-value and power functions by Heike Hofmann, metrics and model nulls by Niladri Roy Chowdhury, and time series nulls and code updates by myself and Stuart Lee.
+
+Website for package is [http://dicook.github.io/nullabor/articles/nullabor.html](http://dicook.github.io/nullabor/articles/nullabor.html).
+
+---
+# Acknowledgements
+
+# 👩‍💻 Made by a human with a computer
+
+Slides at [https://dicook.org/](https://dicook.org/files/NYCR/slides.html).
+Code and data at [https://github.com/dicook/NYCR](https://github.com/dicook/NYCR).
+&lt;br&gt;
+
+Created using [R Markdown](https://rmarkdown.rstudio.com) with flair by [**xaringan**](https://github.com/yihui/xaringan), and Australianised **shinobu** style.
+
+&lt;br&gt; 
+&lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;&lt;img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /&gt;&lt;/a&gt;&lt;br /&gt;This work is licensed under a &lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;Creative Commons Attribution-ShareAlike 4.0 International License&lt;/a&gt;.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

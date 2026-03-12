@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><i class="fas  fa-cubes "></i> Visualisation of high-dimensional particle physics data</title>
+    <meta charset="utf-8">
+    <meta name="author" content="   Di Cook, Ursula Laa    Monash University" />
+    <link href="index_files/remark-css/default.css" rel="stylesheet" />
+    <link href="index_files/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="myremark.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# <i class="fas  fa-cubes "></i> Visualisation of high-dimensional particle physics data
+### <br><br> Di Cook, Ursula Laa <br><br> Monash University
+### <a href="bit.ly/ISCB-Cook" class="uri">bit.ly/ISCB-Cook</a> <br><br> <br><br>Aug 28, 2018
+
+---
+
+
+
+
+background-image: url(img/You_can't_see_beyond_3D.png)
+background-size: contain
+
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+]
+.right-column[
+
+![](img/You_can't_see_beyond_3D.png)
+]
+
+---
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+]
+.right-column[
+
+![](img/3D.png)
+
+Source: https://ultraculture.org/blog/2014/12/16/heres-visual-guide-10-dimensions-reality/
+]
+
+---
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+]
+.right-column[
+
+![](img/4D.png)
+
+Source: https://ultraculture.org/blog/2014/12/16/heres-visual-guide-10-dimensions-reality/
+]
+
+---
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+]
+.right-column[
+
+![](img/5D.png)
+
+Source: https://ultraculture.org/blog/2014/12/16/heres-visual-guide-10-dimensions-reality/
+]
+
+---
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+]
+.right-column[
+
+![](img/6D.png)
+
+Source: https://ultraculture.org/blog/2014/12/16/heres-visual-guide-10-dimensions-reality/
+]
+
+---
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+]
+.right-column[
+
+![](img/7D.png)
+
+Source: https://ultraculture.org/blog/2014/12/16/heres-visual-guide-10-dimensions-reality/
+]
+
+---
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+]
+.right-column[
+
+![](img/8D.png)
+
+Source: https://ultraculture.org/blog/2014/12/16/heres-visual-guide-10-dimensions-reality/
+]
+
+---
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+]
+.right-column[
+
+![](img/9D.png)
+
+Source: https://ultraculture.org/blog/2014/12/16/heres-visual-guide-10-dimensions-reality/
+]
+
+---
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+]
+.right-column[
+
+![](img/10D.png)
+
+Source: https://ultraculture.org/blog/2014/12/16/heres-visual-guide-10-dimensions-reality/
+]
+
+---
+class: inverse middle center
+
+[Its not like that at all!](https://media1.tenor.com/images/d4c398703092842d4d17020b5414b0ee/tenor.gif?itemid=4995777)
+
+---
+
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+### Its more like...
+
+[Flatland: A Romance of Many Dimensions (1884) Edwin Abbott Abbott](https://en.wikipedia.org/wiki/Flatland) 
+
+]
+.pull-right[
+
+
+&lt;p&gt; &lt;img src="img/Houghton_EC85_Ab264_884f_-_Flatland,_cover.jpg"  width="80%"&gt;
+
+The story describes a two-dimensional world occupied by geometric figures, where women are simple line-segments, and men are polygons with various numbers of sides.
+]
+
+---
+# How we see high-dimensions in statistics..
+
+&lt;img src="img/cubes.png" width="100%"&gt;
+
+Increasing dimension adds an additional orthogonal axis. 
+
+&lt;p&gt;If you want more high-dimensional shapes there is an R package, [geozoo](http://schloerke.com/geozoo/all/), which will generate cubes, spheres, simplices, mobius strips, torii, boy surface, enneper surface, dini surface, klein bottles, cones, various polytopes, ... 
+
+---
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+### Its more like...
+### And in statistics it is everywhere
+
+]
+.right-column[
+- Principal component analysis
+- Multidimensional scaling
+- Projection pursuit
+- Regression
+- Linear discriminant analysis
+- Multivariate distributions
+- Posterior distributions
+]
+
+---
+class: center
+
+
+
+&lt;iframe src="s5.html" width="800" height="500" scrolling="yes" seamless="seamless" frameBorder="0"&gt; &lt;/iframe&gt;
+
+Can you tell the difference between these 5D objects?
+--
+&lt;p&gt;
+.red[  Yep? You can see beyond 3D!]
+
+---
+class: center
+
+
+
+&lt;iframe src="multiDA.html" width="700" height="400" scrolling="yes" seamless="seamless" frameBorder="0"&gt; &lt;/iframe&gt;
+
+Can you tell the difference between these 10D objects?
+
+--
+&lt;p&gt;
+.red[  Yep? You really can see beyond 3D!]
+--
+&lt;p&gt;
+Set A are genes identified by Sarah Romanes [multiDA](https://github.com/sarahromanes/multiDA) procedure; set B are a random sample of genes. Sarah's selection are much more distinctly different than the random sample.
+
+---
+
+.left-column[
+# Packages
+
+&lt;img src="img/tour_path.png" width="300px"&gt;
+]
+.right-column[
+- Visualisation of high-dimensions using tours: the [tourr](https://cran.r-project.org/web/packages/tourr/index.html) package
+    - *Grand:* Randomly choose target
+    - *Little:* Basis of *d* of the *p* variables
+    - *Local:* Randomly within a small radius 
+    - *Guided:* Define structure of interest in projection, and optimise function
+    - *Manual:* Control the contribution of a single variable, and move along this axis  (coming soon in the R package `spinifex`)
+- A library of high-dimensional shapes: the [geozoo](https://cran.r-project.org/web/packages/geozoo/index.html) package, and paper [Escape from Boxland](https://journal.r-project.org/archive/2016/RJ-2016-044/index.html)
+]
+
+---
+# Philosophy
+
+- It is common to show the data in the model space, for example, predicted vs observed plots for regression, linear discriminant plots, and principal components.
+- By displaying the model in the high-d data space, rather than low-d
+summaries of the data produced by the model, we expect to better understand the fit.
+
+.footnote[Wickham et al (2015) Visualizing statistical models: Removing the blindfold, SAM]
+
+
+---
+# Hierarchical clustering
+Dendrogram: .red[data] in the .red[model space]
+
+.pull-left[
+&lt;img src="figure/unnamed-chunk-3-1.svg" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+&lt;img src="figure/unnamed-chunk-4-1.svg" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+Tour: .red[Model] in the .red[data space]
+
+
+
+.pull-left[
+&lt;iframe src="single.html" width="400" height="500" scrolling="yes" seamless="seamless" frameBorder="0"&gt; &lt;/iframe&gt;
+]
+.pull-right[
+&lt;iframe src="ward.html" width="400" height="500" scrolling="yes" seamless="seamless" frameBorder="0"&gt; &lt;/iframe&gt;
+]
+
+
+
+
+
+
+---
+# Summary
+
+- The tourr package is available for you to look beyond 2D
+- High-dimensional shapes, how they are defined, what they look like, how they differ is interesting
+- Think about ways to look at the model in the data space
+
+---
+# Multidimensional physics
+
+You can read what we are doing with physics data here:
+
+[Dynamical projections for the visualization of PDFSense data](https://arxiv.org/abs/1806.09742)
+
+Dianne Cook, Ursula Laa, German Valencia
+
+
+---
+
+class: inverse 
+
+# Joint work!
+
+- *Tours:* Andreas Buja, Debby Swayne, Heike Hofmann, Hadley Wickham, Ursula Laa and Nick Spyrison
+- *Library of high-d shapes:* Barret Schloerke
+- *Physics application:* Ursula Laa, German Valencia
+- Animations made with [plotly](https://plotly-book.cpsievert.me) 
+
+Contact: [<i class="fas  fa-envelope "></i>](http://www.dicook.org) dicook@monash.edu, [<i class="fab  fa-twitter "></i>](https://twitter.com/visnut) visnut, [<i class="fab  fa-github "></i>](https://github.com/dicook) dicook
+
+&lt;img src="img/lorikeets.png" width="200px"&gt;
+
+.footnote[Slides made with Rmarkdown, xaringan package by Yihui Xie, and lorikeet theme using the [ochRe package](https://github.com/ropenscilabs/ochRe). Available at [https://github.com/dicook/ISCBASC2018](https://github.com/dicook/ISCBASC2018].)
+
+---
+# Further reading
+
+- Buja et al (2004) [Computational Methods for High-Dimensional Rotations in Data Visualization](http://stat.wharton.upenn.edu/~buja/PAPERS/paper-dyn-proj-algs.pdf) 
+- Cook, D., and Swayne, D. [Interactive and Dynamic Graphics for Data Analysis with examples using R and GGobi](http://www.ggobi.org)
+- Wickham et al (2011) [tourr: An R Package for Exploring Multivariate Data with Projections](http://www.jstatsoft.org/v40)
+- Wickham et al (2015) Visualising Statistical Models: Removing the Blindfold (with Discussion), Statistical Analysis and Data Mining.
+- Schloerke, et al (2016) [Escape from Boxland](https://journal.r-project.org/archive/2016/RJ-2016-044/ index.html)
+
+
+
+---
+class: middle center
+
+&lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;&lt;img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /&gt;&lt;/a&gt;&lt;br /&gt;This work is licensed under a &lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;Creative Commons Attribution-ShareAlike 4.0 International License&lt;/a&gt;.
+    </textarea>
+<script src="remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "14.6:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"navigation": {
+"scroll": false
+}
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
