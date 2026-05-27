@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://dicook.org/publications.html</loc>
-    <lastmod>2026-02-23T23:14:41.259Z</lastmod>
+    <lastmod>2026-05-24T01:57:44.024Z</lastmod>
   </url>
   <url>
     <loc>https://dicook.org/index.html</loc>
@@ -33,76 +33,80 @@
     <lastmod>2026-02-23T23:14:41.202Z</lastmod>
   </url>
   <url>
-    <loc>https://dicook.org/posts/2015-11-06-cornell-statistics/index.html</loc>
-    <lastmod>2026-02-23T23:14:40.995Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dicook.org/posts/2019-09-13-touring-multicollinearity/index.html</loc>
-    <lastmod>2026-02-23T23:14:41.045Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dicook.org/posts/2014-09-25-facetted-barcharts/index.html</loc>
-    <lastmod>2026-02-23T23:14:40.969Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dicook.org/posts/2018-08-29-getting-past-the-little-hiccups-to-getting-plotly-animations-into-slides/index.html</loc>
-    <lastmod>2026-02-23T23:14:41.038Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dicook.org/posts/2014-10-5-statistical-computing/index.html</loc>
-    <lastmod>2026-02-23T23:14:40.970Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dicook.org/posts/2024-08-26-what-is-EDA/index.html</loc>
-    <lastmod>2026-02-23T23:14:41.200Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dicook.org/posts/2015-10-13-data-science-for-managers/index.html</loc>
-    <lastmod>2026-02-23T23:14:40.995Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dicook.org/posts/2015-10-26-CSAFE/index.html</loc>
-    <lastmod>2026-02-23T23:14:40.995Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dicook.org/teaching.html</loc>
-    <lastmod>2026-02-23T23:14:41.260Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dicook.org/posts/2018-10-10-useR2018/index.html</loc>
-    <lastmod>2026-02-23T23:14:41.038Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dicook.org/posts/2024-07-14-R-devel/index.html</loc>
-    <lastmod>2026-02-23T23:14:41.194Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dicook.org/posts/2015-12-26-rogers/index.html</loc>
-    <lastmod>2026-02-23T23:14:41.035Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dicook.org/posts/2018-04-14-rookie-mistakes/index.html</loc>
-    <lastmod>2026-02-23T23:14:41.035Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dicook.org/posts/2015-05-17-graduations/index.html</loc>
-    <lastmod>2026-02-23T23:14:40.977Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dicook.org/posts/2014-11-16-eda-at-the-un/index.html</loc>
-    <lastmod>2026-02-23T23:14:40.977Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dicook.org/posts/2014-09-28-kygios/index.html</loc>
-    <lastmod>2026-02-23T23:14:40.969Z</lastmod>
+    <loc>https://dicook.org/posts/2022-05-22-election_hexmaps/index.html</loc>
+    <lastmod>2026-02-23T23:14:41.183Z</lastmod>
   </url>
   <url>
     <loc>https://dicook.org/posts/2018-04-22-smart-meter/index.html</loc>
     <lastmod>2026-02-23T23:14:41.036Z</lastmod>
   </url>
   <url>
-    <loc>https://dicook.org/posts/2022-05-22-election_hexmaps/index.html</loc>
-    <lastmod>2026-02-23T23:14:41.183Z</lastmod>
+    <loc>https://dicook.org/posts/2014-09-28-kygios/index.html</loc>
+    <lastmod>2026-02-23T23:14:40.969Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dicook.org/posts/2014-11-16-eda-at-the-un/index.html</loc>
+    <lastmod>2026-02-23T23:14:40.977Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dicook.org/posts/2015-05-17-graduations/index.html</loc>
+    <lastmod>2026-02-23T23:14:40.977Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dicook.org/posts/2018-04-14-rookie-mistakes/index.html</loc>
+    <lastmod>2026-02-23T23:14:41.035Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dicook.org/posts/2015-12-26-rogers/index.html</loc>
+    <lastmod>2026-02-23T23:14:41.035Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dicook.org/posts/2024-07-14-R-devel/index.html</loc>
+    <lastmod>2026-02-23T23:14:41.194Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dicook.org/posts/2018-10-10-useR2018/index.html</loc>
+    <lastmod>2026-02-23T23:14:41.038Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dicook.org/teaching.html</loc>
+    <lastmod>2026-02-23T23:14:41.260Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dicook.org/posts/2015-10-26-CSAFE/index.html</loc>
+    <lastmod>2026-02-23T23:14:40.995Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dicook.org/posts/2015-10-13-data-science-for-managers/index.html</loc>
+    <lastmod>2026-02-23T23:14:40.995Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dicook.org/posts/2024-08-26-what-is-EDA/index.html</loc>
+    <lastmod>2026-02-23T23:14:41.200Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dicook.org/posts/2014-10-5-statistical-computing/index.html</loc>
+    <lastmod>2026-02-23T23:14:40.970Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dicook.org/posts/2018-08-29-getting-past-the-little-hiccups-to-getting-plotly-animations-into-slides/index.html</loc>
+    <lastmod>2026-02-23T23:14:41.038Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dicook.org/posts/2014-09-25-facetted-barcharts/index.html</loc>
+    <lastmod>2026-02-23T23:14:40.969Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dicook.org/posts/2019-09-13-touring-multicollinearity/index.html</loc>
+    <lastmod>2026-02-23T23:14:41.045Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dicook.org/posts/2015-11-06-cornell-statistics/index.html</loc>
+    <lastmod>2026-02-23T23:14:40.995Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dicook.org/posts/2026-05-24-rip-off/index.html</loc>
+    <lastmod>2026-05-27T07:00:37.304Z</lastmod>
   </url>
   <url>
     <loc>https://dicook.org/posts/2014-09-13-exploring-gradebook/index.html</loc>
