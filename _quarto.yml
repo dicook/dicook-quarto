@@ -1,7 +1,9 @@
 project:
   type: website
   output-dir: docs
-  resources: files
+  resources: 
+    - files
+    - CNAME
 
 website:
   title: "Dianne H. Cook"
