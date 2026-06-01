@@ -4,6 +4,8 @@ project:
   resources: 
     - files
     - CNAME
+    - custom.scss
+    - hex_images
 
 website:
   title: "Dianne H. Cook"
