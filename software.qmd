@@ -1,5 +1,5 @@
 ---
-title: "Publications"
+title: "Software"
 ---
 
 ## R packages
@@ -63,7 +63,6 @@ save(pkg_data, file = "software.rda")
 #| message: false
 #| eval: false
 #| echo: false
-#| warning: false
 # Download package hex stickers
 # But avoid this because not all are in correct aspect ratio
 #library(readr)
@@ -76,6 +75,7 @@ save(pkg_data, file = "software.rda")
 ```{r}
 #| echo: false
 #| message: false
+#| warning: false
 library(readr)
 library(dplyr)
 library(glue)
