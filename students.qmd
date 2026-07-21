@@ -5,6 +5,7 @@ title: "Graduated and current PhD students"
 ```{r}
 #| echo: false
 #| message: false
+#| warning: false
 library(readr)
 library(dplyr)
 library(flextable)

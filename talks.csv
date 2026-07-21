@@ -1,4 +1,7 @@
 date, title, location, link, details
+17/7/2026,Towards a Richer Statistical Thinking: Teaching Visualisation as a Tool for Inference,"ICOTS 2026, Brisbane, Australia",https://github.com/dicook/ICOTS2026,keynote
+15/7/2026,Discussion: Whats My Fitted Model?,"ICOTS 2026, Brisbane, Australia",https://github.com/dicook/ICOTS2026-WMFM,Invited discussion
+7/7/2026,"Interactive Graphics for Understanding and Interpreting Nonlinear Model Behaviour in High Dimensions, using R","useR! 2026, Warsaw, Poland",https://github.com/dicook/useR-2026/,keynote
 3/6/2026,"Seeing More in Your Data: New Visual Tools for Uncertainty, High-Dimensional Exploration, and Model Diagnostics","U. Sydney, Business School",https://github.com/dicook/USydBS-2026/,Invited talk
 14/10/2025,Building power with code and data: Tools for thriving in any environment,International Day of Women in Statistics and Data Science,https://www.idwsds.org,keynote
 24/4/2025,Interactively visualizing multivariate market segmentation using the R package lionfish,Symposium in Memory of Fritz Leisch,https://github.com/dicook/Leisch_Symp_2025,Invited talk

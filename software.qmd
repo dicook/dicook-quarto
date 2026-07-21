@@ -63,6 +63,7 @@ save(pkg_data, file = "software.rda")
 #| message: false
 #| eval: false
 #| echo: false
+#| warning: false
 # Download package hex stickers
 # But avoid this because not all are in correct aspect ratio
 #library(readr)
