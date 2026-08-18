@@ -256,7 +256,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">11 March 2025</p>
+      <p class="date">11 Mar 2025</p>
     </div>
   </div>
   
@@ -278,92 +278,86 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tourr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tourr' was built under R version 4.6.1</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>generate_toy_dataset <span class="ot">&lt;-</span> <span class="cf">function</span>(num_samples, n, noise_std, seed) {</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate random integers for 'a' (equivalent to JAX's randint)</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span>(n<span class="dv">-1</span>), num_samples, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate uniform random values for 'lambda_val'</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  lambda_val <span class="ot">&lt;-</span> <span class="fu">runif</span>(num_samples)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create input matrix X</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> num_samples, <span class="at">ncol =</span> n)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_samples) {</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    x[i, a[i] <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> lambda_val[i]  <span class="co"># +1 since R uses 1-based indexing</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate Gaussian noise</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  gaussian_noise <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(num_samples <span class="sc">*</span> n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> noise_std), </span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>                           <span class="at">nrow =</span> num_samples, <span class="at">ncol =</span> n)</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute y</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> x <span class="sc">+</span> gaussian_noise</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tourr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>generate_toy_dataset <span class="ot">&lt;-</span> <span class="cf">function</span>(num_samples, n, noise_std, seed) {</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate random integers for 'a' (equivalent to JAX's randint)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span>(n<span class="dv">-1</span>), num_samples, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate uniform random values for 'lambda_val'</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  lambda_val <span class="ot">&lt;-</span> <span class="fu">runif</span>(num_samples)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create input matrix X</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> num_samples, <span class="at">ncol =</span> n)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_samples) {</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    x[i, a[i] <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> lambda_val[i]  <span class="co"># +1 since R uses 1-based indexing</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate Gaussian noise</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  gaussian_noise <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(num_samples <span class="sc">*</span> n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> noise_std), </span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                           <span class="at">nrow =</span> num_samples, <span class="at">ncol =</span> n)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute y</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> x <span class="sc">+</span> gaussian_noise</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>This can be viewed using a grand tour made using the <a href="http://ggobi.github.io/tourr/">tourr</a> package with the code below:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">426</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>start_proj <span class="ot">&lt;-</span> <span class="fu">basis_random</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>myseed <span class="ot">&lt;-</span> <span class="dv">920</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>d50 <span class="ot">&lt;-</span> <span class="fu">generate_toy_dataset</span>(n, <span class="dv">6</span>, <span class="fl">0.05</span>, myseed)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>dx50 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(d50<span class="sc">$</span>x)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>dy50 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(d50<span class="sc">$</span>y)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>tp <span class="ot">&lt;-</span> <span class="fu">save_history</span>(dx50, <span class="at">start =</span> start_proj)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">render_gif</span>(dx50, </span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">tour_path =</span> <span class="fu">planned_tour</span>(tp),</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">display =</span> <span class="fu">display_xy</span>(<span class="at">col =</span> <span class="st">"orange"</span>, <span class="at">center =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">gif_file =</span> <span class="st">"n50.gif"</span>,</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">width =</span> <span class="dv">400</span>,</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">height =</span> <span class="dv">400</span>,</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">frames =</span> <span class="dv">500</span>,</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">loop =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>d100 <span class="ot">&lt;-</span> <span class="fu">generate_toy_dataset</span>(n, <span class="dv">6</span>, <span class="fl">0.05</span>, myseed)</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>dx100 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(d100<span class="sc">$</span>x)</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>dy100 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(d100<span class="sc">$</span>y)</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">render_gif</span>(dx100, </span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>           <span class="at">tour_path =</span> <span class="fu">planned_tour</span>(tp),</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>           <span class="at">display =</span> <span class="fu">display_xy</span>(<span class="at">col =</span> <span class="st">"orange"</span>, <span class="at">center =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>           <span class="at">gif_file =</span> <span class="st">"n100.gif"</span>,</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>           <span class="at">width =</span> <span class="dv">400</span>,</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>           <span class="at">height =</span> <span class="dv">400</span>,</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>           <span class="at">frames =</span> <span class="dv">500</span>,</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>           <span class="at">loop =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">500</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>d500 <span class="ot">&lt;-</span> <span class="fu">generate_toy_dataset</span>(n, <span class="dv">6</span>, <span class="fl">0.05</span>, myseed)</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>dx500 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(d500<span class="sc">$</span>x)</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>dy500 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(d500<span class="sc">$</span>y)</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="fu">render_gif</span>(dx500, </span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>           <span class="at">tour_path =</span> <span class="fu">planned_tour</span>(tp),</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>           <span class="at">display =</span> <span class="fu">display_xy</span>(<span class="at">col =</span> <span class="st">"orange"</span>, <span class="at">center =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>           <span class="at">gif_file =</span> <span class="st">"n500.gif"</span>,</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>           <span class="at">width =</span> <span class="dv">400</span>,</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>           <span class="at">height =</span> <span class="dv">400</span>,</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>           <span class="at">frames =</span> <span class="dv">500</span>,</span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>           <span class="at">loop =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(dx50, <span class="at">file=</span><span class="st">"d50.rda"</span>)</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(dx100, <span class="at">file=</span><span class="st">"d100.rda"</span>)</span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(dx500, <span class="at">file=</span><span class="st">"d500.rda"</span>)</span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(dy50, <span class="at">file=</span><span class="st">"dy50.rda"</span>)</span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(dy100, <span class="at">file=</span><span class="st">"dy100.rda"</span>)</span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(dy500, <span class="at">file=</span><span class="st">"dy500.rda"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">426</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>start_proj <span class="ot">&lt;-</span> <span class="fu">basis_random</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>myseed <span class="ot">&lt;-</span> <span class="dv">920</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>d50 <span class="ot">&lt;-</span> <span class="fu">generate_toy_dataset</span>(n, <span class="dv">6</span>, <span class="fl">0.05</span>, myseed)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>dx50 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(d50<span class="sc">$</span>x)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>dy50 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(d50<span class="sc">$</span>y)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>tp <span class="ot">&lt;-</span> <span class="fu">save_history</span>(dx50, <span class="at">start =</span> start_proj)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">render_gif</span>(dx50, </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">tour_path =</span> <span class="fu">planned_tour</span>(tp),</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">display =</span> <span class="fu">display_xy</span>(<span class="at">col =</span> <span class="st">"orange"</span>, <span class="at">center =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">gif_file =</span> <span class="st">"n50.gif"</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">width =</span> <span class="dv">400</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">height =</span> <span class="dv">400</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">frames =</span> <span class="dv">500</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">loop =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>d100 <span class="ot">&lt;-</span> <span class="fu">generate_toy_dataset</span>(n, <span class="dv">6</span>, <span class="fl">0.05</span>, myseed)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>dx100 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(d100<span class="sc">$</span>x)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>dy100 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(d100<span class="sc">$</span>y)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">render_gif</span>(dx100, </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>           <span class="at">tour_path =</span> <span class="fu">planned_tour</span>(tp),</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>           <span class="at">display =</span> <span class="fu">display_xy</span>(<span class="at">col =</span> <span class="st">"orange"</span>, <span class="at">center =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>           <span class="at">gif_file =</span> <span class="st">"n100.gif"</span>,</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>           <span class="at">width =</span> <span class="dv">400</span>,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>           <span class="at">height =</span> <span class="dv">400</span>,</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>           <span class="at">frames =</span> <span class="dv">500</span>,</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>           <span class="at">loop =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>d500 <span class="ot">&lt;-</span> <span class="fu">generate_toy_dataset</span>(n, <span class="dv">6</span>, <span class="fl">0.05</span>, myseed)</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>dx500 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(d500<span class="sc">$</span>x)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>dy500 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(d500<span class="sc">$</span>y)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="fu">render_gif</span>(dx500, </span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>           <span class="at">tour_path =</span> <span class="fu">planned_tour</span>(tp),</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>           <span class="at">display =</span> <span class="fu">display_xy</span>(<span class="at">col =</span> <span class="st">"orange"</span>, <span class="at">center =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>           <span class="at">gif_file =</span> <span class="st">"n500.gif"</span>,</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>           <span class="at">width =</span> <span class="dv">400</span>,</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>           <span class="at">height =</span> <span class="dv">400</span>,</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>           <span class="at">frames =</span> <span class="dv">500</span>,</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>           <span class="at">loop =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(dx50, <span class="at">file=</span><span class="st">"d50.rda"</span>)</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(dx100, <span class="at">file=</span><span class="st">"d100.rda"</span>)</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(dx500, <span class="at">file=</span><span class="st">"d500.rda"</span>)</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(dy50, <span class="at">file=</span><span class="st">"dy50.rda"</span>)</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(dy100, <span class="at">file=</span><span class="st">"dy100.rda"</span>)</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(dy500, <span class="at">file=</span><span class="st">"dy500.rda"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>And here are tours of the data containing different sample sizes, n=50, 100, 500, and shown as orange points. The axes producing each 2D projection in the stream of projections are represented by the line segments and circle. You can see that this data only lies along an axis. It can be interpreted as if one variable has some non-zero value, all other values are zero. It’s a contrived example, but it does arise from analysis of large text data, where each word is unique so when used the other words in the set are not used. This is the data that generates the interesting phase shifts during optimisation.</p>
@@ -386,85 +380,85 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"d50.rda"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"d100.rda"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"d500.rda"</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>mx50 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">which.max</span>(dx50<span class="sc">$</span>V1),</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx50<span class="sc">$</span>V2),</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx50<span class="sc">$</span>V3),</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx50<span class="sc">$</span>V4),</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx50<span class="sc">$</span>V5),</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx50<span class="sc">$</span>V6))</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>edges50 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) </span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> (i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="dv">6</span>) </span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    edges50 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(edges50, <span class="fu">c</span>(mx50[i], mx50[j]))</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(edges50) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"from"</span>, <span class="st">"to"</span>)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>mx100 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">which.max</span>(dx100<span class="sc">$</span>V1),</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx100<span class="sc">$</span>V2),</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx100<span class="sc">$</span>V3),</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx100<span class="sc">$</span>V4),</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx100<span class="sc">$</span>V5),</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx100<span class="sc">$</span>V6))</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>edges100 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) </span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> (i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="dv">6</span>) </span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    edges100 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(edges100, <span class="fu">c</span>(mx100[i], mx100[j]))</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(edges100) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"from"</span>, <span class="st">"to"</span>)</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>mx500 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">which.max</span>(dx500<span class="sc">$</span>V1),</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx500<span class="sc">$</span>V2),</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx500<span class="sc">$</span>V3),</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx500<span class="sc">$</span>V4),</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx500<span class="sc">$</span>V5),</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx500<span class="sc">$</span>V6))</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>edges500 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) </span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> (i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="dv">6</span>) </span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    edges500 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(edges500, <span class="fu">c</span>(mx500[i], mx500[j]))</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(edges500) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"from"</span>, <span class="st">"to"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"d50.rda"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"d100.rda"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"d500.rda"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>mx50 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">which.max</span>(dx50<span class="sc">$</span>V1),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx50<span class="sc">$</span>V2),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx50<span class="sc">$</span>V3),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx50<span class="sc">$</span>V4),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx50<span class="sc">$</span>V5),</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx50<span class="sc">$</span>V6))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>edges50 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> (i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="dv">6</span>) </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    edges50 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(edges50, <span class="fu">c</span>(mx50[i], mx50[j]))</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(edges50) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"from"</span>, <span class="st">"to"</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>mx100 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">which.max</span>(dx100<span class="sc">$</span>V1),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx100<span class="sc">$</span>V2),</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx100<span class="sc">$</span>V3),</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx100<span class="sc">$</span>V4),</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx100<span class="sc">$</span>V5),</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx100<span class="sc">$</span>V6))</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>edges100 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) </span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> (i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="dv">6</span>) </span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    edges100 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(edges100, <span class="fu">c</span>(mx100[i], mx100[j]))</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(edges100) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"from"</span>, <span class="st">"to"</span>)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>mx500 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">which.max</span>(dx500<span class="sc">$</span>V1),</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx500<span class="sc">$</span>V2),</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx500<span class="sc">$</span>V3),</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx500<span class="sc">$</span>V4),</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx500<span class="sc">$</span>V5),</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>(dx500<span class="sc">$</span>V6))</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>edges500 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) </span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> (i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="dv">6</span>) </span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    edges500 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(edges500, <span class="fu">c</span>(mx500[i], mx500[j]))</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(edges500) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"from"</span>, <span class="st">"to"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">animate_xy</span>(dx500, </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">center=</span><span class="cn">FALSE</span>, </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">col =</span> <span class="st">"orange"</span>,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">edges =</span> edges500,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">edges.col =</span> <span class="st">"orange"</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">render_gif</span>(dx50, </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">tour_path =</span> <span class="fu">planned_tour</span>(tp),</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">display =</span> <span class="fu">display_xy</span>(<span class="at">col =</span> <span class="st">"orange"</span>, </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">center =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">edges =</span> edges50,</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                                <span class="at">edges.col =</span> <span class="st">"orange"</span>),</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">gif_file =</span> <span class="st">"n50_gon.gif"</span>,</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">width =</span> <span class="dv">400</span>,</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">height =</span> <span class="dv">400</span>,</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">frames =</span> <span class="dv">500</span>,</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">loop =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="fu">render_gif</span>(dx100, </span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>           <span class="at">tour_path =</span> <span class="fu">planned_tour</span>(tp),</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>           <span class="at">display =</span> <span class="fu">display_xy</span>(<span class="at">col =</span> <span class="st">"orange"</span>, </span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>                                <span class="at">center =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>                                <span class="at">edges =</span> edges100,</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>                                <span class="at">edges.col =</span> <span class="st">"orange"</span>),</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>           <span class="at">gif_file =</span> <span class="st">"n100_gon.gif"</span>,</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>           <span class="at">width =</span> <span class="dv">400</span>,</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>           <span class="at">height =</span> <span class="dv">400</span>,</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>           <span class="at">frames =</span> <span class="dv">500</span>,</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>           <span class="at">loop =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="fu">render_gif</span>(dx500, </span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>           <span class="at">tour_path =</span> <span class="fu">planned_tour</span>(tp),</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>           <span class="at">display =</span> <span class="fu">display_xy</span>(<span class="at">col =</span> <span class="st">"orange"</span>, </span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>                                <span class="at">center =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>                                <span class="at">edges =</span> edges500,</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>                                <span class="at">edges.col =</span> <span class="st">"orange"</span>),</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>           <span class="at">gif_file =</span> <span class="st">"n500_gon.gif"</span>,</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>           <span class="at">width =</span> <span class="dv">400</span>,</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>           <span class="at">height =</span> <span class="dv">400</span>,</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>           <span class="at">frames =</span> <span class="dv">500</span>,</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>           <span class="at">loop =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">animate_xy</span>(dx500, </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">center=</span><span class="cn">FALSE</span>, </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">col =</span> <span class="st">"orange"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">edges =</span> edges500,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">edges.col =</span> <span class="st">"orange"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">render_gif</span>(dx50, </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">tour_path =</span> <span class="fu">planned_tour</span>(tp),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">display =</span> <span class="fu">display_xy</span>(<span class="at">col =</span> <span class="st">"orange"</span>, </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">center =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">edges =</span> edges50,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                                <span class="at">edges.col =</span> <span class="st">"orange"</span>),</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">gif_file =</span> <span class="st">"n50_gon.gif"</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">width =</span> <span class="dv">400</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">height =</span> <span class="dv">400</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">frames =</span> <span class="dv">500</span>,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">loop =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">render_gif</span>(dx100, </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>           <span class="at">tour_path =</span> <span class="fu">planned_tour</span>(tp),</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>           <span class="at">display =</span> <span class="fu">display_xy</span>(<span class="at">col =</span> <span class="st">"orange"</span>, </span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                                <span class="at">center =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>                                <span class="at">edges =</span> edges100,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>                                <span class="at">edges.col =</span> <span class="st">"orange"</span>),</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>           <span class="at">gif_file =</span> <span class="st">"n100_gon.gif"</span>,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>           <span class="at">width =</span> <span class="dv">400</span>,</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>           <span class="at">height =</span> <span class="dv">400</span>,</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>           <span class="at">frames =</span> <span class="dv">500</span>,</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>           <span class="at">loop =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="fu">render_gif</span>(dx500, </span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>           <span class="at">tour_path =</span> <span class="fu">planned_tour</span>(tp),</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>           <span class="at">display =</span> <span class="fu">display_xy</span>(<span class="at">col =</span> <span class="st">"orange"</span>, </span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>                                <span class="at">center =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>                                <span class="at">edges =</span> edges500,</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>                                <span class="at">edges.col =</span> <span class="st">"orange"</span>),</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>           <span class="at">gif_file =</span> <span class="st">"n500_gon.gif"</span>,</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>           <span class="at">width =</span> <span class="dv">400</span>,</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>           <span class="at">height =</span> <span class="dv">400</span>,</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>           <span class="at">frames =</span> <span class="dv">500</span>,</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>           <span class="at">loop =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="columns">
@@ -483,16 +477,16 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"dy500.rda"</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">render_gif</span>(dy500, </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">tour_path =</span> <span class="fu">planned_tour</span>(tp),</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">display =</span> <span class="fu">display_xy</span>(<span class="at">col =</span> <span class="st">"orange"</span>, </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                                <span class="at">center =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">gif_file =</span> <span class="st">"ny500.gif"</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">width =</span> <span class="dv">400</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">height =</span> <span class="dv">400</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">frames =</span> <span class="dv">500</span>,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">loop =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"dy500.rda"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">render_gif</span>(dy500, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">tour_path =</span> <span class="fu">planned_tour</span>(tp),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">display =</span> <span class="fu">display_xy</span>(<span class="at">col =</span> <span class="st">"orange"</span>, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                                <span class="at">center =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">gif_file =</span> <span class="st">"ny500.gif"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">width =</span> <span class="dv">400</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">height =</span> <span class="dv">400</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">frames =</span> <span class="dv">500</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">loop =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="columns">
@@ -539,105 +533,105 @@ OUTPUT
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1107</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>prj <span class="ot">&lt;-</span> <span class="fu">basis_random</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, prj)<span class="sc">$</span>data_prj <span class="sc">|&gt;</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>prj <span class="ot">&lt;-</span> <span class="fu">basis_random</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, prj)<span class="sc">$</span>data_prj <span class="sc">|&gt;</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>prj <span class="ot">&lt;-</span> <span class="fu">basis_random</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, prj)<span class="sc">$</span>data_prj <span class="sc">|&gt;</span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>      <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>prj <span class="ot">&lt;-</span> <span class="fu">basis_random</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, prj)<span class="sc">$</span>data_prj <span class="sc">|&gt;</span></span>
-<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
-<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
-<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>      <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
-<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
-<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>prj <span class="ot">&lt;-</span> <span class="fu">basis_random</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
-<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, prj)<span class="sc">$</span>data_prj <span class="sc">|&gt;</span></span>
-<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
-<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
-<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>      <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
-<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
-<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>prj <span class="ot">&lt;-</span> <span class="fu">basis_random</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
-<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, prj)<span class="sc">$</span>data_prj <span class="sc">|&gt;</span></span>
-<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
-<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
-<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>      <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
-<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
-<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a>prj <span class="ot">&lt;-</span> <span class="fu">basis_random</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
-<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a>p7 <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, prj)<span class="sc">$</span>data_prj <span class="sc">|&gt;</span></span>
-<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
-<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
-<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a>      <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
-<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
-<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a>prj <span class="ot">&lt;-</span> <span class="fu">basis_random</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
-<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a>p8 <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, prj)<span class="sc">$</span>data_prj <span class="sc">|&gt;</span></span>
-<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
-<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
-<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a>      <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
-<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
-<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3 <span class="sc">+</span> p4 <span class="sc">+</span> p5 <span class="sc">+</span> p6 <span class="sc">+</span> p7 <span class="sc">+</span> p8 <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">ncol=</span><span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1107</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>prj <span class="ot">&lt;-</span> <span class="fu">basis_random</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, prj)<span class="sc">$</span>data_prj <span class="sc">|&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>prj <span class="ot">&lt;-</span> <span class="fu">basis_random</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, prj)<span class="sc">$</span>data_prj <span class="sc">|&gt;</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>prj <span class="ot">&lt;-</span> <span class="fu">basis_random</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, prj)<span class="sc">$</span>data_prj <span class="sc">|&gt;</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>      <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>prj <span class="ot">&lt;-</span> <span class="fu">basis_random</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, prj)<span class="sc">$</span>data_prj <span class="sc">|&gt;</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>      <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>prj <span class="ot">&lt;-</span> <span class="fu">basis_random</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, prj)<span class="sc">$</span>data_prj <span class="sc">|&gt;</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>      <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>prj <span class="ot">&lt;-</span> <span class="fu">basis_random</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, prj)<span class="sc">$</span>data_prj <span class="sc">|&gt;</span></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>      <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>prj <span class="ot">&lt;-</span> <span class="fu">basis_random</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>p7 <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, prj)<span class="sc">$</span>data_prj <span class="sc">|&gt;</span></span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>      <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>prj <span class="ot">&lt;-</span> <span class="fu">basis_random</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>p8 <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, prj)<span class="sc">$</span>data_prj <span class="sc">|&gt;</span></span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>      <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3 <span class="sc">+</span> p4 <span class="sc">+</span> p5 <span class="sc">+</span> p6 <span class="sc">+</span> p7 <span class="sc">+</span> p8 <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">ncol=</span><span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -654,154 +648,154 @@ OUTPUT
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"d50.rda"</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"d100.rda"</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"d500.rda"</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>p_trigon <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>), <span class="fu">sin</span>(pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>), </span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="sc">-</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>), <span class="fu">sin</span>(<span class="sc">-</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>),</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">0</span>, <span class="dv">0</span>,</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">0</span>, <span class="dv">0</span>, </span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>p_trigon <span class="ot">&lt;-</span> <span class="fu">orthonormalise</span>(p_trigon)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>dx500_p <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, p_trigon)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>dx500_p_edges <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">1</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], </span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">2</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">3</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]),</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">2</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], </span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">3</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">1</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]))</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dx500_p_edges) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x_from"</span>, <span class="st">"y_from"</span>, <span class="st">"x_to"</span>, <span class="st">"y_to"</span>)</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>plt_tri <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>data_prj, <span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>circle, <span class="fu">aes</span>(<span class="at">x=</span>c1, <span class="at">y=</span>c2)) <span class="sc">+</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>axes, <span class="fu">aes</span>(<span class="at">x=</span>x1, <span class="at">y=</span>y1, <span class="at">xend=</span>x2, <span class="at">yend=</span>y2)) <span class="sc">+</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>axes, <span class="fu">aes</span>(<span class="at">x=</span>x2, <span class="at">y=</span>y2, <span class="at">label=</span><span class="fu">rownames</span>(dx500_p<span class="sc">$</span>axes))) <span class="sc">+</span></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">data=</span>dx500_p_edges, </span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">aes</span>(<span class="at">x=</span>x_from, <span class="at">y=</span>y_from,</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>                     <span class="at">xend=</span>x_to, <span class="at">yend=</span>y_to),</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>p_4gon <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, </span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">4</span>), <span class="fu">sin</span>(pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">4</span>), </span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">4</span>), <span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">4</span>), </span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="sc">-</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">4</span>), <span class="fu">sin</span>(<span class="sc">-</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">4</span>),</span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">0</span>, <span class="dv">0</span>, </span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
-<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>p_4gon <span class="ot">&lt;-</span> <span class="fu">orthonormalise</span>(p_4gon)</span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>dx500_p <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, p_4gon)</span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>dx500_p_edges <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
-<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">1</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], </span>
-<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">2</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">3</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">4</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]),</span>
-<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">2</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], </span>
-<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">3</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">4</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">1</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]))</span>
-<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dx500_p_edges) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x_from"</span>, <span class="st">"y_from"</span>, <span class="st">"x_to"</span>, <span class="st">"y_to"</span>)</span>
-<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>plt_quad <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>data_prj, <span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
-<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
-<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>circle, <span class="fu">aes</span>(<span class="at">x=</span>c1, <span class="at">y=</span>c2)) <span class="sc">+</span></span>
-<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>axes, <span class="fu">aes</span>(<span class="at">x=</span>x1, <span class="at">y=</span>y1, <span class="at">xend=</span>x2, <span class="at">yend=</span>y2)) <span class="sc">+</span></span>
-<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>axes, <span class="fu">aes</span>(<span class="at">x=</span>x2, <span class="at">y=</span>y2, <span class="at">label=</span><span class="fu">rownames</span>(dx500_p<span class="sc">$</span>axes))) <span class="sc">+</span></span>
-<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">data=</span>dx500_p_edges, </span>
-<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">aes</span>(<span class="at">x=</span>x_from, <span class="at">y=</span>y_from,</span>
-<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>                     <span class="at">xend=</span>x_to, <span class="at">yend=</span>y_to),</span>
-<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
-<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
-<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
-<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>p_5gon <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, </span>
-<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>), <span class="fu">sin</span>(pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>), </span>
-<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>), <span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>), </span>
-<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="dv">3</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>), <span class="fu">sin</span>(<span class="dv">3</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>), </span>
-<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="sc">-</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>), <span class="fu">sin</span>(<span class="sc">-</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>),</span>
-<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
-<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a>p_5gon <span class="ot">&lt;-</span> <span class="fu">orthonormalise</span>(p_5gon)</span>
-<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a>dx500_p <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, p_5gon)</span>
-<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a>dx500_p_edges <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
-<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">1</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], </span>
-<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">2</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">3</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">4</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">5</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]),</span>
-<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">2</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], </span>
-<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">3</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">4</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">5</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">1</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]))</span>
-<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dx500_p_edges) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x_from"</span>, <span class="st">"y_from"</span>, <span class="st">"x_to"</span>, <span class="st">"y_to"</span>)</span>
-<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a>plt_pent <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>data_prj, <span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
-<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
-<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>circle, <span class="fu">aes</span>(<span class="at">x=</span>c1, <span class="at">y=</span>c2)) <span class="sc">+</span></span>
-<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>axes, <span class="fu">aes</span>(<span class="at">x=</span>x1, <span class="at">y=</span>y1, <span class="at">xend=</span>x2, <span class="at">yend=</span>y2)) <span class="sc">+</span></span>
-<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>axes, <span class="fu">aes</span>(<span class="at">x=</span>x2, <span class="at">y=</span>y2, <span class="at">label=</span><span class="fu">rownames</span>(dx500_p<span class="sc">$</span>axes))) <span class="sc">+</span></span>
-<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">data=</span>dx500_p_edges, </span>
-<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">aes</span>(<span class="at">x=</span>x_from, <span class="at">y=</span>y_from,</span>
-<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a>                     <span class="at">xend=</span>x_to, <span class="at">yend=</span>y_to),</span>
-<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
-<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb9-103"><a href="#cb9-103" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
-<span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb9-107"><a href="#cb9-107" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
-<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a>p_6gon <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, </span>
-<span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>), <span class="fu">sin</span>(pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>), </span>
-<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>), <span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>), </span>
-<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="dv">3</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>), <span class="fu">sin</span>(<span class="dv">3</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>), </span>
-<span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="dv">4</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>), <span class="fu">sin</span>(<span class="dv">4</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>), </span>
-<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="sc">-</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>), <span class="fu">sin</span>(<span class="sc">-</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>)), <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
-<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a>p_6gon <span class="ot">&lt;-</span> <span class="fu">orthonormalise</span>(p_6gon)</span>
-<span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a>dx500_p <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, p_6gon)</span>
-<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a>dx500_p_edges <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
-<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">1</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], </span>
-<span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">2</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">3</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">4</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">5</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">6</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]),</span>
-<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">2</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], </span>
-<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">3</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">4</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">5</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">6</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
-<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">1</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]))</span>
-<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dx500_p_edges) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x_from"</span>, <span class="st">"y_from"</span>, <span class="st">"x_to"</span>, <span class="st">"y_to"</span>)</span>
-<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a>plt_hex <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>data_prj, <span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
-<span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
-<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>circle, <span class="fu">aes</span>(<span class="at">x=</span>c1, <span class="at">y=</span>c2)) <span class="sc">+</span></span>
-<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>axes, <span class="fu">aes</span>(<span class="at">x=</span>x1, <span class="at">y=</span>y1, <span class="at">xend=</span>x2, <span class="at">yend=</span>y2)) <span class="sc">+</span></span>
-<span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>axes, <span class="fu">aes</span>(<span class="at">x=</span>x2, <span class="at">y=</span>y2, <span class="at">label=</span><span class="fu">rownames</span>(dx500_p<span class="sc">$</span>axes))) <span class="sc">+</span></span>
-<span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">data=</span>dx500_p_edges, </span>
-<span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">aes</span>(<span class="at">x=</span>x_from, <span class="at">y=</span>y_from,</span>
-<span id="cb9-139"><a href="#cb9-139" aria-hidden="true" tabindex="-1"></a>                     <span class="at">xend=</span>x_to, <span class="at">yend=</span>y_to),</span>
-<span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
-<span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb9-143"><a href="#cb9-143" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
-<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
-<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a>plt_tri <span class="sc">+</span> plt_quad <span class="sc">+</span> plt_pent <span class="sc">+</span> plt_hex <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">ncol=</span><span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"d50.rda"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"d100.rda"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"d500.rda"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>p_trigon <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>), <span class="fu">sin</span>(pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>), </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="sc">-</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>), <span class="fu">sin</span>(<span class="sc">-</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">0</span>, <span class="dv">0</span>, </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>p_trigon <span class="ot">&lt;-</span> <span class="fu">orthonormalise</span>(p_trigon)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>dx500_p <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, p_trigon)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>dx500_p_edges <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">1</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], </span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">2</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">3</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]),</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">2</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], </span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">3</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">1</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]))</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dx500_p_edges) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x_from"</span>, <span class="st">"y_from"</span>, <span class="st">"x_to"</span>, <span class="st">"y_to"</span>)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>plt_tri <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>data_prj, <span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>circle, <span class="fu">aes</span>(<span class="at">x=</span>c1, <span class="at">y=</span>c2)) <span class="sc">+</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>axes, <span class="fu">aes</span>(<span class="at">x=</span>x1, <span class="at">y=</span>y1, <span class="at">xend=</span>x2, <span class="at">yend=</span>y2)) <span class="sc">+</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>axes, <span class="fu">aes</span>(<span class="at">x=</span>x2, <span class="at">y=</span>y2, <span class="at">label=</span><span class="fu">rownames</span>(dx500_p<span class="sc">$</span>axes))) <span class="sc">+</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">data=</span>dx500_p_edges, </span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">aes</span>(<span class="at">x=</span>x_from, <span class="at">y=</span>y_from,</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>                     <span class="at">xend=</span>x_to, <span class="at">yend=</span>y_to),</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>p_4gon <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, </span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">4</span>), <span class="fu">sin</span>(pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">4</span>), </span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">4</span>), <span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">4</span>), </span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="sc">-</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">4</span>), <span class="fu">sin</span>(<span class="sc">-</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">4</span>),</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">0</span>, <span class="dv">0</span>, </span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>p_4gon <span class="ot">&lt;-</span> <span class="fu">orthonormalise</span>(p_4gon)</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>dx500_p <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, p_4gon)</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>dx500_p_edges <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">1</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], </span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">2</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">3</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">4</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]),</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">2</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], </span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">3</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">4</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">1</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]))</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dx500_p_edges) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x_from"</span>, <span class="st">"y_from"</span>, <span class="st">"x_to"</span>, <span class="st">"y_to"</span>)</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>plt_quad <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>data_prj, <span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>circle, <span class="fu">aes</span>(<span class="at">x=</span>c1, <span class="at">y=</span>c2)) <span class="sc">+</span></span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>axes, <span class="fu">aes</span>(<span class="at">x=</span>x1, <span class="at">y=</span>y1, <span class="at">xend=</span>x2, <span class="at">yend=</span>y2)) <span class="sc">+</span></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>axes, <span class="fu">aes</span>(<span class="at">x=</span>x2, <span class="at">y=</span>y2, <span class="at">label=</span><span class="fu">rownames</span>(dx500_p<span class="sc">$</span>axes))) <span class="sc">+</span></span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">data=</span>dx500_p_edges, </span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">aes</span>(<span class="at">x=</span>x_from, <span class="at">y=</span>y_from,</span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>                     <span class="at">xend=</span>x_to, <span class="at">yend=</span>y_to),</span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>p_5gon <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, </span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>), <span class="fu">sin</span>(pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>), </span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>), <span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>), </span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="dv">3</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>), <span class="fu">sin</span>(<span class="dv">3</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>), </span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="sc">-</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>), <span class="fu">sin</span>(<span class="sc">-</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>),</span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>p_5gon <span class="ot">&lt;-</span> <span class="fu">orthonormalise</span>(p_5gon)</span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a>dx500_p <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, p_5gon)</span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>dx500_p_edges <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">1</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], </span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">2</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">3</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">4</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">5</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]),</span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">2</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], </span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">3</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">4</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">5</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">1</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]))</span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dx500_p_edges) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x_from"</span>, <span class="st">"y_from"</span>, <span class="st">"x_to"</span>, <span class="st">"y_to"</span>)</span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>plt_pent <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>data_prj, <span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
+<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>circle, <span class="fu">aes</span>(<span class="at">x=</span>c1, <span class="at">y=</span>c2)) <span class="sc">+</span></span>
+<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>axes, <span class="fu">aes</span>(<span class="at">x=</span>x1, <span class="at">y=</span>y1, <span class="at">xend=</span>x2, <span class="at">yend=</span>y2)) <span class="sc">+</span></span>
+<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>axes, <span class="fu">aes</span>(<span class="at">x=</span>x2, <span class="at">y=</span>y2, <span class="at">label=</span><span class="fu">rownames</span>(dx500_p<span class="sc">$</span>axes))) <span class="sc">+</span></span>
+<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">data=</span>dx500_p_edges, </span>
+<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">aes</span>(<span class="at">x=</span>x_from, <span class="at">y=</span>y_from,</span>
+<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a>                     <span class="at">xend=</span>x_to, <span class="at">yend=</span>y_to),</span>
+<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
+<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
+<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a>p_6gon <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, </span>
+<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>), <span class="fu">sin</span>(pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>), </span>
+<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>), <span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>), </span>
+<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="dv">3</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>), <span class="fu">sin</span>(<span class="dv">3</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>), </span>
+<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="dv">4</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>), <span class="fu">sin</span>(<span class="dv">4</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>), </span>
+<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">cos</span>(<span class="sc">-</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>), <span class="fu">sin</span>(<span class="sc">-</span>pi<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">6</span>)), <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a>p_6gon <span class="ot">&lt;-</span> <span class="fu">orthonormalise</span>(p_6gon)</span>
+<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a>dx500_p <span class="ot">&lt;-</span> <span class="fu">render_proj</span>(dx500, p_6gon)</span>
+<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a>dx500_p_edges <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
+<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">1</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], </span>
+<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">2</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">3</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">4</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-122"><a href="#cb7-122" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">5</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">6</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]),</span>
+<span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">2</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], </span>
+<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">3</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-126"><a href="#cb7-126" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">4</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-127"><a href="#cb7-127" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">5</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-128"><a href="#cb7-128" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">6</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-129"><a href="#cb7-129" aria-hidden="true" tabindex="-1"></a>  dx500_p<span class="sc">$</span>data_prj[mx500[<span class="dv">1</span>],<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]))</span>
+<span id="cb7-130"><a href="#cb7-130" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dx500_p_edges) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x_from"</span>, <span class="st">"y_from"</span>, <span class="st">"x_to"</span>, <span class="st">"y_to"</span>)</span>
+<span id="cb7-131"><a href="#cb7-131" aria-hidden="true" tabindex="-1"></a>plt_hex <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-132"><a href="#cb7-132" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>data_prj, <span class="fu">aes</span>(<span class="at">x=</span>P1, <span class="at">y=</span>P2),</span>
+<span id="cb7-133"><a href="#cb7-133" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb7-134"><a href="#cb7-134" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>circle, <span class="fu">aes</span>(<span class="at">x=</span>c1, <span class="at">y=</span>c2)) <span class="sc">+</span></span>
+<span id="cb7-135"><a href="#cb7-135" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>axes, <span class="fu">aes</span>(<span class="at">x=</span>x1, <span class="at">y=</span>y1, <span class="at">xend=</span>x2, <span class="at">yend=</span>y2)) <span class="sc">+</span></span>
+<span id="cb7-136"><a href="#cb7-136" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">data=</span>dx500_p<span class="sc">$</span>axes, <span class="fu">aes</span>(<span class="at">x=</span>x2, <span class="at">y=</span>y2, <span class="at">label=</span><span class="fu">rownames</span>(dx500_p<span class="sc">$</span>axes))) <span class="sc">+</span></span>
+<span id="cb7-137"><a href="#cb7-137" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">data=</span>dx500_p_edges, </span>
+<span id="cb7-138"><a href="#cb7-138" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">aes</span>(<span class="at">x=</span>x_from, <span class="at">y=</span>y_from,</span>
+<span id="cb7-139"><a href="#cb7-139" aria-hidden="true" tabindex="-1"></a>                     <span class="at">xend=</span>x_to, <span class="at">yend=</span>y_to),</span>
+<span id="cb7-140"><a href="#cb7-140" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb7-141"><a href="#cb7-141" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb7-142"><a href="#cb7-142" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb7-143"><a href="#cb7-143" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
+<span id="cb7-144"><a href="#cb7-144" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.text=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb7-145"><a href="#cb7-145" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.title=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb7-146"><a href="#cb7-146" aria-hidden="true" tabindex="-1"></a>       <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb7-147"><a href="#cb7-147" aria-hidden="true" tabindex="-1"></a>       <span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span>
+<span id="cb7-148"><a href="#cb7-148" aria-hidden="true" tabindex="-1"></a>plt_tri <span class="sc">+</span> plt_quad <span class="sc">+</span> plt_pent <span class="sc">+</span> plt_hex <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">ncol=</span><span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>

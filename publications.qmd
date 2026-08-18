@@ -66,6 +66,8 @@ pubs |>
 
 ## Media & videos
 
+- Cook, D. (2020) Open data shows lightning, not arson, was the likely cause of most Victorian bushfires last summer, The Conversation, https://doi.org/10.64628/AA.vr95fyy9q.
+- Hyndman, R.~J. and Cook, D. (2019) You are what you vote: the social and demographic factors that influence your vote, The Conversation, https://doi.org/10.64628/AA.dpujpkpvn.
 - Majure, J. J., Cook, D., Symanzik, J., and Megretskaia, I. (1996). [An Interactive Environment for the Graphical Analysis of Spatial Data](https://youtu.be/e_b8WAshYgA). [ASA Statistical Graphics Video Lending Library](https://community.amstat.org/jointscsg-section/media/videos).
 - Symanzik, S. Cook, D., Kohlmeyer, B. D., Lechner, U. and  Cruz-Neira, C. (1996) [Dynamic Statistical Graphics in a Highly Immersive Environment](https://youtu.be/JX56EB7HKKo) [ASA Statistical Graphics Video Lending Library](https://community.amstat.org/jointscsg-section/media/videos).
 - Morton, S., Cook, D., Stuetzle, W., and Buja, A. (1995). [Computer Graphics in Statistics: The Last 30 Years in Brief](https://youtu.be/osuuHDS9t6k). [ASA Statistical Graphics Video Lending Library](https://community.amstat.org/jointscsg-section/media/videos).

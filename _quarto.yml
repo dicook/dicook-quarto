@@ -36,9 +36,9 @@ website:
         href: https://github.com/dicook/dicook-quarto      
 
 body-footer: | 
-  Copyright:  Dianne Cook, 2025
+  Copyright:  Dianne Cook, 2026
 
-date-format: "D MMMM YYYY"
+date-format: "D MMM YYYY"
 
 format:
   html:
