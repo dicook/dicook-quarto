@@ -24,6 +24,14 @@ pubs <- tibble(title = b$title.title.value,
                journal = b$`journal-title.value`,
                doi = b$url.value) |>
   arrange(desc(year))
+
+library(orcidtr)
+b <- orcid_works("0000-0002-3813-7155")
+pubs <- tibble(title = b$title, 
+               publication_date = b$publication_date,
+               journal = b$journal,
+               url = b$url) |>
+  arrange(desc(publication_date))
 save(pubs, file="pubs.rda")
 ```
 
@@ -39,15 +47,15 @@ library(stringr)
 load("pubs.rda")
 pubs <- pubs |>
   #mutate(title = str_to_title(title)) |> # doesn't quite work nicely
-  mutate(titlelink = glue("[{title}]({doi})"))
+  mutate(titlelink = glue("[{title}]({url})"))
 #kable(pubs)
 pubs |> 
-  select(titlelink, year, journal) |>
+  select(titlelink, publication_date, journal) |>
   gt() |>
   gt::fmt_markdown(columns = titlelink) |>
   cols_label(titlelink = "title") |> 
   gt::cols_width(titlelink ~ px(500),
-                 year ~ px(50),
+                 publication_date ~ px(50),
                  journal ~ px(200)) |>
   cols_align("left")
   
