@@ -1,9 +1,12 @@
 date, title, location, link, details
+2/11/2026,Fifteen Ways to Rest: Fixing a Sculpture Exhibit Using Multidimensional Scaling,"AIMS, Capetown, South Africa",TBA,Invited talk
+15/10/2026,Practical Tools for Data Exploration in Biostatistics,"VicBioStat, Melbourne, Australia",https://github.com/dicook/VicBioStat-2026,Invited talk
 17/7/2026,Towards a Richer Statistical Thinking: Teaching Visualisation as a Tool for Inference,"ICOTS 2026, Brisbane, Australia",https://github.com/dicook/ICOTS2026,keynote
 15/7/2026,Discussion: Whats My Fitted Model?,"ICOTS 2026, Brisbane, Australia",https://github.com/dicook/ICOTS2026-WMFM,Invited discussion
 7/7/2026,"Interactive Graphics for Understanding and Interpreting Nonlinear Model Behaviour in High Dimensions, using R","useR! 2026, Warsaw, Poland",https://github.com/dicook/useR-2026/,keynote
 3/6/2026,"Seeing More in Your Data: New Visual Tools for Uncertainty, High-Dimensional Exploration, and Model Diagnostics","U. Sydney, Business School",https://github.com/dicook/USydBS-2026/,Invited talk
 14/10/2025,Building power with code and data: Tools for thriving in any environment,International Day of Women in Statistics and Data Science,https://www.idwsds.org,keynote
+15/8/2025,Shadows of Data: Visualising the Geometry of High Dimensions,University of Adelaide,https://dicook.github.io/Adelaide-colloquium/slides.html,invited colloquium
 24/4/2025,Interactively visualizing multivariate market segmentation using the R package lionfish,Symposium in Memory of Fritz Leisch,https://github.com/dicook/Leisch_Symp_2025,Invited talk
 28/3/2025,Visually exploring high-dimensional market segmentation data,DAGStat 2025,https://github.com/dicook/DAGStat_2025,Invited talk
 7/11/2024,New tools for visualising high-dimensional data using linear projections,"TDLee Institute, Shanghai, China",,invited talk
